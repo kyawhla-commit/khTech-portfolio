@@ -791,8 +791,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <style jsx>{
-        }</style>
+
     </section>
   );
 };
