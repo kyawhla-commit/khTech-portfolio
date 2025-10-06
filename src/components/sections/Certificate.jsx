@@ -28,6 +28,7 @@ export const Certificate = () => {
               My professional certifications and qualifications demonstrate my specialization in modern technologies
             </p>
           </div>
+          
 
           {/* Certificates Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

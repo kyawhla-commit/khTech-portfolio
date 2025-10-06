@@ -65,3 +65,37 @@ html,
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
 }
+
+@keyframes float-slow {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  33% { 
+    transform: translateY(-10px) rotate(120deg) scale(1.1); 
+  }
+  66% { 
+    transform: translateY(5px) rotate(240deg) scale(0.9); 
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  50% { 
+    transform: translateY(-8px) rotate(180deg) scale(1.05); 
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-6px) rotate(90deg); 
+  }
+}
+
+.group-hover\:scale-102:hover {
+  transform: scale(1.02);
+}
