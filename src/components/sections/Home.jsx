@@ -191,7 +191,7 @@ export const Home = () => {
             </div>
 
             {/* Photo Section */}
-            <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-endmb-20">
               <div className="relative">
                 {/* Main Photo Container */}
                 <div className="relative w-80 h-80 md:w-96 md:h-96">
