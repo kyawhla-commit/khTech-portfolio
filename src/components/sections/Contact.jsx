@@ -106,6 +106,7 @@ export const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    placeholder="Your Name..."
                     required
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
                   />
@@ -119,6 +120,7 @@ export const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    placeholder="Your Email...."
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -149,6 +151,7 @@ export const Contact = () => {
                     id="message"
                     name="message"
                     rows="5"
+                    placeholder=""
                     value={formData.message}
                     onChange={handleChange}
                     required

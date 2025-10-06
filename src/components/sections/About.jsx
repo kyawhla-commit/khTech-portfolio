@@ -18,153 +18,453 @@ import { FaUbuntu } from "react-icons/fa";
 
 export const About = () => {
   const frontendSkills = [
-    { name: "React", icon: RiReactjsLine, color: "#61DAFB" },
-    { name: "JavaScript", icon: IoLogoJavascript, color: "#F7DF1E" },
-    {
-      name: "TypeScript",
-      icon: SiTypescript,
+    { 
+      name: "React", 
+      icon: RiReactjsLine, 
+      color: "#61DAFB",
+      category: "Frontend"
+    },
+    { 
+      name: "JavaScript", 
+      icon: IoLogoJavascript, 
+      color: "#F7DF1E",
+      category: "Frontend"
+    },
+    { 
+      name: "TypeScript", 
+      icon: SiTypescript, 
       color: "#3178C6",
+      category: "Frontend"
     },
   ];
 
   const backendSkills = [
-    { name: "Laravel", icon: IoLogoLaravel, color: "#FF2D20" },
-    { name: "PHP", icon: MdPhp, color: "#777BB4" },
-    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-    { name: "RestFul Api", icon: TbApi, color: "#4479A1" },
-    {
-      name: "Node.js",
-      icon: SiNodedotjs,
-      color: "#339933",
+    { 
+      name: "Laravel", 
+      icon: IoLogoLaravel, 
+      color: "#FF2D20",
+      category: "Backend"
     },
-    {
-      name: "Express.js",
-      icon: SiExpress,
-      color: "#F7DF1E",
+    { 
+      name: "PHP", 
+      icon: MdPhp, 
+      color: "#777BB4",
+      category: "Backend"
+    },
+    { 
+      name: "MySQL", 
+      icon: SiMysql, 
+      color: "#4479A1",
+      category: "Database"
+    },
+    { 
+      name: "RESTful API", 
+      icon: TbApi, 
+      color: "#FF6B6B",
+      category: "Backend"
+    },
+    { 
+      name: "Node.js", 
+      icon: SiNodedotjs, 
+      color: "#339933",
+      category: "Backend"
+    },
+    { 
+      name: "Express.js", 
+      icon: SiExpress, 
+      color: "#000000",
+      category: "Backend"
     },
   ];
 
   const toolSkills = [
-    { name: "Git", icon: FaGitAlt, color: "#F05032" },
-    { name: "Github", icon: FaGithub,  color: "#4078c0" },
-    { name: "Postman", icon: SiPostman, color: "#F05032" },
-    { name: "Ubuntu", icon: FaUbuntu, color: "#E95420" },
-    { name: "Digital Ocean", icon: FaDigitalOcean, color: "#4479A1"},
-    {
-      name: "Docker",
-      icon: SiDocker,
+    { 
+      name: "Git", 
+      icon: FaGitAlt, 
+      color: "#F05032",
+      category: "Tools"
+    },
+    { 
+      name: "GitHub", 
+      icon: FaGithub, 
+      color: "#4078c0",
+      category: "Tools"
+    },
+    { 
+      name: "Postman", 
+      icon: SiPostman, 
+      color: "#FF6C37",
+      category: "Tools"
+    },
+    { 
+      name: "Ubuntu", 
+      icon: FaUbuntu, 
+      color: "#E95420",
+      category: "DevOps"
+    },
+    { 
+      name: "Digital Ocean", 
+      icon: FaDigitalOcean, 
+      color: "#0080FF",
+      category: "DevOps"
+    },
+    { 
+      name: "Docker", 
+      icon: SiDocker, 
       color: "#2496ED",
+      category: "DevOps"
     },
   ];
+
+  const SkillCard = ({ tech, index }) => (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      whileHover={{ scale: 1.05, y: -8 }}
+      transition={{ 
+        type: "spring", 
+        stiffness: 400, 
+        damping: 25,
+        delay: index * 0.1 
+      }}
+      viewport={{ once: true }}
+      className="group relative bg-gradient-to-br from-white to-gray-50/80 dark:from-gray-800 dark:to-gray-900/80 rounded-2xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-sm"
+    >
+      {/* Animated Background Gradient */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        style={{
+          background: `linear-gradient(135deg, ${tech.color}15 0%, transparent 50%, ${tech.color}08 100%)`
+        }}
+      />
+      
+      {/* Floating Particles Effect */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div 
+          className="absolute w-2 h-2 rounded-full opacity-20 group-hover:opacity-40 transition-all duration-1000"
+          style={{ 
+            backgroundColor: tech.color,
+            top: '20%',
+            left: '20%',
+            animation: 'float 3s ease-in-out infinite'
+          }}
+        />
+        <div 
+          className="absolute w-1 h-1 rounded-full opacity-15 group-hover:opacity-30 transition-all duration-1000 delay-300"
+          style={{ 
+            backgroundColor: tech.color,
+            top: '60%',
+            left: '80%',
+            animation: 'float 4s ease-in-out infinite'
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center text-center">
+        {/* Icon Container with Glow Effect */}
+        <div 
+          className="p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-500 mb-4 relative"
+          style={{ 
+            backgroundColor: `${tech.color}08`,
+            border: `1px solid ${tech.color}15`
+          }}
+        >
+          <tech.icon 
+            className="h-12 w-12 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3" 
+            style={{ color: tech.color }}
+          />
+          {/* Glow Effect */}
+          <div 
+            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"
+            style={{ backgroundColor: tech.color }}
+          />
+        </div>
+
+        {/* Skill Name */}
+        <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">
+          {tech.name}
+        </h4>
+        
+        {/* Category Badge */}
+        <div 
+          className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 group-hover:scale-105"
+          style={{ 
+            backgroundColor: `${tech.color}15`,
+            color: tech.color,
+            border: `1px solid ${tech.color}20`
+          }}
+        >
+          {tech.category}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const SkillSection = ({ title, description, skills, color, delay = 0 }) => (
+    <RevealOnScroll>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay }}
+        viewport={{ once: true }}
+        className="relative"
+      >
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <motion.div 
+            className="inline-flex items-center gap-4 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: delay + 0.2 }}
+          >
+            <div className="flex items-center">
+              <div 
+                className="w-12 h-1 rounded-full opacity-60"
+                style={{ backgroundColor: color }}
+              />
+              <div 
+                className="w-3 h-3 rounded-full mx-2"
+                style={{ backgroundColor: color }}
+              />
+              <div 
+                className="w-12 h-1 rounded-full opacity-60"
+                style={{ backgroundColor: color }}
+              />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent px-4">
+              {title}
+            </h2>
+            <div className="flex items-center">
+              <div 
+                className="w-12 h-1 rounded-full opacity-60"
+                style={{ backgroundColor: color }}
+              />
+              <div 
+                className="w-3 h-3 rounded-full mx-2"
+                style={{ backgroundColor: color }}
+              />
+              <div 
+                className="w-12 h-1 rounded-full opacity-60"
+                style={{ backgroundColor: color }}
+              />
+            </div>
+          </motion.div>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((tech, index) => (
+            <SkillCard key={tech.name} tech={tech} index={index} />
+          ))}
+        </div>
+      </motion.div>
+    </RevealOnScroll>
+  );
+
   return (
     <section
       id="about"
-      className="flex min-h-screen items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/10"
     >
-      <RevealOnScroll>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 from-blue-400 to-blue-300 dark:from-blue-600 dark:to-blue-500">
-          <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            About Me
-          </h1>
-          <div className="rounded-xl p-8 border-white/10 border hover:translate-y-1 transition-all">
-            <p className="text-white text-xl mb-6 ">
-             I am looking for a role that aligns with my values and allows me to contribute to society in a meaningful way. I believe that everyone has the potential to make a positive impact, and I am committed to doing so through my work. I am open to exploring different industries and roles that align with my passions and values. My main focus these days is learning new technologies and architecting solutions to grow my career.
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <RevealOnScroll>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+              About Me
+            </h1>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full mb-8 shadow-lg"></div>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
+              Passionate full-stack developer crafting digital experiences that make a difference
             </p>
-            <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="rounded-xl p-6 hover:translate-y-1 transition-all">
-                  <h3 className="text-xl font-bold mb-4">Frontend</h3>
-                  <div className="flex justify-center gap-8 flex-wrap">
-                    {frontendSkills.map((tech, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex flex-col items-center"
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <tech.icon
-                          className="h-12 w-12 mb-2"
-                          style={{ color: tech.color }}
-                        />
-                        <span className="text-sm font-medium">{tech.name}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+          </motion.div>
+        </RevealOnScroll>
 
-                <div className="rounded-xl p-6 hover:translate-y-1 transition-all">
-                  <h3 className="text-xl font-bold mb-4">Tools</h3>
-                  <div className="flex justify-center gap-8 flex-wrap">
-                    {toolSkills.map((tech, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex flex-col items-center"
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <tech.icon
-                          className="h-12 w-12 mb-2"
-                          style={{ color: tech.color }}
-                        />
-                        <span className="text-sm font-medium">{tech.name}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-xl p-6 hover:translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4">Backend</h3>
-                <div className="flex justify-center gap-8 flex-wrap">
-                  {backendSkills.map((tech, i) => (
-                    <motion.div
-                      key={i}
-                      className="flex flex-col items-center"
-                      whileHover={{ scale: 1.2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <tech.icon
-                        className="h-12 w-12 mb-2"
-                        style={{ color: tech.color }}
-                      />
-                      <span className="text-sm font-medium">{tech.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+        {/* Introduction */}
+        <RevealOnScroll>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-800/80 dark:to-gray-900/80 rounded-3xl p-8 md:p-12 border border-gray-200/30 dark:border-gray-700/30 shadow-xl backdrop-blur-sm mb-20"
+          >
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full mb-8"></div>
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+                I'm a passionate full-stack developer seeking a role that aligns with my values 
+                and allows me to contribute to meaningful projects. I believe in leveraging technology 
+                to create positive impact, and I'm committed to continuous learning and professional growth. 
+                Currently focused on mastering modern architectures and expanding my expertise in cloud technologies.
+              </p>
+              <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mt-8"></div>
             </div>
+          </motion.div>
+        </RevealOnScroll>
+
+        {/* Technologies Section */}
+        <div className="mb-20">
+          <RevealOnScroll>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+                Tech Stack
+              </h2>
+              <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full shadow-lg"></div>
+            </motion.div>
+          </RevealOnScroll>
+
+          <div className="space-y-20">
+            <SkillSection
+              title="Frontend Development"
+              description="Crafting responsive and interactive user interfaces with modern frameworks and libraries"
+              skills={frontendSkills}
+              color="#61DAFB"
+              delay={0.1}
+            />
+
+            <SkillSection
+              title="Backend & Database"
+              description="Building robust server-side applications and efficient database management systems"
+              skills={backendSkills}
+              color="#FF2D20"
+              delay={0.2}
+            />
+
+            <SkillSection
+              title="Tools & DevOps"
+              description="Streamlining development workflows with powerful tools and deployment platforms"
+              skills={toolSkills}
+              color="#2496ED"
+              delay={0.3}
+            />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="p-6 rounded-xl border-white/10 border hover:translate-y-1 transition-all">
-              <h2 className="text-xl font-bold mb-4">Education</h2>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>
-                  <strong>Bechor of Art "B.A"</strong> - Pinlon University (2019
-                  - 2025)
-                </li>
-                <li>
-                  Revelent Coursework: Data Structure , Web Development, Could
-                  Computing...
-                </li>
-              </ul>
-            </div>
-            <div className="p-6 rounded-xl border-white/10 border hover:translate-y-1 transition-all">
-              <h2 className="text-xl font-bold mb-4">Work Experience</h2>
-              <div className="list-disc list-inside space-y-4 text-gray-300">
-                <div>
-                  <h3 className="font-semibold">
-                    Sale & Marketing at Mytel International Telecom (Fiber
-                    Internet)
+        </div>
+
+        {/* Education & Experience */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+          <RevealOnScroll>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group relative bg-gradient-to-br from-white/80 to-green-50/30 dark:from-gray-800/80 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-200/30 dark:border-green-700/30 shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-sm"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-4 right-4 w-8 h-8 border-2 border-green-200/20 rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-6 h-6 border-2 border-green-200/20 rounded-full"></div>
+              </div>
+              
+              <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white flex items-center relative z-10">
+                <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-400 rounded-full mr-4 shadow-lg"></div>
+                Education
+              </h2>
+              <div className="space-y-4 relative z-10">
+                <div className="bg-gradient-to-r from-green-50/80 to-emerald-50/60 dark:from-green-900/20 dark:to-emerald-900/10 rounded-2xl p-6 border border-green-200/20 dark:border-green-700/20 shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <h3 className="font-semibold text-gray-800 dark:text-white text-lg mb-2">
+                    Bachelor of Arts "B.A"
                   </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dignissimos nesciunt doloremque modi et facere.
+                  <p className="text-gray-600 dark:text-gray-400 mb-1">Pinlon University</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-500 font-medium">2019 - 2025</p>
+                </div>
+                <div className="bg-white/50 dark:bg-gray-700/30 rounded-2xl p-6 border border-gray-200/20 dark:border-gray-600/20 shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-3 text-lg">
+                    Relevant Coursework
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Data Structures, Web Development, Cloud Computing, System Architecture, Database Design, 
+                    Software Engineering, Network Security
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </RevealOnScroll>
+
+          <RevealOnScroll>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group relative bg-gradient-to-br from-white/80 to-purple-50/30 dark:from-gray-800/80 dark:to-purple-900/20 rounded-3xl p-8 border border-purple-200/30 dark:border-purple-700/30 shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-sm"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-4 left-4 w-8 h-8 border-2 border-purple-200/20 rounded-full"></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 border-2 border-purple-200/20 rounded-full"></div>
+              </div>
+
+              <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white flex items-center relative z-10">
+                <div className="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-400 rounded-full mr-4 shadow-lg"></div>
+                Work Experience
+              </h2>
+              <div className="space-y-4 relative z-10">
+                <div className="bg-gradient-to-r from-purple-50/80 to-pink-50/60 dark:from-purple-900/20 dark:to-pink-900/10 rounded-2xl p-6 border border-purple-200/20 dark:border-purple-700/20 shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <h3 className="font-semibold text-gray-800 dark:text-white text-lg mb-2">
+                    Sales & Marketing Specialist
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-1">
+                    Mytel International Telecom (Fiber Internet)
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-500 font-medium mb-3">2022 - Present</p>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Developed and executed comprehensive marketing strategies for fiber internet services, 
+                    managed key customer relationships, and drove sales growth through data-driven campaigns 
+                    and strategic market analysis.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </RevealOnScroll>
         </div>
-      </RevealOnScroll>
+
+        {/* Closing Statement */}
+        <RevealOnScroll>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="bg-gradient-to-r from-blue-500/10 via-cyan-500/5 to-blue-500/10 dark:from-blue-500/5 dark:via-cyan-500/3 dark:to-blue-500/5 rounded-3xl p-8 md:p-12 border border-blue-200/20 dark:border-blue-500/10 shadow-xl backdrop-blur-sm">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">
+                Driven by Innovation & Growth
+              </h3>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
+                I'm constantly exploring emerging technologies and industry best practices to stay at the 
+                forefront of web development. My passion lies in creating elegant solutions to complex problems, 
+                and I thrive in environments that challenge me to grow both technically and professionally.
+              </p>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full mt-8 shadow-lg"></div>
+            </div>
+          </motion.div>
+        </RevealOnScroll>
+      </div>
+
+      {/* Custom Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(180deg); }
+        }
+      `}</style>
     </section>
   );
 };
