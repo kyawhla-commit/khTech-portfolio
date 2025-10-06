@@ -339,13 +339,13 @@ export const Home = () => {
                   {/* Code Snippet Card */}
                   <div className={`absolute ${
                     getResponsiveValue([
-                      '-bottom-3 -left-3',     // xs
+                      '-bottom-0 -left-20',     // xs
                       '-bottom-4 -left-4',     // sm
                       '-bottom-4 -left-4',     // md
                       '-bottom-5 -left-5',     // lg
                       '-bottom-6 -left-6'      // xl
                     ])
-                  } bg-gray-900/95 backdrop-blur-md xs:backdrop-blur-lg sm:backdrop-blur-xl border border-gray-700/60 rounded-lg xs:rounded-xl sm:rounded-2xl ${
+                  } bg-gray-900/95 -bottom-10   -left-20  backdrop-blur-md xs:backdrop-blur-lg sm:backdrop-blur-xl border border-gray-700/60 rounded-lg xs:rounded-xl sm:rounded-2xl ${
                     getResponsiveValue([
                       'p-2',      // xs
                       'p-2.5',    // sm
