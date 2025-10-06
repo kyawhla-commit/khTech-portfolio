@@ -99,3 +99,99 @@ html,
 .group-hover\:scale-102:hover {
   transform: scale(1.02);
 }
+
+.typing-cursor {
+          animation: blink 1s infinite;
+          color: #22d3ee;
+          font-weight: 300;
+        }
+
+        @keyframes blink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes marquee-fast {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        @keyframes scroll {
+          0% {
+            transform: translateY(0);
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(8px);
+            opacity: 0;
+          }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+
+        .animate-marquee-fast {
+          animation: marquee-fast 15s linear infinite;
+        }
+
+        .animate-scroll {
+          animation: scroll 2s infinite;
+        }
+
+        /* Extra small devices specific adjustments */
+        @media (max-width: 475px) {
+          .animate-marquee-fast {
+            animation-duration: 12s;
+          }
+        }
+
+        /* Small devices */
+        @media (min-width: 475px) and (max-width: 640px) {
+          .animate-marquee-fast {
+            animation-duration: 15s;
+          }
+        }
+
+        /* Medium devices */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .animate-marquee {
+            animation-duration: 20s;
+          }
+        }
+      
