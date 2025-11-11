@@ -2,6 +2,23 @@
 import Certificate1 from "../assets/Certificate1.jpg";
 import Certificate2 from "../assets/Certificate2.jpg";
 
+import { RiReactjsLine, RiJavascriptLine, RiTailwindCssFill } from "react-icons/ri";
+import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
+import { FaBootstrap, FaDigitalOcean, FaFigma, FaGithub } from "react-icons/fa";
+import { TbApi, TbBrandReactNative } from "react-icons/tb";
+import {
+  SiMysql,
+  SiDocker,
+  SiNodedotjs,
+  SiExpress,
+  SiTypescript,
+  SiMui,
+} from "react-icons/si";
+import { FaGitAlt } from "react-icons/fa";
+import { MdPhp } from "react-icons/md";
+import { SiPostman } from "react-icons/si";
+import { FaUbuntu } from "react-icons/fa";
+
 // export const HeroContent = `I am a passionate full stack developer specializing in PHP, Laravel and React.js with hands-on experience in building CRUD applications, Rest APIs, and responsive user interfaces. I enjoy solving practical problems and am eager to grow in a collaborative team. I'm open to learning new tools and technologies and excited to contribute to real-world projects.`;
 
 // export const AboutContent = `I am looking for a role that aligns with my values and allows me to contribute to society in a meaningful way. I believe that everyone has the potential to make a positive impact, and I am committed to doing so through my work. I am open to exploring different industries and roles that align with my passions and values. My main focus these days is learning new technologies and architecting solutions to grow my career.`;
@@ -134,3 +151,133 @@ export const Educations = [
     skills: ["JavaScript", "React", "React Navive", "Express", "Next.js"],
   },
 ];
+
+
+export const frontendSkills = [
+    { 
+      name: "React", 
+      icon: RiReactjsLine, 
+      color: "#61DAFB",
+      category: "Frontend"
+    },
+    { 
+      name: "JavaScript", 
+      icon: IoLogoJavascript, 
+      color: "#F7DF1E",
+      category: "Frontend"
+    },
+    { 
+      name: "TypeScript", 
+      icon: SiTypescript, 
+      color: "#3178C6",
+      category: "Frontend"
+    },
+    { 
+      name: "MUI", 
+      icon: SiMui, 
+      color: "#3178C6",
+      category: "Frontend"
+    },
+    { 
+      name: "TailwindCss", 
+      icon: RiTailwindCssFill, 
+      color: "#3178C6",
+      category: "Frontend"
+    },
+    { 
+      name: "Bootstrap", 
+      icon: FaBootstrap, 
+      color: "#3178C6",
+      category: "Frontend"
+    },
+    { 
+      name: "ReactNative", 
+      icon: TbBrandReactNative, 
+      color: "#3178C6",
+      category: "Frontend"
+    },
+  ];
+
+  export const backendSkills = [
+    { 
+      name: "Laravel", 
+      icon: IoLogoLaravel, 
+      color: "#FF2D20",
+      category: "Backend"
+    },
+    { 
+      name: "PHP", 
+      icon: MdPhp, 
+      color: "#777BB4",
+      category: "Backend"
+    },
+    { 
+      name: "MySQL", 
+      icon: SiMysql, 
+      color: "#4479A1",
+      category: "Database"
+    },
+    { 
+      name: "RESTful API", 
+      icon: TbApi, 
+      color: "#FF6B6B",
+      category: "Backend"
+    },
+    { 
+      name: "Node.js", 
+      icon: SiNodedotjs, 
+      color: "#339933",
+      category: "Backend"
+    },
+    { 
+      name: "Express.js", 
+      icon: SiExpress, 
+      color: "#000000",
+      category: "Backend"
+    },
+  ];
+
+  export const toolSkills = [
+    { 
+      name: "Git", 
+      icon: FaGitAlt, 
+      color: "#F05032",
+      category: "Version Control"
+    },
+    { 
+      name: "GitHub", 
+      icon: FaGithub, 
+      color: "#4078c0",
+      category: "Version Control"
+    },
+    { 
+      name: "Postman", 
+      icon: SiPostman, 
+      color: "#FF6C37",
+      category: "Development"
+    },
+    { 
+      name: "Ubuntu", 
+      icon: FaUbuntu, 
+      color: "#E95420",
+      category: "Infrastructure"
+    },
+    { 
+      name: "Digital Ocean", 
+      icon: FaDigitalOcean, 
+      color: "#0080FF",
+      category: "Cloud"
+    },
+    { 
+      name: "Docker", 
+      icon: SiDocker, 
+      color: "#2496ED",
+      category: "Infrastructure"
+    },
+    { 
+      name: "Figam", 
+      icon: FaFigma, 
+      color: "#2496ED",
+      category: "Degsin"
+    },
+  ];

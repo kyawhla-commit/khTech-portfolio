@@ -63,24 +63,24 @@ export const Home = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="min-h-screen flex items-center justify-center relative bg-gray-50 dark:bg-gray-950 overflow-hidden pt-16 lg:pt-0 transition-colors duration-300"
+      className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden pt-16 lg:pt-0 transition-colors duration-300"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Main Gradient */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2/3 bg-gradient-to-b from-blue-200/20 dark:from-blue-900/20 to-transparent"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2/3 bg-gradient-to-b from-blue-500/10 dark:from-blue-900/20 to-transparent"></div>
 
         {/* Background Blobs */}
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-purple-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-cyan-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-cyan-400/20 dark:bg-cyan-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
 
         {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-3 xs:opacity-4 sm:opacity-5 md:opacity-7 lg:opacity-10">
+        <div className="absolute inset-0 opacity-5 xs:opacity-6 sm:opacity-7 md:opacity-8 lg:opacity-10 dark:opacity-3 dark:xs:opacity-4 dark:sm:opacity-5 dark:md:opacity-7 dark:lg:opacity-10">
           <div
             className="w-full h-full"
             style={{
-              backgroundImage: `linear-gradient(rgba(99, 102, 241, 0.3) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(99, 102, 241, 0.3) 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.4) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(59, 130, 246, 0.4) 1px, transparent 1px)`,
               backgroundSize: getResponsiveValue([
                 "20px 20px",
                 "25px 25px",
@@ -98,7 +98,7 @@ export const Home = () => {
         {[...Array(getResponsiveValue([6, 8, 10, 12, 15]))].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-blue-500/30 dark:bg-blue-400/20 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -166,19 +166,19 @@ export const Home = () => {
                         "inset-[2px]", // md
                         "inset-[3px]", // lg
                         "inset-[3px]", // xl
-                      ])} bg-gray-900 rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl`}
+                      ])} bg-white dark:bg-gray-900 rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl`}
                     ></div>
                   </div>
 
                   {/* Photo Content */}
-                  <div className="relative w-full h-full rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl overflow-hidden bg-gray-900 shadow-xl xs:shadow-2xl">
+                  <div className="relative w-full h-full rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl overflow-hidden bg-gray-50 dark:bg-gray-900 shadow-xl xs:shadow-2xl">
                     {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-5 xs:opacity-10">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[length:20px_20px] xs:bg-[length:25px_25px] sm:bg-[length:30px_30px]"></div>
+                    <div className="absolute inset-0 opacity-10 xs:opacity-15 dark:opacity-5 dark:xs:opacity-10">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(59,130,246)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[length:20px_20px] xs:bg-[length:25px_25px] sm:bg-[length:30px_30px]"></div>
                     </div>
 
                     {/* Animated Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-cyan-600/20 animate-pulse-slow"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-cyan-500/15 dark:from-blue-600/20 dark:via-purple-600/15 dark:to-cyan-600/20 animate-pulse-slow"></div>
 
                     {/* Main Photo */}
                     <div
@@ -207,7 +207,7 @@ export const Home = () => {
                           ></div>
 
                           {/* Main Photo Container */}
-                          <div className="relative w-full h-full rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border-2 xs:border-3 sm:border-4 border-white/20 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 shadow-xl xs:shadow-2xl overflow-hidden group-hover:border-white/30 transition-all duration-500 group-hover:shadow-cyan-500/25">
+                          <div className="relative w-full h-full rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border-2 xs:border-3 sm:border-4 border-gray-200/50 dark:border-white/20 bg-gradient-to-br from-gray-100 via-white to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 shadow-xl xs:shadow-2xl overflow-hidden group-hover:border-blue-300/50 dark:group-hover:border-white/30 transition-all duration-500 group-hover:shadow-blue-500/25 dark:group-hover:shadow-cyan-500/25">
                             <img
                               src={photo}
                               alt="Professional Developer"
@@ -218,10 +218,10 @@ export const Home = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out"></div>
 
                             {/* Inner Glow */}
-                            <div className="absolute inset-0 rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border border-white/10 group-hover:border-white/25 transition-all duration-500"></div>
+                            <div className="absolute inset-0 rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-200/30 dark:border-white/10 group-hover:border-blue-300/50 dark:group-hover:border-white/25 transition-all duration-500"></div>
 
                             {/* Gradient Overlay for Depth */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-gray-900/20"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-200/20 via-transparent to-gray-100/10 dark:from-gray-900/30 dark:via-transparent dark:to-gray-900/20"></div>
                           </div>
 
                           {/* Status Indicator */}
@@ -232,7 +232,7 @@ export const Home = () => {
                               "bottom-4 right-4 w-8 h-8", // md
                               "bottom-5 right-5 w-9 h-9", // lg
                               "bottom-6 right-6 w-10 h-10", // xl
-                            ])} bg-green-400 rounded-full border-2 xs:border-3 sm:border-4 border-gray-900 shadow-lg xs:shadow-xl sm:shadow-2xl z-20`}
+                            ])} bg-green-400 rounded-full border-2 xs:border-3 sm:border-4 border-white dark:border-gray-900 shadow-lg xs:shadow-xl sm:shadow-2xl z-20`}
                           >
                             <div
                               className={`absolute ${getResponsiveValue([
@@ -296,7 +296,7 @@ export const Home = () => {
                             "-top-2 -left-2 w-10 h-10", // md
                             "-top-3 -left-3 w-12 h-12", // lg
                             "-top-4 -left-4 w-14 h-14", // xl
-                          ])} bg-blue-500/20 rounded-full backdrop-blur-sm border border-blue-400/30 animate-float-slow flex items-center justify-center z-10`}
+                          ])} bg-blue-500/30 dark:bg-blue-500/20 rounded-full backdrop-blur-sm border border-blue-400/50 dark:border-blue-400/30 animate-float-slow flex items-center justify-center z-10`}
                         >
                           <div
                             className={`${getResponsiveValue([
@@ -305,7 +305,7 @@ export const Home = () => {
                               "w-2 h-2", // md
                               "w-2.5 h-2.5", // lg
                               "w-3 h-3", // xl
-                            ])} bg-blue-400 rounded-full`}
+                            ])} bg-blue-500 dark:bg-blue-400 rounded-full`}
                           ></div>
                         </div>
 
@@ -316,7 +316,7 @@ export const Home = () => {
                             "-bottom-3 -right-3 w-9 h-9", // md
                             "-bottom-4 -right-4 w-10 h-10", // lg
                             "-bottom-5 -right-5 w-12 h-12", // xl
-                          ])} bg-cyan-500/20 rounded-full backdrop-blur-sm border border-cyan-400/30 animate-float-medium flex items-center justify-center z-10`}
+                          ])} bg-cyan-500/30 dark:bg-cyan-500/20 rounded-full backdrop-blur-sm border border-cyan-400/50 dark:border-cyan-400/30 animate-float-medium flex items-center justify-center z-10`}
                         >
                           <div
                             className={`${getResponsiveValue([
@@ -325,7 +325,7 @@ export const Home = () => {
                               "w-1.5 h-1.5", // md
                               "w-2 h-2", // lg
                               "w-2.5 h-2.5", // xl
-                            ])} bg-cyan-400 rounded-full`}
+                            ])} bg-cyan-500 dark:bg-cyan-400 rounded-full`}
                           ></div>
                         </div>
                       </div>
@@ -339,7 +339,7 @@ export const Home = () => {
                         "top-4 left-4 w-4 h-4", // md
                         "top-5 left-5 w-4 h-4", // lg
                         "top-6 left-7 w-4 h-4", // xl
-                      ])} bg-cyan-400 rounded-full animate-ping z-10`}
+                      ])} bg-cyan-500 dark:bg-cyan-400 rounded-full animate-ping z-10`}
                     ></div>
 
                     <div
@@ -349,7 +349,7 @@ export const Home = () => {
                         "bottom-4 right-4 w-2 h-2", // md
                         "bottom-5 right-5 w-2.5 h-2.5", // lg
                         "bottom-6 right-6 w-3 h-3", // xl
-                      ])} bg-blue-400 rounded-full animate-bounce z-10`}
+                      ])} bg-blue-500 dark:bg-blue-400 rounded-full animate-bounce z-10`}
                     ></div>
                   </div>
 
@@ -361,7 +361,7 @@ export const Home = () => {
                       "-bottom-8 -left-20", // md
                       "-bottom-10 -left-20", // lg
                       "-bottom-15 -left-25", // xl
-                    ])} bg-gray-900/95   backdrop-blur-md xs:backdrop-blur-lg sm:backdrop-blur-xl border border-gray-700/60 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
+                    ])} bg-white/95 dark:bg-gray-900/95 backdrop-blur-md xs:backdrop-blur-lg sm:backdrop-blur-xl border border-gray-300/60 dark:border-gray-700/60 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
                       [
                         "p-2", // xs
                         "p-2.5", // sm
@@ -369,7 +369,7 @@ export const Home = () => {
                         "p-3.5", // lg
                         "p-4", // xl
                       ]
-                    )} shadow-lg xs:shadow-xl sm:shadow-2xl transform scale-85 xs:scale-90 sm:scale-95 lg:scale-100 hover:scale-100 lg:hover:scale-105 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-cyan-500/10 z-20 max-w-[140px] xs:max-w-[160px] sm:max-w-none`}
+                    )} shadow-lg xs:shadow-xl sm:shadow-2xl transform scale-85 xs:scale-90 sm:scale-95 lg:scale-100 hover:scale-100 lg:hover:scale-105 transition-all duration-300 hover:border-blue-500/40 dark:hover:border-cyan-500/40 hover:shadow-blue-500/10 dark:hover:shadow-cyan-500/10 z-20 max-w-[140px] xs:max-w-[160px] sm:max-w-none`}
                   >
                     <div
                       className={`flex items-center gap-1 xs:gap-2 sm:gap-3 ${getResponsiveValue(
@@ -418,7 +418,7 @@ export const Home = () => {
                           "text-xs", // md
                           "text-xs", // lg
                           "text-sm", // xl
-                        ])} text-gray-200 font-mono font-semibold`}
+                        ])} text-gray-700 dark:text-gray-200 font-mono font-semibold`}
                       >
                         profile.js
                       </span>
@@ -432,25 +432,25 @@ export const Home = () => {
                         "text-sm", // xl
                       ])} font-mono space-y-0.5 xs:space-y-1`}
                     >
-                      <div className="text-purple-400">
+                      <div className="text-purple-600 dark:text-purple-400">
                         const developer = &#123;
                       </div>
-                      <div className="text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
+                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
                         passion:{" "}
-                        <span className="text-green-400">
+                        <span className="text-green-600 dark:text-green-400">
                           "creating impact"
                         </span>
                         ,
                       </div>
-                      <div className="text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
+                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
                         focus:{" "}
-                        <span className="text-green-400">"excellence"</span>,
+                        <span className="text-green-600 dark:text-green-400">"excellence"</span>,
                       </div>
-                      <div className="text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
+                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
                         status:{" "}
-                        <span className="text-yellow-400">"available"</span>
+                        <span className="text-orange-500 dark:text-yellow-400">"available"</span>
                       </div>
-                      <div className="text-purple-400">&#125;;</div>
+                      <div className="text-purple-600 dark:text-purple-400">&#125;;</div>
                     </div>
                   </div>
 
@@ -462,7 +462,7 @@ export const Home = () => {
                       "-top-4 -right-4", // md
                       "-top-5 -right-5", // lg
                       "-top-6 -right-6", // xl
-                    ])} bg-gray-800/80 backdrop-blur-sm xs:backdrop-blur-md sm:backdrop-blur-lg border border-gray-600/50 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
+                    ])} bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm xs:backdrop-blur-md sm:backdrop-blur-lg border border-gray-300/50 dark:border-gray-600/50 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
                       [
                         "p-1.5", // xs
                         "p-2", // sm
@@ -479,9 +479,9 @@ export const Home = () => {
                         "text-xs", // md
                         "text-xs", // lg
                         "text-sm", // xl
-                      ])} font-mono text-gray-300`}
+                      ])} font-mono text-gray-700 dark:text-gray-300`}
                     >
-                      <div className="text-green-400 flex items-center gap-0.5 xs:gap-1">
+                      <div className="text-green-500 dark:text-green-400 flex items-center gap-0.5 xs:gap-1">
                         <div
                           className={`${getResponsiveValue([
                             "w-1 h-1", // xs
@@ -489,11 +489,11 @@ export const Home = () => {
                             "w-1.5 h-1.5", // md
                             "w-2 h-2", // lg
                             "w-2 h-2", // xl
-                          ])} bg-green-400 rounded-full animate-pulse`}
+                          ])} bg-green-500 dark:bg-green-400 rounded-full animate-pulse`}
                         ></div>
                         Available
                       </div>
-                      <div className="text-gray-400 mt-0.5 xs:mt-1 text-[9px] xs:text-xs">
+                      <div className="text-gray-500 dark:text-gray-400 mt-0.5 xs:mt-1 text-[9px] xs:text-xs">
                         Open for work
                       </div>
                     </div>
@@ -514,7 +514,7 @@ export const Home = () => {
             >
               {/* Professional Badge */}
               <div className="flex justify-center lg:justify-start">
-                <div className="inline-flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-full px-2.5 xs:px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3">
+                <div className="inline-flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full px-2.5 xs:px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3">
                   <div className="flex space-x-0.5 xs:space-x-1">
                     <div
                       className={`${getResponsiveValue([
@@ -553,7 +553,7 @@ export const Home = () => {
                       "text-xs", // md
                       "text-sm", // lg
                       "text-sm", // xl
-                    ])} text-gray-300 font-mono whitespace-nowrap`}
+                    ])} text-gray-700 dark:text-gray-300 font-mono whitespace-nowrap`}
                   >
                     Open for opportunities
                   </span>
@@ -569,7 +569,7 @@ export const Home = () => {
                     "text-4xl", // md
                     "text-5xl", // lg
                     "text-6xl", // xl
-                  ])} font-bold text-white leading-tight xs:leading-tight sm:leading-tight`}
+                  ])} font-bold text-gray-900 dark:text-white leading-tight xs:leading-tight sm:leading-tight`}
                 >
                   <span
                     className={`block ${getResponsiveValue([
@@ -578,7 +578,7 @@ export const Home = () => {
                       "text-sm", // md
                       "text-base", // lg
                       "text-lg", // xl
-                    ])} font-light text-gray-400 ${getResponsiveValue([
+                    ])} font-light text-gray-600 dark:text-gray-400 ${getResponsiveValue([
                       "mb-1", // xs
                       "mb-1.5", // sm
                       "mb-2", // md
@@ -588,7 +588,7 @@ export const Home = () => {
                   >
                     HELLO, I'M
                   </span>
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent break-words">
+                  <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 dark:from-blue-400 dark:via-cyan-400 dark:to-emerald-400 bg-clip-text text-transparent break-words">
                     {texts[textIndex].substring(0, charIndex)}
                     <span className="typing-cursor">|</span>
                   </span>
@@ -602,13 +602,13 @@ export const Home = () => {
                     "text-lg", // md
                     "text-xl", // lg
                     "text-xl", // xl
-                  ])} text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-3 xs:px-4 sm:px-0`}
+                  ])} text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-3 xs:px-4 sm:px-0`}
                 >
                   {getResponsiveValue([
                     // xs - Most compact
                     <>
                       Creating{" "}
-                      <span className="text-cyan-400 font-semibold">
+                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
                         digital experiences
                       </span>{" "}
                       through code & design.
@@ -616,7 +616,7 @@ export const Home = () => {
                     // sm - Slightly more detail
                     <>
                       Creating{" "}
-                      <span className="text-cyan-400 font-semibold">
+                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
                         digital experiences
                       </span>{" "}
                       that blend design with engineering excellence.
@@ -624,7 +624,7 @@ export const Home = () => {
                     // md - Balanced
                     <>
                       Crafting{" "}
-                      <span className="text-cyan-400 font-semibold">
+                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
                         digital experiences
                       </span>{" "}
                       that blend design with robust engineering.
@@ -632,7 +632,7 @@ export const Home = () => {
                     // lg - Full version
                     <>
                       Crafting{" "}
-                      <span className="text-cyan-400 font-semibold">
+                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
                         digital experiences
                       </span>{" "}
                       that blend innovative design with robust engineering.
@@ -640,7 +640,7 @@ export const Home = () => {
                     // xl - Complete version
                     <>
                       Crafting{" "}
-                      <span className="text-cyan-400 font-semibold">
+                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
                         digital experiences
                       </span>{" "}
                       that blend innovative design with robust engineering. I
@@ -699,7 +699,7 @@ export const Home = () => {
                           "w-1.5 h-1.5", // md
                           "w-2 h-2", // lg
                           "w-2 h-2", // xl
-                        ])} bg-cyan-400 rounded-full`}
+                        ])} bg-blue-500 dark:bg-cyan-400 rounded-full`}
                       ></div>
                       <span
                         className={`${getResponsiveValue([
@@ -708,7 +708,7 @@ export const Home = () => {
                           "text-xs", // md
                           "text-sm", // lg
                           "text-sm", // xl
-                        ])} text-gray-400 font-mono whitespace-nowrap`}
+                        ])} text-gray-600 dark:text-gray-400 font-mono whitespace-nowrap`}
                       >
                         {tech}
                       </span>
@@ -772,7 +772,7 @@ export const Home = () => {
 
                 <a
                   href="#contact"
-                  className={`group border border-gray-600 text-gray-300 ${getResponsiveValue(
+                  className={`group border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 ${getResponsiveValue(
                     [
                       "py-2.5 px-4 text-xs", // xs
                       "py-3 px-5 text-sm", // sm
@@ -780,7 +780,7 @@ export const Home = () => {
                       "py-4 px-7 text-base", // lg
                       "py-4 px-8 text-lg", // xl
                     ]
-                  )} rounded-lg xs:rounded-xl font-semibold transition-all duration-500 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-white transform hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-center flex-1`}
+                  )} rounded-lg xs:rounded-xl font-semibold transition-all duration-500 hover:border-blue-500 dark:hover:border-cyan-400 hover:bg-blue-500/10 dark:hover:bg-cyan-400/10 hover:text-blue-700 dark:hover:text-white transform hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-center flex-1`}
                 >
                   Contact Me
                   <svg
@@ -827,7 +827,7 @@ export const Home = () => {
               "text-xs", // md
               "text-xs", // lg
               "text-sm", // xl
-            ])} text-gray-500 font-mono tracking-widest hidden xs:block`}
+            ])} text-gray-600 dark:text-gray-500 font-mono tracking-widest hidden xs:block`}
           >
             {getResponsiveValue([
               "SCROLL", // xs
@@ -844,7 +844,7 @@ export const Home = () => {
               "w-5 h-8", // md
               "w-6 h-10", // lg
               "w-6 h-10", // xl
-            ])} border border-gray-600 rounded-full flex justify-center`}
+            ])} border border-gray-400 dark:border-gray-600 rounded-full flex justify-center`}
           >
             <div
               className={`w-1 ${getResponsiveValue([
@@ -853,7 +853,7 @@ export const Home = () => {
                 "h-2", // md
                 "h-3", // lg
                 "h-3", // xl
-              ])} bg-cyan-400 rounded-full mt-1 xs:mt-1.5 sm:mt-2 animate-scroll`}
+              ])} bg-blue-500 dark:bg-cyan-400 rounded-full mt-1 xs:mt-1.5 sm:mt-2 animate-scroll`}
             ></div>
           </div>
         </div>
