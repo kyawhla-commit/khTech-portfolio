@@ -8,6 +8,8 @@ export const MobileMenu = ({
   const menuRef = useRef(null);
   const closeButtonRef = useRef(null);
   const firstMenuItemRef = useRef(null);
+  // refs for all menu items so we can focus the one matching the current section
+  const menuItemRefs = useRef([]);
 
   // Close menu on Escape key press
   useEffect(() => {
@@ -24,8 +26,25 @@ export const MobileMenu = ({
   // Trap focus within menu when open
   useEffect(() => {
     if (menuOpen && menuRef.current) {
-      // Focus first menu item when menu opens
-      firstMenuItemRef.current?.focus();
+      // When the menu opens, try to focus the link that corresponds to the
+      // currently visible/active section. We use the URL hash as the source of
+      // truth (e.g. #about). If there is no hash or no matching link, fall
+      // back to the first menu item.
+      const hash = (window.location.hash || '').replace('#', '');
+
+      let target = null;
+      if (hash) {
+        target = menuItemRefs.current.find((el) => {
+          if (!el) return false;
+          // Prefer data-section match, fallback to href match
+          const section = el.dataset.section;
+          if (section === hash) return true;
+          const href = el.getAttribute('href') || '';
+          return href.endsWith(`#${hash}`);
+        });
+      }
+
+      (target ?? firstMenuItemRef.current)?.focus();
     }
   }, [menuOpen]);
 
@@ -93,7 +112,12 @@ export const MobileMenu = ({
         {menuItems.map((item, index) => (
           <a
             key={item.id}
-            ref={index === 0 ? firstMenuItemRef : null}
+            // store each menu item ref so we can focus it later
+            ref={(el) => {
+              menuItemRefs.current[index] = el;
+              if (index === 0) firstMenuItemRef.current = el;
+            }}
+            data-section={item.id}
             href={`#${item.id}`}
             onClick={() => handleMenuItemClick(item.id)}
             className={`text-2xl font-semibold text-white my-4 transform transition-all duration-300 hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-4 py-2 ${
