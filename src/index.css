@@ -1,10 +1,30 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-loading-bar: loading 0.8s ease infinite;
+  --animate-blink: blink 0.8s step-end infinite;
+  --animate-bounce: bounce 1s infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@variant dark (&:is(.dark *));
+
 html,
- body {
+body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+html.dark {
   background: #0a0a0a;
   color: #f3f4f6;
 }

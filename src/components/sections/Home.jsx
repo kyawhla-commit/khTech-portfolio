@@ -63,12 +63,12 @@ export const Home = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="min-h-screen flex items-center justify-center relative bg-gray-950 overflow-hidden pt-16 lg:pt-0"
+      className="min-h-screen flex items-center justify-center relative bg-gray-50 dark:bg-gray-950 overflow-hidden pt-16 lg:pt-0 transition-colors duration-300"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Main Gradient */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2/3 bg-gradient-to-b from-blue-900/20 to-transparent"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2/3 bg-gradient-to-b from-blue-200/20 dark:from-blue-900/20 to-transparent"></div>
 
         {/* Background Blobs */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-purple-600/10 rounded-full blur-2xl xs:blur-3xl"></div>

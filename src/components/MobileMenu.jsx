@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 export const MobileMenu = ({ 
   menuOpen, 
   setMenuOpen,
   onMenuItemClick 
 }) => {
+  const { theme, toggleTheme } = useTheme();
   const menuRef = useRef(null);
   const closeButtonRef = useRef(null);
   const firstMenuItemRef = useRef(null);
@@ -132,6 +135,26 @@ export const MobileMenu = ({
             {item.label}
           </a>
         ))}
+
+        {/* Theme Toggle in Mobile Menu */}
+        <button
+          onClick={toggleTheme}
+          className={`mt-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 group ${
+            menuOpen
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-5'
+          }`}
+          style={{
+            transitionDelay: menuOpen ? `${menuItems.length * 100}ms` : '0ms'
+          }}
+          aria-label="Toggle theme"
+        >
+          {theme === 'light' ? (
+            <FiMoon className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
+          ) : (
+            <FiSun className="w-6 h-6 text-yellow-400 group-hover:rotate-90 transition-transform duration-300" />
+          )}
+        </button>
       </nav>
     </div>
   );

@@ -13,7 +13,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white py-8 border-t border-gray-700">
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white py-8 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -26,7 +26,7 @@ export const Footer = () => {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-110"
+                className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
               >
                 <Icon className="size-5" />
               </a>
@@ -34,7 +34,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <p className="text-center mt-8 text-gray-400 text-sm">
+        <p className="text-center mt-8 text-gray-600 dark:text-gray-400 text-sm">
           &copy; {currentYear} khunKyawHla. All rights reserved.
         </p>
       </div>

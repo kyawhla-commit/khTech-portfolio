@@ -7,7 +7,7 @@ A modern, responsive portfolio website built with React and Vite, showcasing pro
 - **Modern React Architecture**: Built with React 19 and Vite for fast development and optimal performance
 - **Responsive Design**: Fully responsive layout that works seamlessly across all devices
 - **Smooth Animations**: Powered by Framer Motion for engaging user interactions
-- **Dark/Light Theme**: Automatic theme detection with beautiful gradient backgrounds
+- **Dark/Light Theme**: Manual theme toggle with automatic system preference detection and localStorage persistence
 - **Interactive Sections**:
   - Hero section with animated introduction
   - About section with personal information and skills

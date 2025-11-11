@@ -44,7 +44,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20 bg-gray-900">
+    <section id="contact" className="min-h-screen flex items-center justify-center py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <RevealOnScroll>
           <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
@@ -53,39 +53,39 @@ export const Contact = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Contact Info */}
-            <div className="text-white/80">
+            <div className="text-gray-700 dark:text-white/80">
               <p className="text-xl mb-8 leading-relaxed">
                 I'm currently available for freelance work or full-time positions. Feel free to reach out if you have a project in mind or just want to connect!
               </p>
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg">
+                  <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg text-blue-600 dark:text-blue-400">
                     <IoMail className="size-6" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-lg">Email</h3>
-                    <p href="#" className="text-white/70">bwarpay.bp8@gmail.com</p>
+                    <h3 className="text-gray-900 dark:text-white font-semibold text-lg">Email</h3>
+                    <p href="#" className="text-gray-600 dark:text-white/70">bwarpay.bp8@gmail.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg">
+                 <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg text-blue-600 dark:text-blue-400">
                     <IoCall className="size-6" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-lg">Phone</h3>
-                    <p className="text-white/70">+95 967 706 6891</p>
+                    <h3 className="text-gray-900 dark:text-white font-semibold text-lg">Phone</h3>
+                    <p className="text-gray-600 dark:text-white/70">+95 967 706 6891</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg">
+                  <div className="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-lg text-blue-600 dark:text-blue-400">
                     <IoLocation className="size-6" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-lg">Location</h3>
-                    <p className="text-white/70">Pinlon Township, SouthernShan State</p>
+                    <h3 className="text-gray-900 dark:text-white font-semibold text-lg">Location</h3>
+                    <p className="text-gray-600 dark:text-white/70">Pinlon Township, SouthernShan State</p>
                   </div>
                   
                 </div>
@@ -94,10 +94,10 @@ export const Contact = () => {
             </div>
             
             {/* Contact Form */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+            <div className="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-white font-medium mb-2">
+                  <label htmlFor="name" className="block text-gray-900 dark:text-white font-medium mb-2">
                     Name
                   </label>
                   <input
@@ -108,12 +108,12 @@ export const Contact = () => {
                     onChange={handleChange}
                     placeholder="Your Name..."
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                    className="w-full bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-50 dark:focus:bg-blue-500/5"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-white font-medium mb-2">
+                  <label htmlFor="email" className="block text-gray-900 dark:text-white font-medium mb-2">
                     Email
                   </label>
                   <input
@@ -124,12 +124,12 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                    className="w-full bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-50 dark:focus:bg-blue-500/5"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="subject" className="block text-white font-medium mb-2">
+                  <label htmlFor="subject" className="block text-gray-900 dark:text-white font-medium mb-2">
                     Subject
                   </label>
                   <input
@@ -139,12 +139,12 @@ export const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                    className="w-full bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-50 dark:focus:bg-blue-500/5"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-white font-medium mb-2">
+                  <label htmlFor="message" className="block text-gray-900 dark:text-white font-medium mb-2">
                     Message
                   </label>
                   <textarea
@@ -155,13 +155,13 @@ export const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 resize-vertical"
+                    className="w-full bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-50 dark:focus:bg-blue-500/5 resize-vertical"
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 text-white py-3 px-6 rounded-lg font-medium transition relative overflow-hidden hover:translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-lg font-medium transition relative overflow-hidden hover:translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
                 >
                   Send Message
                 </button>

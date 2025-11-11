@@ -13,7 +13,7 @@ export const Project = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-screen flex items-center justify-center py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
     >
       <RevealOnScroll>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,15 +24,15 @@ export const Project = () => {
             {Projects.map((project, index) => (
               <div 
                 key={index}
-                className="p-6 rounded-xl border border-white/10 hover:translate-y-1 hover:border-blue-500/50 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
+                className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-gray-800 hover:translate-y-1 hover:border-blue-500/50 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold">{project.name}</h3>
-                  <span className="text-sm text-gray-400 bg-gray-800/50 px-2 py-1 rounded">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
+                  <span className="text-sm text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-800/50 px-2 py-1 rounded">
                     {project.year}
                   </span>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
                   {project.description}
                 </p>
 
@@ -41,7 +41,7 @@ export const Project = () => {
                   <div className="mb-4">
                     <button
                       onClick={() => toggleFeatures(index)}
-                      className="flex items-center justify-between w-full text-cyan-400 hover:text-cyan-300 transition-colors mb-2 text-left"
+                      className="flex items-center justify-between w-full text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors mb-2 text-left"
                     >
                       <span className="text-lg font-semibold">
                         Project Architecture
@@ -62,13 +62,13 @@ export const Project = () => {
                       <div className="space-y-4 animate-fadeIn">
                         {project.projectFeatures.map((featureGroup, groupIndex) => (
                           <div key={groupIndex} className="border-l-2 border-cyan-500/50 pl-4">
-                            <h5 className="font-semibold text-cyan-300 mb-2">
+                            <h5 className="font-semibold text-cyan-600 dark:text-cyan-300 mb-2">
                               {featureGroup.section}
                             </h5>
-                            <ul className="text-sm text-gray-300 space-y-1">
+                            <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                               {featureGroup.items.map((item, itemIndex) => (
                                 <li key={itemIndex} className="flex items-start">
-                                  <span className="text-green-400 mr-2 mt-1">•</span>
+                                  <span className="text-green-600 dark:text-green-400 mr-2 mt-1">•</span>
                                   <span>{item}</span>
                                 </li>
                               ))}
@@ -84,7 +84,7 @@ export const Project = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
+                      className="bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 dark:hover:bg-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
                     >
                       {tech}
                     </span>
@@ -96,7 +96,7 @@ export const Project = () => {
                     href={project.git}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-row text-blue-400 hover:text-blue-300 transition-colors items-center gap-2 rounded-full bg-blue-500/10 hover:bg-blue-500/20 px-6 py-3 border border-blue-500/20"
+                    className="flex flex-row text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors items-center gap-2 rounded-full bg-blue-500/10 dark:bg-blue-500/20 hover:bg-blue-500/20 dark:hover:bg-blue-500/30 px-6 py-3 border border-blue-500/20 dark:border-blue-500/30"
                   >
                     <span className="text-lg font-medium">
                       View on GitHub
