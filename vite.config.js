@@ -8,6 +8,6 @@ export default defineConfig({
   base: '/khTech-portfolio',
   server: {
     open: true,
-    
-  }
+  },
+  assetsInclude: ['**/*.pdf']
 })

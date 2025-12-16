@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { downloadCV } from '../utils/downloadCV';
 
 export const MobileMenu = ({ 
   menuOpen, 
@@ -136,16 +137,31 @@ export const MobileMenu = ({
           </a>
         ))}
 
-        {/* Theme Toggle in Mobile Menu */}
+        {/* Download CV Button */}
         <button
-          onClick={toggleTheme}
-          className={`mt-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 group ${
+          onClick={downloadCV}
+          className={`mt-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer ${
             menuOpen
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-5'
           }`}
           style={{
             transitionDelay: menuOpen ? `${menuItems.length * 100}ms` : '0ms'
+          }}
+        >
+          Download CV
+        </button>
+
+        {/* Theme Toggle in Mobile Menu */}
+        <button
+          onClick={toggleTheme}
+          className={`mt-4 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 group ${
+            menuOpen
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-5'
+          }`}
+          style={{
+            transitionDelay: menuOpen ? `${(menuItems.length + 1) * 100}ms` : '0ms'
           }}
           aria-label="Toggle theme"
         >

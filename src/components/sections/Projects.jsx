@@ -91,7 +91,7 @@ export const Project = () => {
                   ))}
                 </div>
                 
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-3 flex-wrap">
                   <a
                     href={project.git}
                     target="_blank"
@@ -99,10 +99,25 @@ export const Project = () => {
                     className="flex flex-row text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors items-center gap-2 rounded-full bg-blue-500/10 dark:bg-blue-500/20 hover:bg-blue-500/20 dark:hover:bg-blue-500/30 px-6 py-3 border border-blue-500/20 dark:border-blue-500/30"
                   >
                     <span className="text-lg font-medium">
-                      View on GitHub
+                      GitHub
                     </span>
                     <IoLogoGithub className="size-6" />
                   </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-row text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors items-center gap-2 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 hover:bg-emerald-500/20 dark:hover:bg-emerald-500/30 px-6 py-3 border border-emerald-500/20 dark:border-emerald-500/30"
+                    >
+                      <span className="text-lg font-medium">
+                        Live Demo
+                      </span>
+                      <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

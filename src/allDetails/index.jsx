@@ -19,31 +19,74 @@ import { MdPhp } from "react-icons/md";
 import { SiPostman } from "react-icons/si";
 import { FaUbuntu } from "react-icons/fa";
 
-// export const HeroContent = `I am a passionate full stack developer specializing in PHP, Laravel and React.js with hands-on experience in building CRUD applications, Rest APIs, and responsive user interfaces. I enjoy solving practical problems and am eager to grow in a collaborative team. I'm open to learning new tools and technologies and excited to contribute to real-world projects.`;
 
-// export const AboutContent = `I am looking for a role that aligns with my values and allows me to contribute to society in a meaningful way. I believe that everyone has the potential to make a positive impact, and I am committed to doing so through my work. I am open to exploring different industries and roles that align with my passions and values. My main focus these days is learning new technologies and architecting solutions to grow my career.`;
+
 
 export const Projects = [
 
   {
     year: "2025",
-    name: "Inventory Management Mobile App",
-    description: "A React Native Expo app for managing inventory, built to work with the Laravel Inventory Management API.",
+    name: "Next Movie",
+    description: "A movie discovery app built with Next.js 16 and the TMDB API. Browse popular and top-rated movies, search, and explore by genre.",
     projectFeatures: [
       {
-        section: "Mobile App Features",
+        section: "Features",
         items: [
-          "Dashboard: Overview of inventory status, sales, and alerts",
-          "Product Management: View, search, and manage products",
-          "Barcode Scanner: Scan barcodes to quickly find products",
-          "Reports: Generate sales and inventory reports",
-          "Real-time Notifications: Low stock alerts and updates",
-          "Settings: User profile and app configuration",
+          "Browse popular and top-rated movies",
+          "Search movies by title",
+          "Filter movies by genre",
+          "View movie details and cast",
+          "Server-side rendering with Next.js App Router",
+        ]
+      },
+      {
+        section: "Tech Stack",
+        items: [
+          "Framework: Next.js 16 (App Router)",
+          "Language: TypeScript",
+          "Styling: Tailwind CSS 4",
+          "UI Components: Radix UI + shadcn/ui",
+          "Icons: Lucide React",
+          "API: TMDB (The Movie Database)",
         ]
       }
     ],
-    git: "https://github.com/kyawhla-commit/inventoryMobile",
-    technologies: ["React Native", "Tailwindcss"],
+    git: "https://github.com/kyawhla-commit/Movie",
+    live: "https://movie-five-blush.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "TMDB API"],
+  },
+
+  {
+    year: "2025",
+    name: "Social App",
+    description: "A React frontend for the Social API - a social media platform with posts, comments, and likes.",
+    projectFeatures: [
+      {
+        section: "Features",
+        items: [
+          "User authentication (login/register)",
+          "View and create posts",
+          "Comment on posts",
+          "Like/unlike posts",
+          "Dark/light theme toggle",
+          "Responsive Material UI design",
+        ]
+      },
+      {
+        section: "Tech Stack",
+        items: [
+          "Framework: React 18",
+          "Build Tool: Vite",
+          "UI Library: Material UI (MUI) 7",
+          "Routing: React Router 7",
+          "State Management: TanStack React Query",
+          "Forms: React Hook Form",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/social-app",
+    live: "https://kyawhla.netlify.app/",
+    technologies: ["React", "Vite", "MUI", "React Query"],
   },
 
   {
@@ -72,24 +115,33 @@ export const Projects = [
 
   {
     year: "2025",
-    name: "Modern Full-Stack Development Portfolio",
-    description: "A comprehensive full-stack web development portfolio showcasing modern technologies, best practices, and scalable application architectures.",
+    name: "Social API",
+    description: "A RESTful API for a social media platform built with Express.js, Prisma, and SQLite.",
     projectFeatures: [
       {
-        section: "Portfolio Features",
+        section: "Features",
         items: [
-          "Modern React frontend with responsive design",
-          "Node.js Express backend API",
-          "TypeScript for type safety across frontend and backend",
-          "Prisma ORM for database management",
-          "Docker containerization for easy deployment",
-          "TailwindCSS for modern styling",
-          "Showcase of scalable application architectures",
+          "User registration and JWT authentication",
+          "Create, read, and delete posts",
+          "Comment on posts",
+          "Like/unlike posts",
+          "Password hashing with bcrypt",
+        ]
+      },
+      {
+        section: "Tech Stack",
+        items: [
+          "Runtime: Node.js",
+          "Framework: Express.js 5",
+          "ORM: Prisma",
+          "Database: SQLite",
+          "Authentication: JWT + bcrypt",
         ]
       }
     ],
-    git: "https://github.com/kyawhla-commit/react-nodejs-showcase",
-    technologies: ["React", "Express.js", "TailwindCSS", "Prisma", "Docker", "TypeScript", "Node.js"],
+    git: "https://github.com/kyawhla-commit/social-api",
+    live: "https://social-api-15e4.onrender.com/posts",
+    technologies: ["Node.js", "Express.js", "Prisma", "SQLite", "JWT"],
   },
 
   {
@@ -124,18 +176,6 @@ export const Projects = [
 
 
 
-// export const Educations = [
-//   {
-//     title: "Professional Web Developer Course | Fairway Technology",
-//     image: Certificate1.jpg,
-//     skills: ["JavaScript", "Bootstrap", "PHP/MySQL", "Laravel Framework"],
-//   },
-//   {
-//     title: "Professional Web Developer Course | Fairway Technology ",
-//     image: Certificate2.jpg,
-//     skills: ["JavaScript", "React", "React Navive", "Express", "Next.js"],
-//   }
-// ]
 
 export const Educations = [
   {

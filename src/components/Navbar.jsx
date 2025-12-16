@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { downloadCV } from "../utils/downloadCV";
 
 export const Navbar = ({menuOpen, setMenuOpen}) => {
     const { theme, toggleTheme } = useTheme();
@@ -72,6 +73,12 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
               >
                 Contact
               </a>
+              <button
+                onClick={downloadCV}
+                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                Download CV
+              </button>
             </div>
           </div>
         </div>

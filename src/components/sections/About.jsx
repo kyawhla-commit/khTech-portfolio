@@ -223,7 +223,7 @@ export const About = () => {
                     Pinlon University
                   </p>
                   <p className="text-gray-500 dark:text-gray-500 text-sm">
-                    Focused on computer science and software engineering principles
+                    Major in Geography with focus on spatial analysis and regional studies
                   </p>
                 </div>
 
@@ -232,12 +232,12 @@ export const About = () => {
                     Academic Focus
                   </h4>
                   <div className="grid grid-cols-2 gap-2 text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">• Data Structures</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Web Development</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Cloud Computing</span>
-                    <span className="text-gray-600 dark:text-gray-400">• System Architecture</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Database Design</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Software Engineering</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Physical Geography</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Human Geography</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Cartography</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Regional Studies</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Environmental Science</span>
+                    <span className="text-gray-600 dark:text-gray-400">• Spatial Analysis</span>
                   </div>
                 </div>
               </div>
