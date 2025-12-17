@@ -26,6 +26,39 @@ export const Projects = [
 
   {
     year: "2025",
+    name: "Social Mobile App",
+    description: "A social media app built with React Native, Expo, and TypeScript.",
+    projectFeatures: [
+      {
+        section: "Features",
+        items: [
+          "User authentication (login & register)",
+          "Create, view, and delete posts",
+          "Like posts with animations",
+          "Comment on posts",
+          "User profile with post history",
+          "Pull-to-refresh",
+          "Cross-platform (iOS, Android, Web)",
+        ]
+      },
+      {
+        section: "Tech Stack",
+        items: [
+          "Expo SDK 54",
+          "TypeScript",
+          "Expo Router",
+          "TanStack Query",
+          "React Native Reanimated",
+          "AsyncStorage",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/social-mobile",
+    technologies: ["React Native", "Expo", "TypeScript", "TanStack Query"],
+  },
+
+  {
+    year: "2025",
     name: "Next Movie",
     description: "A movie discovery app built with Next.js 16 and the TMDB API. Browse popular and top-rated movies, search, and explore by genre.",
     projectFeatures: [
@@ -145,7 +178,7 @@ export const Projects = [
   },
 
   {
-    year: "2024",
+    year: "2025",
     name: "Blog & Category Management",
     description: "A full-stack web application featuring a Laravel 12 backend and a simple HTML/JS frontend for managing articles, categories, and user authentication",
     projectFeatures: [
@@ -315,9 +348,9 @@ export const frontendSkills = [
       category: "Infrastructure"
     },
     { 
-      name: "Figam", 
+      name: "Figma", 
       icon: FaFigma, 
-      color: "#2496ED",
-      category: "Degsin"
+      color: "#F24E1E",
+      category: "Design"
     },
   ];

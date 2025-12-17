@@ -272,7 +272,7 @@ export const About = () => {
                       Sales & Marketing Specialist
                     </h3>
                     <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                      2022 - Present
+                      2020 - 2022
                     </span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-400 font-medium mb-3">

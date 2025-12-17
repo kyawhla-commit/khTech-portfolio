@@ -682,12 +682,15 @@ export const Home = () => {
                     "React",
                     "TypeScript",
                     "Laravel",
-                    "ReactNative",
+                    "React Native",
                     "Node.js",
+                    "Express.js",
                     "MySQL",
+                    "PHP",
                     "Docker",
-                    "Python",
-                    "AWS",
+                    "Git",
+                    "Figma",
+                    "Tailwind CSS",
                   ].map((tech, index) => (
                     <div
                       key={index}
