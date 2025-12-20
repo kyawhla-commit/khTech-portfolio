@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useRef } from 'react';
 
 const ThemeContext = createContext();
 
@@ -11,9 +11,14 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
+  const isInitialMount = useRef(true);
+  
   const [theme, setTheme] = useState(() => {
     // Check if we're in browser environment
     if (typeof window === 'undefined') return 'light';
+    
+    // Disable transitions on initial load
+    document.documentElement.classList.add('theme-transition-disabled');
     
     // Check localStorage first
     const savedTheme = localStorage.getItem('theme');
@@ -39,6 +44,17 @@ export const ThemeProvider = ({ children }) => {
     // Save to localStorage
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', theme);
+    }
+    
+    // Enable transitions after initial mount
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      // Small delay to ensure initial theme is applied before enabling transitions
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          root.classList.remove('theme-transition-disabled');
+        });
+      });
     }
   }, [theme]);
 

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const LoadingScreen = ({ onComplete }) => {
-  const [text, setText] = useState("");
-  const fullText = "<Welcome to my portfolio/>";
+  const [text, setText] = useState('');
+  const fullText = '<Welcome to my portfolio/>';
 
   useEffect(() => {
     let index = 0;
@@ -12,7 +12,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
       if (index > fullText.length) {
         clearInterval(interval);
-        
+
         setTimeout(() => {
           onComplete(interval);
         }, 1000);
@@ -26,12 +26,30 @@ export const LoadingScreen = ({ onComplete }) => {
     <div className="fixed inset-0 z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex flex-col items-center justify-center px-4">
       {/* Main Content Container */}
       <div className="w-full max-w-md flex flex-col items-center justify-center space-y-6">
-        
         {/* Animated Text */}
         <div className="text-center">
-          <div className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white mb-2 min-h-[48px] sm:min-h-[56px] flex items-center justify-center">
-            {text}
-            <span className="animate-blink ml-1 text-blue-400">|</span>
+          <div className="text-center">
+            <div className="inline-block">
+              <div
+                className="
+      text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
+      font-mono font-bold text-white 
+      min-h-[48px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px]
+      flex items-center justify-center
+      lg:overflow-hidden lg:border-r-3 lg:border-blue-400 lg:whitespace-nowrap
+    ">
+                {text}
+                {/* Cursor for small/medium screens */}
+                <span className="lg:hidden animate-blink ml-1 text-blue-400">
+                  |
+                </span>
+
+                {/* Cursor for large screens (border cursor) */}
+                <span className="hidden lg:inline-block animate-pulse ml-2">
+                  |
+                </span>
+              </div>
+            </div>
           </div>
           <p className="text-gray-400 text-sm sm:text-base mt-2 font-light">
             Loading amazing content...
@@ -43,7 +61,7 @@ export const LoadingScreen = ({ onComplete }) => {
           <div className="w-full h-1.5 sm:h-2 bg-gray-800 rounded-full relative overflow-hidden shadow-inner">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 shadow-[0_0_20px_#3b82f6] animate-loading-bar rounded-full"></div>
           </div>
-          
+
           {/* Percentage Indicator */}
           <div className="flex justify-between text-xs text-gray-500">
             <span>0%</span>
@@ -55,8 +73,12 @@ export const LoadingScreen = ({ onComplete }) => {
         {/* Loading Dots Animation */}
         <div className="flex space-x-1 mt-4">
           <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          <div
+            className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
+            style={{ animationDelay: '0.1s' }}></div>
+          <div
+            className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
+            style={{ animationDelay: '0.2s' }}></div>
         </div>
       </div>
 
