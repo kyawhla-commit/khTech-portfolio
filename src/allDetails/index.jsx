@@ -1,6 +1,8 @@
 
 import Certificate1 from "../assets/Certificate1.jpg";
 import Certificate2 from "../assets/Certificate2.jpg";
+import Certificate3 from "../assets/Certificate3.jpg";
+
 
 import { RiReactjsLine, RiJavascriptLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
@@ -215,13 +217,22 @@ export const Educations = [
     id: 1,
     image: Certificate1,
     title: "Professional Web Developer Course | Fairway Technology",
+    description: "This certification validates proficiency in backend web development, covering JavaScript fundamentals, responsive design with Bootstrap, database management with PHP/MySQL, and building full-stack applications using the Laravel framework.",
     skills: ["JavaScript", "Bootstrap", "PHP/MySQL", "Laravel Framework"],
   },
   {
     id: 2,
     image: Certificate2,
-    title: "Professional Web Developer Course | Fairway Technology ",
-    skills: ["JavaScript", "React", "React Navive", "Express", "Next.js"],
+    title: "Professional Web Developer Course | Fairway Technology",
+    description: "This certification demonstrates expertise in modern frontend and full-stack development, including React ecosystem, React Native for mobile apps, server-side rendering with Next.js, and backend development with Express.js.",
+    skills: ["JavaScript", "React", "React Native", "Express", "Next.js"],
+  },
+  {
+    id: 3,
+    image: Certificate3,
+    title: "Professional UI/UX Design Course | Fairway Technology",
+    description: "This certification validates skills in user interface and user experience design, covering Figma, design thinking process, user research, customer journey mapping, visual hierarchy, typography, color theory, and mobile/web design patterns.",
+    skills: ["Figma", "UI Design", "UX Design", "Design Thinking", "User Research", "Prototyping"],
   },
 ];
 
@@ -245,12 +256,12 @@ export const frontendSkills = [
       color: "#3178C6",
       category: "Frontend"
     },
-    { 
-      name: "MUI", 
-      icon: SiMui, 
-      color: "#3178C6",
-      category: "Frontend"
-    },
+    // { 
+    //   name: "MUI", 
+    //   icon: SiMui, 
+    //   color: "#3178C6",
+    //   category: "Frontend"
+    // },
     { 
       name: "TailwindCss", 
       icon: RiTailwindCssFill, 
@@ -335,18 +346,13 @@ export const frontendSkills = [
       color: "#E95420",
       category: "Infrastructure"
     },
-    { 
-      name: "Digital Ocean", 
-      icon: FaDigitalOcean, 
-      color: "#0080FF",
-      category: "Cloud"
-    },
-    { 
-      name: "Docker", 
-      icon: SiDocker, 
-      color: "#2496ED",
-      category: "Infrastructure"
-    },
+  
+    // { 
+    //   name: "Docker", 
+    //   icon: SiDocker, 
+    //   color: "#2496ED",
+    //   category: "Infrastructure"
+    // },
     { 
       name: "Figma", 
       icon: FaFigma, 

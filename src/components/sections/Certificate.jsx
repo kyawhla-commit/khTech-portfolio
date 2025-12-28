@@ -209,9 +209,7 @@ export const Certificate = () => {
                           About this Certification
                         </h4>
                         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                          This professional certification validates comprehensive knowledge and practical skills 
-                          in modern web development technologies. It demonstrates proficiency in building scalable 
-                          applications and working with industry-standard tools and frameworks.
+                          {selectedProject?.description}
                         </p>
                       </div>
 
