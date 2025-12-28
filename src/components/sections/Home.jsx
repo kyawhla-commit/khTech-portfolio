@@ -145,50 +145,95 @@ export const Home = () => {
             </RevealOnScroll>
           </div>
 
-          {/* Right - Photo Section */}
+          {/* Right - Photo Section - NEW HEXAGON/BLOB STYLE */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <RevealOnScroll direction="right" delay={200} duration={800}>
               <div className="relative">
-                {/* Main Photo Container */}
-                <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 rounded-3xl opacity-20 blur-xl animate-pulse"></div>
+                {/* Animated Background Shapes */}
+                <div className="absolute -inset-8 flex items-center justify-center">
+                  {/* Rotating Dashed Circle */}
+                  <div className="absolute w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px] border-2 border-dashed border-blue-300/30 dark:border-blue-500/20 rounded-full animate-spin" style={{ animationDuration: "20s" }}></div>
                   
-                  <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-gray-800 dark:to-gray-900">
+                  {/* Floating Dots */}
+                  <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "0s" }}></div>
+                  <div className="absolute bottom-0 right-1/4 w-2 h-2 bg-cyan-500 rounded-full animate-bounce" style={{ animationDelay: "0.5s" }}></div>
+                  <div className="absolute top-1/4 left-0 w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: "1s" }}></div>
+                </div>
+
+                {/* Main Photo Container - Blob Shape */}
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                  {/* Gradient Blob Background */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-br from-blue-500 via-cyan-500 to-purple-500 animate-pulse"
+                    style={{
+                      borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                      animation: "blob 8s ease-in-out infinite"
+                    }}
+                  ></div>
+                  
+                  {/* Photo Mask - Blob Shape */}
+                  <div 
+                    className="absolute inset-2 overflow-hidden bg-gray-100 dark:bg-gray-800"
+                    style={{
+                      borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                      animation: "blob 8s ease-in-out infinite"
+                    }}
+                  >
                     <img
                       src={photo}
                       alt="Kyaw Hla"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-transparent"></div>
                   </div>
 
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg">
-                    <div className="absolute inset-1 bg-green-400 rounded-full animate-ping"></div>
-                  </div>
+                  {/* Decorative Ring */}
+                  <div 
+                    className="absolute -inset-4 border-2 border-blue-500/20 dark:border-cyan-500/20"
+                    style={{
+                      borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                      animation: "blob 8s ease-in-out infinite reverse"
+                    }}
+                  ></div>
                 </div>
 
-                {/* Floating Code Card */}
+                {/* Floating Info Cards */}
                 <RevealOnScroll direction="left" delay={500} duration={600}>
-                  <div className="absolute -bottom-8 -left-8 sm:-left-16 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700 max-w-[200px]">
-                    <div className="flex gap-1.5 mb-3">
-                      <span className="w-2.5 h-2.5 bg-red-400 rounded-full"></span>
-                      <span className="w-2.5 h-2.5 bg-yellow-400 rounded-full"></span>
-                      <span className="w-2.5 h-2.5 bg-green-400 rounded-full"></span>
-                    </div>
-                    <div className="font-mono text-xs space-y-1">
-                      <p className="text-purple-600 dark:text-purple-400">const dev = {"{"}</p>
-                      <p className="text-gray-600 dark:text-gray-400 pl-2">passion: <span className="text-green-600 dark:text-green-400">"code"</span>,</p>
-                      <p className="text-gray-600 dark:text-gray-400 pl-2">status: <span className="text-amber-600 dark:text-amber-400">"ready"</span></p>
-                      <p className="text-purple-600 dark:text-purple-400">{"}"}</p>
+                  <div className="absolute -bottom-4 -left-4 sm:-left-12 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Status</p>
+                        <p className="font-semibold text-gray-900 dark:text-white text-sm">Open to Work</p>
+                      </div>
                     </div>
                   </div>
                 </RevealOnScroll>
 
-                {/* Experience Badge */}
                 <RevealOnScroll direction="scale" delay={600} duration={500}>
-                  <div className="absolute -top-4 -right-4 sm:-right-8 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl px-4 py-3 shadow-xl">
-                    <div className="text-2xl font-bold">6+</div>
-                    <div className="text-xs opacity-90">Projects</div>
+                  <div className="absolute -top-4 -right-4 sm:-right-8 bg-white dark:bg-gray-900 rounded-2xl px-5 py-4 shadow-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">6+</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Projects</p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                <RevealOnScroll direction="up" delay={700} duration={500}>
+                  <div className="absolute bottom-1/4 -right-6 sm:-right-16 bg-white dark:bg-gray-900 rounded-2xl p-3 shadow-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="flex -space-x-2">
+                        <div className="w-6 h-6 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                        <div className="w-6 h-6 bg-cyan-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                        <div className="w-6 h-6 bg-purple-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                      </div>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">15+ Skills</p>
+                    </div>
                   </div>
                 </RevealOnScroll>
               </div>
@@ -204,6 +249,24 @@ export const Home = () => {
           <div className="w-1 h-2 bg-blue-500 rounded-full animate-scroll"></div>
         </div>
       </div>
+
+      {/* Blob Animation Keyframes */}
+      <style>{`
+        @keyframes blob {
+          0%, 100% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+          }
+          25% {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+          }
+          50% {
+            border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+          }
+          75% {
+            border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+          }
+        }
+      `}</style>
     </section>
   );
 };
