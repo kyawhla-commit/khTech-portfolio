@@ -2,14 +2,14 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { useState, useEffect } from "react";
 import photo from "../../assets/photo.jpg";
 import { downloadCV } from "../../utils/downloadCV";
-import { IoArrowDown, IoLogoGithub, IoLogoLinkedin, IoMail } from "react-icons/io5";
+import { IoLogoGithub, IoMail } from "react-icons/io5";
 
 export const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = ["Khun Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
+  const texts = ["Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
 
   useEffect(() => {
     const currentText = texts[textIndex];
@@ -48,7 +48,6 @@ export const Home = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
         
-        {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
           <div 
             className="w-full h-full"
@@ -61,11 +60,11 @@ export const Home = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full py-20">
-            {/* Left Content */}
-            <div className="order-2 lg:order-1 space-y-8">
-              {/* Status Badge */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full py-20">
+          {/* Left Content */}
+          <div className="order-2 lg:order-1 space-y-8">
+            {/* Status Badge */}
+            <RevealOnScroll direction="down" delay={0} duration={600}>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 rounded-full">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -73,8 +72,10 @@ export const Home = () => {
                 </span>
                 <span className="text-green-700 dark:text-green-300 text-sm font-medium">Available for work</span>
               </div>
+            </RevealOnScroll>
 
-              {/* Main Heading */}
+            {/* Main Heading */}
+            <RevealOnScroll direction="left" delay={100} duration={700}>
               <div className="space-y-4">
                 <p className="text-gray-600 dark:text-gray-400 text-lg">Hello, I'm</p>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
@@ -88,8 +89,10 @@ export const Home = () => {
                   blend innovative design with robust engineering.
                 </p>
               </div>
+            </RevealOnScroll>
 
-              {/* Tech Stack Pills */}
+            {/* Tech Stack Pills */}
+            <RevealOnScroll direction="up" delay={200} duration={600}>
               <div className="flex flex-wrap gap-2">
                 {techStack.map((tech, i) => (
                   <span 
@@ -100,8 +103,10 @@ export const Home = () => {
                   </span>
                 ))}
               </div>
+            </RevealOnScroll>
 
-              {/* CTA Buttons */}
+            {/* CTA Buttons */}
+            <RevealOnScroll direction="up" delay={300} duration={600}>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="#projects"
@@ -122,8 +127,10 @@ export const Home = () => {
                   </svg>
                 </button>
               </div>
+            </RevealOnScroll>
 
-              {/* Social Links */}
+            {/* Social Links */}
+            <RevealOnScroll direction="fade" delay={400} duration={600}>
               <div className="flex items-center gap-4 pt-4">
                 <span className="text-sm text-gray-500 dark:text-gray-400">Find me on</span>
                 <div className="flex gap-3">
@@ -135,58 +142,59 @@ export const Home = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </RevealOnScroll>
+          </div>
 
-            {/* Right - Photo Section */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+          {/* Right - Photo Section */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <RevealOnScroll direction="right" delay={200} duration={800}>
               <div className="relative">
                 {/* Main Photo Container */}
                 <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                  {/* Gradient Ring */}
                   <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 rounded-3xl opacity-20 blur-xl animate-pulse"></div>
                   
-                  {/* Photo Frame */}
                   <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-gray-800 dark:to-gray-900">
                     <img
                       src={photo}
                       alt="Kyaw Hla"
                       className="w-full h-full object-cover"
                     />
-                    
-                    {/* Overlay Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                   </div>
 
-                  {/* Status Indicator */}
                   <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg">
                     <div className="absolute inset-1 bg-green-400 rounded-full animate-ping"></div>
                   </div>
                 </div>
 
                 {/* Floating Code Card */}
-                <div className="absolute -bottom-8 -left-8 sm:-left-16 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700 max-w-[200px]">
-                  <div className="flex gap-1.5 mb-3">
-                    <span className="w-2.5 h-2.5 bg-red-400 rounded-full"></span>
-                    <span className="w-2.5 h-2.5 bg-yellow-400 rounded-full"></span>
-                    <span className="w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+                <RevealOnScroll direction="left" delay={500} duration={600}>
+                  <div className="absolute -bottom-8 -left-8 sm:-left-16 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700 max-w-[200px]">
+                    <div className="flex gap-1.5 mb-3">
+                      <span className="w-2.5 h-2.5 bg-red-400 rounded-full"></span>
+                      <span className="w-2.5 h-2.5 bg-yellow-400 rounded-full"></span>
+                      <span className="w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+                    </div>
+                    <div className="font-mono text-xs space-y-1">
+                      <p className="text-purple-600 dark:text-purple-400">const dev = {"{"}</p>
+                      <p className="text-gray-600 dark:text-gray-400 pl-2">passion: <span className="text-green-600 dark:text-green-400">"code"</span>,</p>
+                      <p className="text-gray-600 dark:text-gray-400 pl-2">status: <span className="text-amber-600 dark:text-amber-400">"ready"</span></p>
+                      <p className="text-purple-600 dark:text-purple-400">{"}"}</p>
+                    </div>
                   </div>
-                  <div className="font-mono text-xs space-y-1">
-                    <p className="text-purple-600 dark:text-purple-400">const dev = {"{"}</p>
-                    <p className="text-gray-600 dark:text-gray-400 pl-2">passion: <span className="text-green-600 dark:text-green-400">"code"</span>,</p>
-                    <p className="text-gray-600 dark:text-gray-400 pl-2">status: <span className="text-amber-600 dark:text-amber-400">"ready"</span></p>
-                    <p className="text-purple-600 dark:text-purple-400">{"}"}</p>
-                  </div>
-                </div>
+                </RevealOnScroll>
 
                 {/* Experience Badge */}
-                <div className="absolute -top-4 -right-4 sm:-right-8 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl px-4 py-3 shadow-xl">
-                  <div className="text-2xl font-bold">6+</div>
-                  <div className="text-xs opacity-90">Projects</div>
-                </div>
+                <RevealOnScroll direction="scale" delay={600} duration={500}>
+                  <div className="absolute -top-4 -right-4 sm:-right-8 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl px-4 py-3 shadow-xl">
+                    <div className="text-2xl font-bold">6+</div>
+                    <div className="text-xs opacity-90">Projects</div>
+                  </div>
+                </RevealOnScroll>
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
-        </RevealOnScroll>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

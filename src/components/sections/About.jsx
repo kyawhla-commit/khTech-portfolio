@@ -19,15 +19,10 @@ export const About = () => {
     <section id="about" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            {/* Left - Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          {/* Left - Text Content */}
+          <RevealOnScroll direction="left" duration={700}>
+            <div>
               <span className="inline-block px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
                 About Me
               </span>
@@ -64,18 +59,13 @@ export const About = () => {
                   <span className="text-gray-600 dark:text-gray-400">Certifications<br/>Earned</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </RevealOnScroll>
 
-            {/* Right - Visual Element */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
+          {/* Right - Visual Element */}
+          <RevealOnScroll direction="right" delay={200} duration={700}>
+            <div className="relative">
               <div className="relative bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 rounded-3xl p-8 border border-blue-200/50 dark:border-blue-800/50">
-                {/* Code Block Visual */}
                 <div className="bg-gray-900 dark:bg-gray-950 rounded-2xl p-6 font-mono text-sm">
                   <div className="flex gap-2 mb-4">
                     <span className="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -92,24 +82,25 @@ export const About = () => {
                   </div>
                 </div>
 
-                {/* Floating Elements */}
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
                   <IoCodeSlash className="text-white size-10" />
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </RevealOnScroll>
+            </div>
+          </RevealOnScroll>
+        </div>
 
         {/* Skills Section */}
-        <RevealOnScroll>
-          <div className="mb-20">
+        <div className="mb-20">
+          <RevealOnScroll direction="up" duration={600}>
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Technical Skills</h2>
               <p className="text-gray-600 dark:text-gray-400">Technologies I work with</p>
             </div>
+          </RevealOnScroll>
 
-            {/* Tab Navigation */}
+          {/* Tab Navigation */}
+          <RevealOnScroll direction="up" delay={100} duration={600}>
             <div className="flex justify-center gap-2 mb-10 flex-wrap">
               {tabs.map((tab) => (
                 <button
@@ -126,23 +117,19 @@ export const About = () => {
                 </button>
               ))}
             </div>
+          </RevealOnScroll>
 
-            {/* Skills Grid */}
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            >
-              {activeTabData?.skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 hover:shadow-lg transition-all"
-                >
+          {/* Skills Grid */}
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          >
+            {activeTabData?.skills.map((skill, index) => (
+              <RevealOnScroll key={skill.name} direction="scale" delay={index * 50} duration={400}>
+                <div className="group bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 hover:shadow-lg transition-all">
                   <div 
                     className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
                     style={{ backgroundColor: `${skill.color}15` }}
@@ -151,23 +138,17 @@ export const About = () => {
                   </div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">{skill.name}</h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{skill.category}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </RevealOnScroll>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Experience & Education */}
-        <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Education */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700"
-            >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Education */}
+          <RevealOnScroll direction="left" duration={700}>
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center">
                   <IoSchool className="size-7 text-green-600 dark:text-green-400" />
@@ -200,16 +181,12 @@ export const About = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </RevealOnScroll>
 
-            {/* Experience */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700"
-            >
+          {/* Experience */}
+          <RevealOnScroll direction="right" delay={100} duration={700}>
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
                   <IoBriefcase className="size-7 text-purple-600 dark:text-purple-400" />
@@ -246,19 +223,13 @@ export const About = () => {
                   <span className="font-medium text-gray-900 dark:text-white">Currently:</span> Focused on full-stack development, building projects and expanding technical expertise.
                 </p>
               </div>
-            </motion.div>
-          </div>
-        </RevealOnScroll>
+            </div>
+          </RevealOnScroll>
+        </div>
 
         {/* CTA Section */}
-        <RevealOnScroll>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center"
-          >
+        <RevealOnScroll direction="up" delay={200} duration={700}>
+          <div className="mt-16 text-center">
             <div className="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Let's Build Something Amazing
@@ -273,7 +244,7 @@ export const About = () => {
                 Get In Touch
               </a>
             </div>
-          </motion.div>
+          </div>
         </RevealOnScroll>
       </div>
     </section>

@@ -14,9 +14,9 @@ export const Project = () => {
       id="projects"
       className="min-h-screen py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
     >
-      <RevealOnScroll>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <RevealOnScroll direction="down" duration={600}>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
             <div>
               <span className="text-blue-500 font-mono text-sm tracking-wider">// MY WORK</span>
@@ -28,11 +28,13 @@ export const Project = () => {
               A collection of projects showcasing my skills in full-stack development
             </p>
           </div>
+        </RevealOnScroll>
 
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Featured Project - Large Card */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Featured Project - Large Card */}
+          <RevealOnScroll direction="left" delay={100} duration={700} className="lg:col-span-2">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group h-full">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
@@ -122,8 +124,10 @@ export const Project = () => {
                 </div>
               </div>
             </div>
+          </RevealOnScroll>
 
-            {/* Project Selector - Side Panel */}
+          {/* Project Selector - Side Panel */}
+          <RevealOnScroll direction="right" delay={200} duration={700}>
             <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
               {Projects.map((project, index) => (
                 <button
@@ -168,9 +172,9 @@ export const Project = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
-      </RevealOnScroll>
+      </div>
     </section>
   );
 };

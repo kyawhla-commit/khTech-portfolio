@@ -20,9 +20,9 @@ export const Certificate = () => {
       id="certificates"
       className="min-h-screen py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
     >
-      <RevealOnScroll>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <RevealOnScroll direction="down" duration={600}>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 rounded-full mb-4">
               <IoRibbon className="text-amber-600 dark:text-amber-400" />
@@ -35,8 +35,10 @@ export const Certificate = () => {
               Professional certifications demonstrating expertise in modern technologies
             </p>
           </div>
+        </RevealOnScroll>
 
-          {/* Carousel Navigation */}
+        {/* Carousel Navigation */}
+        <RevealOnScroll direction="up" delay={100} duration={500}>
           <div className="flex items-center justify-center gap-4 mb-8">
             <button
               onClick={() => scroll('left')}
@@ -68,8 +70,10 @@ export const Certificate = () => {
               <IoChevronForward className="size-6 text-gray-700 dark:text-gray-300" />
             </button>
           </div>
+        </RevealOnScroll>
 
-          {/* Cards Carousel */}
+        {/* Cards Carousel */}
+        <RevealOnScroll direction="scale" delay={200} duration={700}>
           <div className="relative" ref={scrollRef}>
             <div 
               className="flex transition-transform duration-500 ease-out"
@@ -158,24 +162,30 @@ export const Certificate = () => {
               ))}
             </div>
           </div>
+        </RevealOnScroll>
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+        {/* Stats */}
+        <div className="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <RevealOnScroll direction="up" delay={0} duration={500}>
             <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{Educations.length}</div>
               <div className="text-gray-600 dark:text-gray-400 text-sm mt-1">Certifications</div>
             </div>
+          </RevealOnScroll>
+          <RevealOnScroll direction="up" delay={100} duration={500}>
             <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="text-3xl font-bold text-green-600 dark:text-green-400">100%</div>
               <div className="text-gray-600 dark:text-gray-400 text-sm mt-1">Completion</div>
             </div>
+          </RevealOnScroll>
+          <RevealOnScroll direction="up" delay={200} duration={500}>
             <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">15+</div>
               <div className="text-gray-600 dark:text-gray-400 text-sm mt-1">Skills</div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
-      </RevealOnScroll>
+      </div>
 
       {/* Full Screen Modal */}
       {selectedCert && (
