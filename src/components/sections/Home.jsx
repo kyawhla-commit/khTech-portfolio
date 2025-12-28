@@ -2,13 +2,12 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { useState, useEffect } from "react";
 import photo from "../../assets/photo.jpg";
 import { downloadCV } from "../../utils/downloadCV";
-import { IoLogoGithub, IoMail, IoCodeSlash, IoLayers, IoRocket } from "react-icons/io5";
+import { IoLogoGithub, IoMail } from "react-icons/io5";
 
 export const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const texts = ["Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
 
@@ -35,17 +34,6 @@ export const Home = () => {
     );
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex, texts]);
-
-  // Mouse parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const techStack = ["React", "TypeScript", "Laravel", "Node.js", "React Native", "MySQL"];
 
@@ -152,112 +140,93 @@ export const Home = () => {
             </RevealOnScroll>
           </div>
 
-          {/* Right - Photo Section - 3D CARD STACK STYLE */}
+          {/* Right - Photo Section - CIRCULAR ORBIT STYLE */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <RevealOnScroll direction="right" delay={200} duration={800}>
-              <div 
-                className="relative perspective-1000"
-                style={{
-                  transform: `rotateY(${mousePosition.x * 0.5}deg) rotateX(${-mousePosition.y * 0.5}deg)`,
-                  transition: "transform 0.1s ease-out"
-                }}
-              >
-                {/* Stacked Cards Behind */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl transform rotate-6 translate-x-4 translate-y-4 opacity-20"
-                  style={{ transform: `rotate(12deg) translateX(${20 + mousePosition.x * 0.3}px) translateY(${20 + mousePosition.y * 0.3}px)` }}
-                ></div>
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-3xl transform rotate-3 translate-x-2 translate-y-2 opacity-40"
-                  style={{ transform: `rotate(6deg) translateX(${10 + mousePosition.x * 0.2}px) translateY(${10 + mousePosition.y * 0.2}px)` }}
-                ></div>
-
-                {/* Main Photo Card */}
-                <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[450px] bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-                  {/* Photo */}
-                  <div className="relative h-3/4 overflow-hidden">
-                    <img
-                      src={photo}
-                      alt="Kyaw Hla"
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent"></div>
-                    
-                    {/* Status Badge on Photo */}
-                    <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full">
-                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Online</span>
-                    </div>
+            <RevealOnScroll direction="scale" delay={200} duration={800}>
+              <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px]">
+                
+                {/* Outer Orbit Ring */}
+                <div className="absolute inset-0 rounded-full border border-gray-200 dark:border-gray-800">
+                  {/* Orbiting Dots */}
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
                   </div>
-
-                  {/* Card Info Section */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-white dark:bg-gray-900">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Kyaw Hla</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Full Stack Developer</p>
-                    
-                    {/* Mini Stats */}
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1.5">
-                        <IoCodeSlash className="size-4 text-blue-500" />
-                        <span className="text-xs text-gray-600 dark:text-gray-400">6 Projects</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <IoLayers className="size-4 text-cyan-500" />
-                        <span className="text-xs text-gray-600 dark:text-gray-400">15+ Skills</span>
-                      </div>
-                    </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s", animationDelay: "-5s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-500 rounded-full shadow-lg shadow-cyan-500/50"></div>
+                  </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s", animationDelay: "-10s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-purple-500 rounded-full shadow-lg shadow-purple-500/50"></div>
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <RevealOnScroll direction="scale" delay={500} duration={500}>
-                  <div 
-                    className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30"
-                    style={{ transform: `translateX(${mousePosition.x * -0.5}px) translateY(${mousePosition.y * -0.5}px)` }}
-                  >
-                    <IoRocket className="size-8 text-white" />
+                {/* Middle Orbit Ring */}
+                <div className="absolute inset-8 rounded-full border border-gray-200 dark:border-gray-800">
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "10s", animationDirection: "reverse" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-500 rounded-full"></div>
+                  </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "10s", animationDirection: "reverse", animationDelay: "-5s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-amber-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* Inner Glow Ring */}
+                <div className="absolute inset-16 rounded-full bg-gradient-to-br from-blue-500/20 via-cyan-500/20 to-purple-500/20 animate-pulse"></div>
+
+                {/* Photo Container */}
+                <div className="absolute inset-20 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+                  <img
+                    src={photo}
+                    alt="Kyaw Hla"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Subtle Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent"></div>
+                </div>
+
+                {/* Center Glow */}
+                <div className="absolute inset-20 rounded-full bg-blue-500/10 blur-xl -z-10"></div>
+
+                {/* Floating Stat Cards */}
+                <RevealOnScroll direction="left" delay={500} duration={500}>
+                  <div className="absolute -left-4 top-1/4 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">6+</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Projects</div>
+                    </div>
                   </div>
                 </RevealOnScroll>
 
-                <RevealOnScroll direction="left" delay={600} duration={500}>
-                  <div 
-                    className="absolute -bottom-4 -left-8 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700"
-                    style={{ transform: `translateX(${mousePosition.x * -0.3}px) translateY(${mousePosition.y * -0.3}px)` }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
-                        <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900 dark:text-white">Available</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">For new projects</p>
-                      </div>
+                <RevealOnScroll direction="right" delay={600} duration={500}>
+                  <div className="absolute -right-4 top-1/3 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">15+</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Skills</div>
                     </div>
                   </div>
                 </RevealOnScroll>
 
                 <RevealOnScroll direction="up" delay={700} duration={500}>
-                  <div 
-                    className="absolute -right-6 top-1/3 bg-white dark:bg-gray-800 rounded-2xl px-4 py-3 shadow-xl border border-gray-200 dark:border-gray-700"
-                    style={{ transform: `translateX(${mousePosition.x * 0.4}px) translateY(${mousePosition.y * 0.4}px)` }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="flex">
-                        {["⭐", "⭐", "⭐", "⭐", "⭐"].map((star, i) => (
-                          <span key={i} className="text-sm">{star}</span>
-                        ))}
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
                       </div>
-                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">5.0</span>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Available Now</span>
                     </div>
                   </div>
                 </RevealOnScroll>
 
-                {/* Decorative Lines */}
-                <div className="absolute -z-10 top-1/2 -left-20 w-16 h-px bg-gradient-to-r from-transparent to-blue-500/50"></div>
-                <div className="absolute -z-10 top-1/3 -right-20 w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/50"></div>
+                {/* Tech Icons Floating */}
+                <div className="absolute top-4 right-8 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "0s", animationDuration: "3s" }}>
+                  <span className="text-lg">⚛️</span>
+                </div>
+                <div className="absolute bottom-12 left-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "1s", animationDuration: "3s" }}>
+                  <span className="text-lg">🚀</span>
+                </div>
+                <div className="absolute top-1/2 -right-2 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "2s", animationDuration: "3s" }}>
+                  <span className="text-lg">💻</span>
+                </div>
               </div>
             </RevealOnScroll>
           </div>
