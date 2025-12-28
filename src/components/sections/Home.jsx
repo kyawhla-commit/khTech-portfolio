@@ -9,7 +9,7 @@ export const Home = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = ["Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
+  const texts = ["Khun Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
 
   useEffect(() => {
     const currentText = texts[textIndex];
