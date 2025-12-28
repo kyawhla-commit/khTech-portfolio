@@ -1,75 +1,92 @@
-import { IoLogoGithub } from "react-icons/io5";
+import { IoLogoGithub, IoArrowForward, IoCodeSlash, IoLayers } from "react-icons/io5";
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import { Projects } from '../../allDetails/index'
 
 export const Project = () => {
-  const [expandedProject, setExpandedProject] = useState(null);
+  const [activeProject, setActiveProject] = useState(0);
+  const [showFeatures, setShowFeatures] = useState(false);
 
-  const toggleFeatures = (index) => {
-    setExpandedProject(expandedProject === index ? null : index);
-  };
+  const featuredProject = Projects[activeProject];
 
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+      className="min-h-screen py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
     >
       <RevealOnScroll>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            Feature Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {Projects.map((project, index) => (
-              <div 
-                key={index}
-                className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-gray-800 hover:translate-y-1 hover:border-blue-500/50 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-800/50 px-2 py-1 rounded">
-                    {project.year}
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+            <div>
+              <span className="text-blue-500 font-mono text-sm tracking-wider">// MY WORK</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2">
+                Featured Projects
+              </h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400 mt-4 md:mt-0 max-w-md">
+              A collection of projects showcasing my skills in full-stack development
+            </p>
+          </div>
+
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Featured Project - Large Card */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500 rounded-full blur-3xl"></div>
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="px-4 py-1.5 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium">
+                    {featuredProject.year}
                   </span>
+                  <div className="flex gap-2">
+                    {featuredProject.technologies.slice(0, 3).map((tech, i) => (
+                      <span key={i} className="px-3 py-1 bg-white/50 dark:bg-gray-700/50 rounded-full text-xs text-gray-600 dark:text-gray-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  {project.description}
+
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  {featuredProject.name}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-lg mb-6 leading-relaxed">
+                  {featuredProject.description}
                 </p>
 
-                {/* Grouped Project Features Section */}
-                {project.projectFeatures && project.projectFeatures.length > 0 && (
-                  <div className="mb-4">
+                {/* Features Toggle */}
+                {featuredProject.projectFeatures && (
+                  <div className="mb-6">
                     <button
-                      onClick={() => toggleFeatures(index)}
-                      className="flex items-center justify-between w-full text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors mb-2 text-left"
+                      onClick={() => setShowFeatures(!showFeatures)}
+                      className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 transition-colors"
                     >
-                      <span className="text-lg font-semibold">
-                        Project Architecture
+                      <IoLayers className="size-5" />
+                      <span className="font-medium">
+                        {showFeatures ? 'Hide' : 'View'} Architecture
                       </span>
-                      <svg
-                        className={`w-4 h-4 transition-transform ${
-                          expandedProject === index ? 'rotate-180' : ''
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <IoArrowForward className={`size-4 transition-transform ${showFeatures ? 'rotate-90' : ''}`} />
                     </button>
-                    
-                    {expandedProject === index && (
-                      <div className="space-y-4 animate-fadeIn">
-                        {project.projectFeatures.map((featureGroup, groupIndex) => (
-                          <div key={groupIndex} className="border-l-2 border-cyan-500/50 pl-4">
-                            <h5 className="font-semibold text-cyan-600 dark:text-cyan-300 mb-2">
-                              {featureGroup.section}
+
+                    {showFeatures && (
+                      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeIn">
+                        {featuredProject.projectFeatures.map((group, i) => (
+                          <div key={i} className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50">
+                            <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                              <IoCodeSlash className="text-cyan-500" />
+                              {group.section}
                             </h5>
-                            <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
-                              {featureGroup.items.map((item, itemIndex) => (
-                                <li key={itemIndex} className="flex items-start">
-                                  <span className="text-green-600 dark:text-green-400 mr-2 mt-1">•</span>
-                                  <span>{item}</span>
+                            <ul className="space-y-1.5">
+                              {group.items.slice(0, 4).map((item, j) => (
+                                <li key={j} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                                  {item}
                                 </li>
                               ))}
                             </ul>
@@ -80,47 +97,77 @@ export const Project = () => {
                   </div>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 dark:hover:bg-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex justify-center gap-3 flex-wrap">
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-4">
                   <a
-                    href={project.git}
+                    href={featuredProject.git}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-row text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors items-center gap-2 rounded-full bg-blue-500/10 dark:bg-blue-500/20 hover:bg-blue-500/20 dark:hover:bg-blue-500/30 px-6 py-3 border border-blue-500/20 dark:border-blue-500/30"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-medium hover:scale-105 transition-transform"
                   >
-                    <span className="text-lg font-medium">
-                      GitHub
-                    </span>
-                    <IoLogoGithub className="size-6" />
+                    <IoLogoGithub className="size-5" />
+                    View Code
                   </a>
-                  {project.live && (
+                  {featuredProject.live && (
                     <a
-                      href={project.live}
+                      href={featuredProject.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-row text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors items-center gap-2 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 hover:bg-emerald-500/20 dark:hover:bg-emerald-500/30 px-6 py-3 border border-emerald-500/20 dark:border-emerald-500/30"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-medium hover:scale-105 transition-transform"
                     >
-                      <span className="text-lg font-medium">
-                        Live Demo
-                      </span>
-                      <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
+                      Live Demo
+                      <IoArrowForward className="size-4" />
                     </a>
                   )}
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Project Selector - Side Panel */}
+            <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
+              {Projects.map((project, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setActiveProject(index);
+                    setShowFeatures(false);
+                  }}
+                  className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 ${
+                    activeProject === index
+                      ? 'bg-blue-500/10 border-blue-500/50 dark:bg-blue-500/20'
+                      : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-500/30'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className={`text-xs font-mono ${
+                      activeProject === index ? 'text-blue-500' : 'text-gray-500'
+                    }`}>
+                      {project.year}
+                    </span>
+                    {activeProject === index && (
+                      <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    )}
+                  </div>
+                  <h4 className={`font-semibold mb-1 ${
+                    activeProject === index 
+                      ? 'text-blue-600 dark:text-blue-400' 
+                      : 'text-gray-900 dark:text-white'
+                  }`}>
+                    {project.name}
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex gap-1.5 mt-3 flex-wrap">
+                    {project.technologies.slice(0, 2).map((tech, i) => (
+                      <span key={i} className="text-xs px-2 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-gray-600 dark:text-gray-400">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </RevealOnScroll>

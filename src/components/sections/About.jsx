@@ -1,333 +1,277 @@
 import { motion } from "framer-motion";
-import { frontendSkills } from "../../allDetails";
-import { backendSkills } from "../../allDetails";
-import { toolSkills } from "../../allDetails";
+import { useState } from "react";
+import { frontendSkills, backendSkills, toolSkills } from "../../allDetails";
 import { RevealOnScroll } from "../RevealOnScroll";
+import { IoCodeSlash, IoServer, IoConstruct, IoBriefcase, IoSchool } from "react-icons/io5";
 
 export const About = () => {
-  
+  const [activeTab, setActiveTab] = useState('frontend');
 
-  const SkillCard = ({ tech, index }) => (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ 
-        duration: 0.5,
-        delay: index * 0.1 
-      }}
-      viewport={{ once: true }}
-      className="group relative bg-white dark:bg-gray-800 border-l-4 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 p-6 shadow-sm hover:shadow-md"
-    >
-      <div className="flex items-center space-x-4">
-        <div 
-          className="flex-shrink-0 p-3 rounded-md bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors duration-300"
-        >
-          <tech.icon 
-            className="h-6 w-6" 
-            style={{ color: tech.color }}
-          />
-        </div>
-        
-        <div className="flex-1">
-          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-            {tech.name}
-          </h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-            {tech.category}
-          </p>
-        </div>
-        
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-        </div>
-      </div>
-    </motion.div>
-  );
+  const tabs = [
+    { id: 'frontend', label: 'Frontend', icon: IoCodeSlash, skills: frontendSkills, color: 'blue' },
+    { id: 'backend', label: 'Backend', icon: IoServer, skills: backendSkills, color: 'green' },
+    { id: 'tools', label: 'Tools', icon: IoConstruct, skills: toolSkills, color: 'purple' },
+  ];
 
-  const SkillSection = ({ title, subtitle, skills, delay = 0 }) => (
-    <RevealOnScroll>
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <div className="mb-8">
-          <div className="flex items-center mb-2">
-            <div className="w-1 h-8 bg-gradient-to-b from-blue-600 to-blue-400 mr-4"></div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              {title}
-            </h2>
-          </div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg pl-5">
-            {subtitle}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skills.map((tech, index) => (
-            <SkillCard key={tech.name} tech={tech} index={index} />
-          ))}
-        </div>
-      </motion.div>
-    </RevealOnScroll>
-  );
+  const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section
-      id="about"
-      className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900"
-    >
+    <section id="about" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
+        {/* Hero Section */}
         <RevealOnScroll>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-6">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Professional Profile
-            </h1>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Full-Stack Developer specializing in modern web technologies and scalable solutions
-            </p>
-          </motion.div>
-        </RevealOnScroll>
-
-        {/* Professional Summary */}
-        <RevealOnScroll>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    Professional Summary
-                  </h2>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                    Results-driven Full-Stack Developer with expertise in modern web technologies. 
-                    Specialized in building scalable applications using React, Node.js, and cloud platforms. 
-                    Proven ability to deliver high-quality solutions that meet business objectives and user needs.
-                  </p>
-                </div>
-                <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Core Competencies</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                      Full-Stack Development
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                      Cloud Architecture
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                      Agile Methodology
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                      System Design
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </RevealOnScroll>
-
-        {/* Technical Expertise */}
-        <div className="mb-20">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 text-center">
-              Technical Expertise
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-center mb-8 max-w-2xl mx-auto">
-              Comprehensive skill set across modern development technologies and platforms
-            </p>
-
-            <SkillSection
-              title="Frontend Development"
-              subtitle="Modern frameworks and libraries for enterprise-grade applications"
-              skills={frontendSkills}
-              delay={0.1}
-            />
-
-            <SkillSection
-              title="Backend Technologies"
-              subtitle="Robust server-side solutions and database management systems"
-              skills={backendSkills}
-              delay={0.2}
-            />
-
-            <SkillSection
-              title="Development Tools & Platforms"
-              subtitle="Professional tools and infrastructure for efficient development workflows"
-              skills={toolSkills}
-              delay={0.3}
-            />
-          </div>
-        </div>
-
-        {/* Education & Experience */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          {/* Education */}
-          <RevealOnScroll>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            {/* Left - Text Content */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8"
             >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                  </svg>
+              <span className="inline-block px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
+                About Me
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                Full-Stack Developer
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">
+                  & Problem Solver
+                </span>
+              </h1>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                Results-driven developer with expertise in modern web technologies. 
+                I specialize in building scalable applications using React, Node.js, and Laravel. 
+                Passionate about creating efficient, maintainable code that delivers exceptional user experiences.
+              </p>
+
+              {/* Quick Stats */}
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">6+</span>
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-400">Projects<br/>Completed</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl font-bold text-green-600 dark:text-green-400">15+</span>
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-400">Technologies<br/>Mastered</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">3</span>
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-400">Certifications<br/>Earned</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right - Visual Element */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 rounded-3xl p-8 border border-blue-200/50 dark:border-blue-800/50">
+                {/* Code Block Visual */}
+                <div className="bg-gray-900 dark:bg-gray-950 rounded-2xl p-6 font-mono text-sm">
+                  <div className="flex gap-2 mb-4">
+                    <span className="w-3 h-3 bg-red-500 rounded-full"></span>
+                    <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                    <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                  </div>
+                  <div className="space-y-2 text-gray-300">
+                    <p><span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {"{"}</p>
+                    <p className="pl-4"><span className="text-green-400">name</span>: <span className="text-amber-400">"Kyaw Hla"</span>,</p>
+                    <p className="pl-4"><span className="text-green-400">role</span>: <span className="text-amber-400">"Full-Stack Dev"</span>,</p>
+                    <p className="pl-4"><span className="text-green-400">passion</span>: <span className="text-amber-400">"Building Apps"</span>,</p>
+                    <p className="pl-4"><span className="text-green-400">available</span>: <span className="text-blue-400">true</span></p>
+                    <p>{"}"}</p>
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <IoCodeSlash className="text-white size-10" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </RevealOnScroll>
+
+        {/* Skills Section */}
+        <RevealOnScroll>
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Technical Skills</h2>
+              <p className="text-gray-600 dark:text-gray-400">Technologies I work with</p>
+            </div>
+
+            {/* Tab Navigation */}
+            <div className="flex justify-center gap-2 mb-10 flex-wrap">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all ${
+                    activeTab === tab.id
+                      ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                  }`}
+                >
+                  <tab.icon className="size-5" />
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Skills Grid */}
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            >
+              {activeTabData?.skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="group bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 hover:shadow-lg transition-all"
+                >
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+                    style={{ backgroundColor: `${skill.color}15` }}
+                  >
+                    <skill.icon className="size-8" style={{ color: skill.color }} />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">{skill.name}</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{skill.category}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </RevealOnScroll>
+
+        {/* Experience & Education */}
+        <RevealOnScroll>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Education */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center">
+                  <IoSchool className="size-7 text-green-600 dark:text-green-400" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h2>
-                  <p className="text-gray-600 dark:text-gray-400">Academic Background</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h3>
+                  <p className="text-gray-500 dark:text-gray-400">Academic Background</p>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="border-l-2 border-green-500 pl-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      Bachelor of Arts
-                    </h3>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                      2019 - 2025
-                    </span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-2">
-                    Pinlon University
-                  </p>
-                  <p className="text-gray-500 dark:text-gray-500 text-sm">
+              <div className="relative pl-8 border-l-2 border-green-200 dark:border-green-800">
+                <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] bg-green-500 rounded-full"></div>
+                <div className="pb-8">
+                  <span className="text-sm text-green-600 dark:text-green-400 font-medium">2019 - 2025</span>
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mt-1">Bachelor of Arts</h4>
+                  <p className="text-gray-600 dark:text-gray-400">Pinlon University</p>
+                  <p className="text-gray-500 dark:text-gray-500 text-sm mt-2">
                     Major in Geography with focus on spatial analysis and regional studies
                   </p>
                 </div>
+              </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-                    Academic Focus
-                  </h4>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">• Physical Geography</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Human Geography</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Cartography</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Regional Studies</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Environmental Science</span>
-                    <span className="text-gray-600 dark:text-gray-400">• Spatial Analysis</span>
-                  </div>
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 mt-4">
+                <h5 className="font-medium text-gray-900 dark:text-white mb-2">Focus Areas</h5>
+                <div className="flex flex-wrap gap-2">
+                  {['Physical Geography', 'Cartography', 'Regional Studies', 'Spatial Analysis'].map((area) => (
+                    <span key={area} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm">
+                      {area}
+                    </span>
+                  ))}
                 </div>
               </div>
             </motion.div>
-          </RevealOnScroll>
 
-          {/* Professional Experience */}
-          <RevealOnScroll>
+            {/* Experience */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700"
             >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
-                  </svg>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
+                  <IoBriefcase className="size-7 text-purple-600 dark:text-purple-400" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Experience</h2>
-                  <p className="text-gray-600 dark:text-gray-400">Professional Journey</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Experience</h3>
+                  <p className="text-gray-500 dark:text-gray-400">Professional Journey</p>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="border-l-2 border-purple-500 pl-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      Sales & Marketing Specialist
-                    </h3>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                      2020 - 2022
-                    </span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-3">
-                    Mytel International Telecom
-                  </p>
-                  
-                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                    <p className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                      Developed and implemented comprehensive marketing strategies for fiber optic services
-                    </p>
-                    <p className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                      Managed key customer accounts and relationships
-                    </p>
-                    <p className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                      Contributed to business growth through data-driven campaign analysis
-                    </p>
-                  </div>
+              <div className="relative pl-8 border-l-2 border-purple-200 dark:border-purple-800">
+                <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] bg-purple-500 rounded-full"></div>
+                <div className="pb-8">
+                  <span className="text-sm text-purple-600 dark:text-purple-400 font-medium">2020 - 2022</span>
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mt-1">Sales & Marketing Specialist</h4>
+                  <p className="text-gray-600 dark:text-gray-400">Mytel International Telecom</p>
+                  <ul className="mt-3 space-y-2">
+                    {[
+                      'Developed marketing strategies for fiber optic services',
+                      'Managed key customer accounts and relationships',
+                      'Contributed to business growth through data-driven campaigns'
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-                    Professional Development
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Continuously enhancing technical skills through personal projects, online courses, 
-                    and staying current with industry trends and best practices.
-                  </p>
-                </div>
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl p-4 mt-4">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <span className="font-medium text-gray-900 dark:text-white">Currently:</span> Focused on full-stack development, building projects and expanding technical expertise.
+                </p>
               </div>
             </motion.div>
-          </RevealOnScroll>
-        </div>
+          </div>
+        </RevealOnScroll>
 
-        {/* Professional Philosophy */}
+        {/* CTA Section */}
         <RevealOnScroll>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="mt-16 text-center"
           >
-            <div className="bg-blue-600 text-white rounded-lg p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">
-                Continuous Learning & Growth
+            <div className="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Let's Build Something Amazing
               </h3>
-              <p className="text-blue-100 text-lg max-w-3xl mx-auto leading-relaxed">
-             I'm constantly exploring new technologies and best practices to stay at the forefront of web development. 
-                My focus is on mastering full-stack development, cloud architecture, and creating efficient, 
-                maintainable code that delivers exceptional user experiences.
+              <p className="text-blue-100 mb-6 max-w-xl mx-auto">
+                I'm always excited to work on new projects and collaborate with fellow developers.
               </p>
-              <div className="w-16 h-1 bg-white mx-auto mt-6 rounded"></div>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:scale-105 transition-transform"
+              >
+                Get In Touch
+              </a>
             </div>
           </motion.div>
         </RevealOnScroll>
