@@ -1,32 +1,15 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import photo from "../../assets/photo.jpg";
 import { downloadCV } from "../../utils/downloadCV";
+import { IoLogoGithub, IoMail } from "react-icons/io5";
 
 export const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [screenSize, setScreenSize] = useState("md");
-  const sectionRef = useRef(null);
 
-  const texts = ["khunKyawHla", "Full Stack Developer", "Digital Craftsman"];
-
-  // Check screen size on mount and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      if (width < 475) setScreenSize("xs");
-      else if (width < 640) setScreenSize("sm");
-      else if (width < 768) setScreenSize("md");
-      else if (width < 1024) setScreenSize("lg");
-      else setScreenSize("xl");
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+  const texts = ["Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
 
   useEffect(() => {
     const currentText = texts[textIndex];
@@ -49,851 +32,212 @@ export const Home = () => {
       },
       isDeleting ? 40 : 80
     );
-
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex, texts]);
 
-  // Responsive values based on screen size
-  const getResponsiveValue = (values) => {
-    const sizes = ["xs", "sm", "md", "lg", "xl"];
-    const index = sizes.indexOf(screenSize);
-    return values[Math.min(index, values.length - 1)];
-  };
+  const techStack = ["React", "TypeScript", "Laravel", "Node.js", "React Native", "MySQL"];
 
   return (
     <section
-      ref={sectionRef}
       id="home"
-      className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden pt-16 lg:pt-0 transition-colors duration-300"
+      className="min-h-screen relative bg-white dark:bg-gray-950 overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Main Gradient */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2/3 bg-gradient-to-b from-blue-500/10 dark:from-blue-900/20 to-transparent"></div>
-
-        {/* Background Blobs */}
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-cyan-400/20 dark:bg-cyan-600/10 rounded-full blur-2xl xs:blur-3xl"></div>
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-5 xs:opacity-6 sm:opacity-7 md:opacity-8 lg:opacity-10 dark:opacity-3 dark:xs:opacity-4 dark:sm:opacity-5 dark:md:opacity-7 dark:lg:opacity-10">
-          <div
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent dark:from-blue-950/20 dark:to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
+          <div 
             className="w-full h-full"
             style={{
-              backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.4) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(59, 130, 246, 0.4) 1px, transparent 1px)`,
-              backgroundSize: getResponsiveValue([
-                "20px 20px",
-                "25px 25px",
-                "30px 30px",
-                "40px 40px",
-                "50px 50px",
-              ]),
+              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+              backgroundSize: '40px 40px'
             }}
           ></div>
         </div>
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0">
-        {[...Array(getResponsiveValue([6, 8, 10, 12, 15]))].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-500/30 dark:bg-blue-400/20 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
-            }}
-          ></div>
-        ))}
-      </div>
-
-      <RevealOnScroll>
-        <div className="text-center z-10 w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8">
-          {/* Responsive Layout */}
-          <div
-            className={`flex flex-col ${getResponsiveValue([
-              "",
-              "",
-              "",
-              "lg:grid lg:grid-cols-2",
-              "lg:grid lg:grid-cols-2",
-            ])} gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center`}
-          >
-            {/* Photo Section */}
-            <div
-              className={`order-1 ${getResponsiveValue([
-                "",
-                "",
-                "",
-                "lg:order-2",
-                "lg:order-2",
-              ])} flex justify-center w-full`}
-            >
-              <div className="relative">
-                {/* Main Photo Container - Fully Responsive Sizing */}
-                <div
-                  className={`relative ${getResponsiveValue([
-                    "w-48 h-48", // xs
-                    "w-56 h-56", // sm
-                    "w-64 h-64", // md
-                    "w-72 h-72", // lg
-                    "w-80 h-80", // xl
-                  ])} ${getResponsiveValue([
-                    "", // xs
-                    "sm:w-64 sm:h-64", // sm
-                    "md:w-72 md:h-72", // md
-                    "lg:w-80 lg:h-80", // lg
-                    "xl:w-96 xl:h-96", // xl
-                  ])}`}
-                >
-                  {/* Animated Gradient Border */}
-                  <div
-                    className={`absolute ${getResponsiveValue([
-                      "-inset-2", // xs
-                      "-inset-3", // sm
-                      "-inset-4", // md
-                      "-inset-5", // lg
-                      "-inset-6", // xl
-                    ])} rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl animate-gradient-x"></div>
-                    <div
-                      className={`absolute ${getResponsiveValue([
-                        "inset-[1px]", // xs
-                        "inset-[2px]", // sm
-                        "inset-[2px]", // md
-                        "inset-[3px]", // lg
-                        "inset-[3px]", // xl
-                      ])} bg-white dark:bg-gray-900 rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl`}
-                    ></div>
-                  </div>
-
-                  {/* Photo Content */}
-                  <div className="relative w-full h-full rounded-xl xs:rounded-2xl sm:rounded-3xl lg:rounded-4xl overflow-hidden bg-gray-50 dark:bg-gray-900 shadow-xl xs:shadow-2xl">
-                    {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-10 xs:opacity-15 dark:opacity-5 dark:xs:opacity-10">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(59,130,246)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[length:20px_20px] xs:bg-[length:25px_25px] sm:bg-[length:30px_30px]"></div>
-                    </div>
-
-                    {/* Animated Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-cyan-500/15 dark:from-blue-600/20 dark:via-purple-600/15 dark:to-cyan-600/20 animate-pulse-slow"></div>
-
-                    {/* Main Photo */}
-                    <div
-                      className={`relative w-full h-full flex items-center justify-center ${getResponsiveValue(
-                        [
-                          "p-2", // xs
-                          "p-3", // sm
-                          "p-3", // md
-                          "p-4", // lg
-                          "p-6", // xl
-                        ]
-                      )}`}
-                    >
-                      <div className="relative group w-full h-full">
-                        {/* Photo Frame */}
-                        <div className="relative w-full h-full">
-                          {/* Outer Glow Effect */}
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "-inset-2", // xs
-                              "-inset-3", // sm
-                              "-inset-4", // md
-                              "-inset-5", // lg
-                              "-inset-6", // xl
-                            ])} bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-purple-400/20 rounded-full blur-xl xs:blur-2xl sm:blur-3xl group-hover:blur-4xl transition-all duration-700`}
-                          ></div>
-
-                          {/* Main Photo Container */}
-                          <div className="relative w-full h-full rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border-2 xs:border-3 sm:border-4 border-gray-200/50 dark:border-white/20 bg-gradient-to-br from-gray-100 via-white to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 shadow-xl xs:shadow-2xl overflow-hidden group-hover:border-blue-300/50 dark:group-hover:border-white/30 transition-all duration-500 group-hover:shadow-blue-500/25 dark:group-hover:shadow-cyan-500/25">
-                            <img
-                              src={photo}
-                              alt="Professional Developer"
-                              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                            />
-
-                            {/* Shine Effect on Hover */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out"></div>
-
-                            {/* Inner Glow */}
-                            <div className="absolute inset-0 rounded-lg xs:rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-200/30 dark:border-white/10 group-hover:border-blue-300/50 dark:group-hover:border-white/25 transition-all duration-500"></div>
-
-                            {/* Gradient Overlay for Depth */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-200/20 via-transparent to-gray-100/10 dark:from-gray-900/30 dark:via-transparent dark:to-gray-900/20"></div>
-                          </div>
-
-                          {/* Status Indicator */}
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "bottom-2 right-2 w-6 h-6", // xs
-                              "bottom-3 right-3 w-7 h-7", // sm
-                              "bottom-4 right-4 w-8 h-8", // md
-                              "bottom-5 right-5 w-9 h-9", // lg
-                              "bottom-6 right-6 w-10 h-10", // xl
-                            ])} bg-green-400 rounded-full border-2 xs:border-3 sm:border-4 border-white dark:border-gray-900 shadow-lg xs:shadow-xl sm:shadow-2xl z-20`}
-                          >
-                            <div
-                              className={`absolute ${getResponsiveValue([
-                                "inset-1", // xs
-                                "inset-1.5", // sm
-                                "inset-1.5", // md
-                                "inset-2", // lg
-                                "inset-2", // xl
-                              ])} bg-green-300 rounded-full animate-pulse`}
-                            ></div>
-                            <div className="absolute inset-0 rounded-full border border-white/50"></div>
-                          </div>
-
-                          {/* Decorative Corner Elements */}
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "top-1 left-1 w-3 h-3", // xs
-                              "top-2 left-2 w-4 h-4", // sm
-                              "top-3 left-3 w-4 h-4", // md
-                              "top-3 left-3 w-5 h-5", // lg
-                              "top-4 left-4 w-6 h-6", // xl
-                            ])} border-t border-l border-cyan-400/40 group-hover:border-cyan-400/60 transition-all duration-500`}
-                          ></div>
-
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "top-1 right-1 w-3 h-3", // xs
-                              "top-2 right-2 w-4 h-4", // sm
-                              "top-3 right-3 w-4 h-4", // md
-                              "top-3 right-3 w-5 h-5", // lg
-                              "top-4 right-4 w-6 h-6", // xl
-                            ])} border-t border-r border-blue-400/40 group-hover:border-blue-400/60 transition-all duration-500`}
-                          ></div>
-
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "bottom-1 left-1 w-3 h-3", // xs
-                              "bottom-2 left-2 w-4 h-4", // sm
-                              "bottom-3 left-3 w-4 h-4", // md
-                              "bottom-3 left-3 w-5 h-5", // lg
-                              "bottom-4 left-4 w-6 h-6", // xl
-                            ])} border-b border-l border-purple-400/40 group-hover:border-purple-400/60 transition-all duration-500`}
-                          ></div>
-
-                          <div
-                            className={`absolute ${getResponsiveValue([
-                              "bottom-1 right-1 w-3 h-3", // xs
-                              "bottom-2 right-2 w-4 h-4", // sm
-                              "bottom-3 right-3 w-4 h-4", // md
-                              "bottom-3 right-3 w-5 h-5", // lg
-                              "bottom-4 right-4 w-6 h-6", // xl
-                            ])} border-b border-r border-green-400/40 group-hover:border-green-400/60 transition-all duration-500`}
-                          ></div>
-                        </div>
-
-                        {/* Floating Tech Elements */}
-                        <div
-                          className={`absolute ${getResponsiveValue([
-                            "-top-1 -left-1 w-8 h-8", // xs
-                            "-top-2 -left-2 w-9 h-9", // sm
-                            "-top-2 -left-2 w-10 h-10", // md
-                            "-top-3 -left-3 w-12 h-12", // lg
-                            "-top-4 -left-4 w-14 h-14", // xl
-                          ])} bg-blue-500/30 dark:bg-blue-500/20 rounded-full backdrop-blur-sm border border-blue-400/50 dark:border-blue-400/30 animate-float-slow flex items-center justify-center z-10`}
-                        >
-                          <div
-                            className={`${getResponsiveValue([
-                              "w-1.5 h-1.5", // xs
-                              "w-2 h-2", // sm
-                              "w-2 h-2", // md
-                              "w-2.5 h-2.5", // lg
-                              "w-3 h-3", // xl
-                            ])} bg-blue-500 dark:bg-blue-400 rounded-full`}
-                          ></div>
-                        </div>
-
-                        <div
-                          className={`absolute ${getResponsiveValue([
-                            "-bottom-2 -right-2 w-7 h-7", // xs
-                            "-bottom-3 -right-3 w-8 h-8", // sm
-                            "-bottom-3 -right-3 w-9 h-9", // md
-                            "-bottom-4 -right-4 w-10 h-10", // lg
-                            "-bottom-5 -right-5 w-12 h-12", // xl
-                          ])} bg-cyan-500/30 dark:bg-cyan-500/20 rounded-full backdrop-blur-sm border border-cyan-400/50 dark:border-cyan-400/30 animate-float-medium flex items-center justify-center z-10`}
-                        >
-                          <div
-                            className={`${getResponsiveValue([
-                              "w-1 h-1", // xs
-                              "w-1.5 h-1.5", // sm
-                              "w-1.5 h-1.5", // md
-                              "w-2 h-2", // lg
-                              "w-2.5 h-2.5", // xl
-                            ])} bg-cyan-500 dark:bg-cyan-400 rounded-full`}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Corner Accents */}
-                    <div
-                      className={`absolute ${getResponsiveValue([
-                        "top-3 left-3 w-3 h-3", // xs
-                        " top-3 left-3 w-4 h-4", // sm
-                        "top-4 left-4 w-4 h-4", // md
-                        "top-5 left-5 w-4 h-4", // lg
-                        "top-6 left-7 w-4 h-4", // xl
-                      ])} bg-cyan-500 dark:bg-cyan-400 rounded-full animate-ping z-10`}
-                    ></div>
-
-                    <div
-                      className={`absolute ${getResponsiveValue([
-                        "bottom-2 right-2 w-1.5 h-1.5", // xs
-                        "bottom-3 right-3 w-2 h-2", // sm
-                        "bottom-4 right-4 w-2 h-2", // md
-                        "bottom-5 right-5 w-2.5 h-2.5", // lg
-                        "bottom-6 right-6 w-3 h-3", // xl
-                      ])} bg-blue-500 dark:bg-blue-400 rounded-full animate-bounce z-10`}
-                    ></div>
-                  </div>
-
-                  {/* Code Snippet Card */}
-                  <div
-                    className={`absolute ${getResponsiveValue([
-                      "-bottom-6 -left-20", // xs
-                      "-bottom-7 -left-20", // sm
-                      "-bottom-8 -left-20", // md
-                      "-bottom-10 -left-20", // lg
-                      "-bottom-15 -left-25", // xl
-                    ])} bg-white/95 dark:bg-gray-900/95 backdrop-blur-md xs:backdrop-blur-lg sm:backdrop-blur-xl border border-gray-300/60 dark:border-gray-700/60 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
-                      [
-                        "p-2", // xs
-                        "p-2.5", // sm
-                        "p-3", // md
-                        "p-3.5", // lg
-                        "p-4", // xl
-                      ]
-                    )} shadow-lg xs:shadow-xl sm:shadow-2xl transform scale-85 xs:scale-90 sm:scale-95 lg:scale-100 hover:scale-100 lg:hover:scale-105 transition-all duration-300 hover:border-blue-500/40 dark:hover:border-cyan-500/40 hover:shadow-blue-500/10 dark:hover:shadow-cyan-500/10 z-20 max-w-[140px] xs:max-w-[160px] sm:max-w-none`}
-                  >
-                    <div
-                      className={`flex items-center gap-1 xs:gap-2 sm:gap-3 ${getResponsiveValue(
-                        [
-                          "mb-1", // xs
-                          "mb-1.5", // sm
-                          "mb-2", // md
-                          "mb-2.5", // lg
-                          "mb-3", // xl
-                        ]
-                      )}`}
-                    >
-                      <div className="flex space-x-0.5 xs:space-x-1 sm:space-x-1.5">
-                        <div
-                          className={`${getResponsiveValue([
-                            "w-1.5 h-1.5", // xs
-                            "w-2 h-2", // sm
-                            "w-2 h-2", // md
-                            "w-2.5 h-2.5", // lg
-                            "w-3 h-3", // xl
-                          ])} bg-red-400 rounded-full`}
-                        ></div>
-                        <div
-                          className={`${getResponsiveValue([
-                            "w-1.5 h-1.5", // xs
-                            "w-2 h-2", // sm
-                            "w-2 h-2", // md
-                            "w-2.5 h-2.5", // lg
-                            "w-3 h-3", // xl
-                          ])} bg-yellow-400 rounded-full`}
-                        ></div>
-                        <div
-                          className={`${getResponsiveValue([
-                            "w-1.5 h-1.5", // xs
-                            "w-2 h-2", // sm
-                            "w-2 h-2", // md
-                            "w-2.5 h-2.5", // lg
-                            "w-3 h-3", // xl
-                          ])} bg-green-400 rounded-full`}
-                        ></div>
-                      </div>
-                      <span
-                        className={`${getResponsiveValue([
-                          "text-[10px]", // xs
-                          "text-xs", // sm
-                          "text-xs", // md
-                          "text-xs", // lg
-                          "text-sm", // xl
-                        ])} text-gray-700 dark:text-gray-200 font-mono font-semibold`}
-                      >
-                        profile.js
-                      </span>
-                    </div>
-                    <div
-                      className={`${getResponsiveValue([
-                        "text-[10px]", // xs
-                        "text-xs", // sm
-                        "text-xs", // md
-                        "text-xs", // lg
-                        "text-sm", // xl
-                      ])} font-mono space-y-0.5 xs:space-y-1`}
-                    >
-                      <div className="text-purple-600 dark:text-purple-400">
-                        const developer = &#123;
-                      </div>
-                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
-                        passion:{" "}
-                        <span className="text-green-600 dark:text-green-400">
-                          "creating impact"
-                        </span>
-                        ,
-                      </div>
-                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
-                        focus:{" "}
-                        <span className="text-green-600 dark:text-green-400">"excellence"</span>,
-                      </div>
-                      <div className="text-blue-600 dark:text-cyan-400 ml-2 xs:ml-3 sm:ml-4">
-                        status:{" "}
-                        <span className="text-orange-500 dark:text-yellow-400">"available"</span>
-                      </div>
-                      <div className="text-purple-600 dark:text-purple-400">&#125;;</div>
-                    </div>
-                  </div>
-
-                  {/* Availability Card */}
-                  <div
-                    className={`absolute ${getResponsiveValue([
-                      "-top-3 -right-3", // xs
-                      "-top-4 -right-4", // sm
-                      "-top-4 -right-4", // md
-                      "-top-5 -right-5", // lg
-                      "-top-6 -right-6", // xl
-                    ])} bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm xs:backdrop-blur-md sm:backdrop-blur-lg border border-gray-300/50 dark:border-gray-600/50 rounded-lg xs:rounded-xl sm:rounded-2xl ${getResponsiveValue(
-                      [
-                        "p-1.5", // xs
-                        "p-2", // sm
-                        "p-2.5", // md
-                        "p-3", // lg
-                        "p-3.5", // xl
-                      ]
-                    )} shadow-md xs:shadow-lg sm:shadow-xl transform -rotate-2 xs:-rotate-3 sm:-rotate-6 hover:rotate-0 transition-all duration-500 z-20`}
-                  >
-                    <div
-                      className={`${getResponsiveValue([
-                        "text-[10px]", // xs
-                        "text-xs", // sm
-                        "text-xs", // md
-                        "text-xs", // lg
-                        "text-sm", // xl
-                      ])} font-mono text-gray-700 dark:text-gray-300`}
-                    >
-                      <div className="text-green-500 dark:text-green-400 flex items-center gap-0.5 xs:gap-1">
-                        <div
-                          className={`${getResponsiveValue([
-                            "w-1 h-1", // xs
-                            "w-1.5 h-1.5", // sm
-                            "w-1.5 h-1.5", // md
-                            "w-2 h-2", // lg
-                            "w-2 h-2", // xl
-                          ])} bg-green-500 dark:bg-green-400 rounded-full animate-pulse`}
-                        ></div>
-                        Available
-                      </div>
-                      <div className="text-gray-500 dark:text-gray-400 mt-0.5 xs:mt-1 text-[9px] xs:text-xs">
-                        Open for work
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full py-20">
+          {/* Left Content */}
+          <div className="order-2 lg:order-1 space-y-8">
+            <RevealOnScroll direction="down" delay={0} duration={600}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 rounded-full">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-green-700 dark:text-green-300 text-sm font-medium">Available for work</span>
               </div>
-            </div>
+            </RevealOnScroll>
 
-            {/* Text Content */}
-            <div
-              className={`order-2 ${getResponsiveValue([
-                "", // xs
-                "", // sm
-                "", // md
-                "lg:order-1", // lg
-                "lg:order-1", // xl
-              ])} space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 w-full`}
-            >
-              {/* Professional Badge */}
-              <div className="flex justify-center lg:justify-start">
-                <div className="inline-flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full px-2.5 xs:px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3">
-                  <div className="flex space-x-0.5 xs:space-x-1">
-                    <div
-                      className={`${getResponsiveValue([
-                        "w-1 h-1", // xs
-                        "w-1.5 h-1.5", // sm
-                        "w-1.5 h-1.5", // md
-                        "w-2 h-2", // lg
-                        "w-2 h-2", // xl
-                      ])} bg-green-400 rounded-full animate-pulse`}
-                    ></div>
-                    <div
-                      className={`${getResponsiveValue([
-                        "w-1 h-1", // xs
-                        "w-1.5 h-1.5", // sm
-                        "w-1.5 h-1.5", // md
-                        "w-2 h-2", // lg
-                        "w-2 h-2", // xl
-                      ])} bg-yellow-400 rounded-full animate-pulse`}
-                      style={{ animationDelay: "0.2s" }}
-                    ></div>
-                    <div
-                      className={`${getResponsiveValue([
-                        "w-1 h-1", // xs
-                        "w-1.5 h-1.5", // sm
-                        "w-1.5 h-1.5", // md
-                        "w-2 h-2", // lg
-                        "w-2 h-2", // xl
-                      ])} bg-red-400 rounded-full animate-pulse`}
-                      style={{ animationDelay: "0.4s" }}
-                    ></div>
-                  </div>
-                  <span
-                    className={`${getResponsiveValue([
-                      "text-[10px]", // xs
-                      "text-xs", // sm
-                      "text-xs", // md
-                      "text-sm", // lg
-                      "text-sm", // xl
-                    ])} text-gray-700 dark:text-gray-300 font-mono whitespace-nowrap`}
-                  >
-                    Open for opportunities
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6">
-                {/* Heading */}
-                <h1
-                  className={`${getResponsiveValue([
-                    "text-2xl", // xs
-                    "text-3xl", // sm
-                    "text-4xl", // md
-                    "text-5xl", // lg
-                    "text-6xl", // xl
-                  ])} font-bold text-gray-900 dark:text-white leading-tight xs:leading-tight sm:leading-tight`}
-                >
-                  <span
-                    className={`block ${getResponsiveValue([
-                      "text-xs", // xs
-                      "text-sm", // sm
-                      "text-sm", // md
-                      "text-base", // lg
-                      "text-lg", // xl
-                    ])} font-light text-gray-600 dark:text-gray-400 ${getResponsiveValue([
-                      "mb-1", // xs
-                      "mb-1.5", // sm
-                      "mb-2", // md
-                      "mb-3", // lg
-                      "mb-4", // xl
-                    ])} tracking-wide sm:tracking-wider lg:tracking-widest`}
-                  >
-                    HELLO, I'M
-                  </span>
-                  <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 dark:from-blue-400 dark:via-cyan-400 dark:to-emerald-400 bg-clip-text text-transparent break-words">
+            <RevealOnScroll direction="left" delay={100} duration={700}>
+              <div className="space-y-4">
+                <p className="text-gray-600 dark:text-gray-400 text-lg">Hello, I'm</p>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
+                  <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
                     {texts[textIndex].substring(0, charIndex)}
-                    <span className="typing-cursor">|</span>
                   </span>
+                  <span className="text-blue-500 animate-pulse">|</span>
                 </h1>
-
-                {/* Description */}
-                <p
-                  className={`${getResponsiveValue([
-                    "text-sm", // xs
-                    "text-base", // sm
-                    "text-lg", // md
-                    "text-xl", // lg
-                    "text-xl", // xl
-                  ])} text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-3 xs:px-4 sm:px-0`}
-                >
-                  {getResponsiveValue([
-                    // xs - Most compact
-                    <>
-                      Creating{" "}
-                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
-                        digital experiences
-                      </span>{" "}
-                      through code & design.
-                    </>,
-                    // sm - Slightly more detail
-                    <>
-                      Creating{" "}
-                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
-                        digital experiences
-                      </span>{" "}
-                      that blend design with engineering excellence.
-                    </>,
-                    // md - Balanced
-                    <>
-                      Crafting{" "}
-                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
-                        digital experiences
-                      </span>{" "}
-                      that blend design with robust engineering.
-                    </>,
-                    // lg - Full version
-                    <>
-                      Crafting{" "}
-                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
-                        digital experiences
-                      </span>{" "}
-                      that blend innovative design with robust engineering.
-                    </>,
-                    // xl - Complete version
-                    <>
-                      Crafting{" "}
-                      <span className="text-blue-600 dark:text-cyan-400 font-semibold">
-                        digital experiences
-                      </span>{" "}
-                      that blend innovative design with robust engineering. I
-                      transform complex problems into{" "}
-                      <span className="text-blue-400 font-semibold">
-                        elegant solutions
-                      </span>
-                      .
-                    </>,
-                  ])}
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
+                  Crafting <span className="text-blue-600 dark:text-cyan-400 font-semibold">digital experiences</span> that 
+                  blend innovative design with robust engineering.
                 </p>
               </div>
+            </RevealOnScroll>
 
-              {/* Tech Stack */}
-              <div
-                className={`py-3 xs:py-4 sm:py-5 md:py-6 overflow-hidden ${getResponsiveValue(
-                  [
-                    "max-w-xs mx-auto", // xs
-                    "max-w-sm mx-auto", // sm
-                    "max-w-md mx-auto", // md
-                    "", // lg
-                    "", // xl
-                  ]
-                )}`}
-              >
-                <div
-                  className={`flex space-x-3 xs:space-x-4 sm:space-x-5 md:space-x-6 ${getResponsiveValue(
-                    [
-                      "animate-marquee-fast", // xs
-                      "animate-marquee-fast", // sm
-                      "animate-marquee", // md
-                      "animate-marquee", // lg
-                      "animate-marquee", // xl
-                    ]
-                  )}`}
-                >
-                  {[
-                    "React",
-                    "TypeScript",
-                    "Laravel",
-                    "React Native",
-                    "Node.js",
-                    "Express.js",
-                    "MySQL",
-                    "PHP",
-                    "Docker",
-                    "Git",
-                    "Figma",
-                    "Tailwind CSS",
-                  ].map((tech, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-1 xs:space-x-1.5 sm:space-x-2 shrink-0"
-                    >
-                      <div
-                        className={`${getResponsiveValue([
-                          "w-1 h-1", // xs
-                          "w-1.5 h-1.5", // sm
-                          "w-1.5 h-1.5", // md
-                          "w-2 h-2", // lg
-                          "w-2 h-2", // xl
-                        ])} bg-blue-500 dark:bg-cyan-400 rounded-full`}
-                      ></div>
-                      <span
-                        className={`${getResponsiveValue([
-                          "text-[10px]", // xs
-                          "text-xs", // sm
-                          "text-xs", // md
-                          "text-sm", // lg
-                          "text-sm", // xl
-                        ])} text-gray-600 dark:text-gray-400 font-mono whitespace-nowrap`}
-                      >
-                        {tech}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+            <RevealOnScroll direction="up" delay={200} duration={600}>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech, i) => (
+                  <span 
+                    key={i}
+                    className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
+            </RevealOnScroll>
 
-              {/* CTA Buttons */}
-              <div
-                className={`flex ${getResponsiveValue([
-                  "flex-col", // xs
-                  "flex-col", // sm
-                  "flex-row", // md
-                  "flex-row", // lg
-                  "flex-row", // xl
-                ])} gap-2 xs:gap-3 sm:gap-4 ${getResponsiveValue([
-                  "pt-3", // xs
-                  "pt-4", // sm
-                  "pt-5", // md
-                  "pt-6", // lg
-                  "pt-8", // xl
-                ])} px-3 xs:px-4 sm:px-0`}
-              >
+            <RevealOnScroll direction="up" delay={300} duration={600}>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="#projects"
-                  className={`group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white ${getResponsiveValue(
-                    [
-                      "py-2.5 px-4 text-xs", // xs
-                      "py-3 px-5 text-sm", // sm
-                      "py-3 px-6 text-base", // md
-                      "py-4 px-7 text-base", // lg
-                      "py-4 px-8 text-lg", // xl
-                    ]
-                  )} rounded-lg xs:rounded-xl font-semibold transition-all duration-500 hover:shadow-lg xs:hover:shadow-xl hover:shadow-cyan-500/25 transform hover:scale-105 active:scale-95 overflow-hidden text-center flex-1`}
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-2xl font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-xl"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                  <span className="relative flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
-                    View My Work
-                    <svg
-                      className={`${getResponsiveValue([
-                        "w-3 h-3", // xs
-                        "w-4 h-4", // sm
-                        "w-4 h-4", // md
-                        "w-5 h-5", // lg
-                        "w-5 h-5", // xl
-                      ])} group-hover:translate-x-1 transition-transform`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </span>
-                </a>
-
-                <a
-                  href="#contact"
-                  className={`group border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 ${getResponsiveValue(
-                    [
-                      "py-2.5 px-4 text-xs", // xs
-                      "py-3 px-5 text-sm", // sm
-                      "py-3 px-6 text-base", // md
-                      "py-4 px-7 text-base", // lg
-                      "py-4 px-8 text-lg", // xl
-                    ]
-                  )} rounded-lg xs:rounded-xl font-semibold transition-all duration-500 hover:border-blue-500 dark:hover:border-cyan-400 hover:bg-blue-500/10 dark:hover:bg-cyan-400/10 hover:text-blue-700 dark:hover:text-white transform hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-center flex-1`}
-                >
-                  Contact Me
-                  <svg
-                    className={`${getResponsiveValue([
-                      "w-3 h-3", // xs
-                      "w-4 h-4", // sm
-                      "w-4 h-4", // md
-                      "w-5 h-5", // lg
-                      "w-5 h-5", // xl
-                    ])} group-hover:scale-110 transition-transform`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
+                  View My Work
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
-
                 <button
                   onClick={downloadCV}
-                  className={`group border-2 border-emerald-500 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400 ${getResponsiveValue(
-                    [
-                      "py-2.5 px-4 text-xs", // xs
-                      "py-3 px-5 text-sm", // sm
-                      "py-3 px-6 text-base", // md
-                      "py-4 px-7 text-base", // lg
-                      "py-4 px-8 text-lg", // xl
-                    ]
-                  )} rounded-lg xs:rounded-xl font-semibold transition-all duration-500 hover:bg-emerald-500 dark:hover:bg-emerald-400 hover:text-white dark:hover:text-gray-900 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-center flex-1 cursor-pointer`}
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-2xl font-semibold hover:border-blue-500 hover:text-blue-600 dark:hover:border-cyan-400 dark:hover:text-cyan-400 transition-all"
                 >
                   Download CV
-                  <svg
-                    className={`${getResponsiveValue([
-                      "w-3 h-3", // xs
-                      "w-4 h-4", // sm
-                      "w-4 h-4", // md
-                      "w-5 h-5", // lg
-                      "w-5 h-5", // xl
-                    ])} group-hover:translate-y-0.5 transition-transform`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    />
+                  <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                 </button>
               </div>
-            </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll direction="fade" delay={400} duration={600}>
+              <div className="flex items-center gap-4 pt-4">
+                <span className="text-sm text-gray-500 dark:text-gray-400">Find me on</span>
+                <div className="flex gap-3">
+                  <a href="https://github.com/kyawhla-commit" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <IoLogoGithub className="size-5 text-gray-700 dark:text-gray-300" />
+                  </a>
+                  <a href="#contact" className="p-3 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <IoMail className="size-5 text-gray-700 dark:text-gray-300" />
+                  </a>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+
+          {/* Right - Photo Section - CIRCULAR ORBIT STYLE */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <RevealOnScroll direction="scale" delay={200} duration={800}>
+              <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px]">
+                
+                {/* Outer Orbit Ring */}
+                <div className="absolute inset-0 rounded-full border border-gray-200 dark:border-gray-800">
+                  {/* Orbiting Dots */}
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
+                  </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s", animationDelay: "-5s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-500 rounded-full shadow-lg shadow-cyan-500/50"></div>
+                  </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "15s", animationDelay: "-10s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-purple-500 rounded-full shadow-lg shadow-purple-500/50"></div>
+                  </div>
+                </div>
+
+                {/* Middle Orbit Ring */}
+                <div className="absolute inset-8 rounded-full border border-gray-200 dark:border-gray-800">
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "10s", animationDirection: "reverse" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-500 rounded-full"></div>
+                  </div>
+                  <div className="absolute w-full h-full animate-spin" style={{ animationDuration: "10s", animationDirection: "reverse", animationDelay: "-5s" }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-amber-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* Inner Glow Ring */}
+                <div className="absolute inset-16 rounded-full bg-gradient-to-br from-blue-500/20 via-cyan-500/20 to-purple-500/20 animate-pulse"></div>
+
+                {/* Photo Container */}
+                <div className="absolute inset-20 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+                  <img
+                    src={photo}
+                    alt="Kyaw Hla"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Subtle Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent"></div>
+                </div>
+
+                {/* Center Glow */}
+                <div className="absolute inset-20 rounded-full bg-blue-500/10 blur-xl -z-10"></div>
+
+                {/* Floating Stat Cards */}
+                <RevealOnScroll direction="left" delay={500} duration={500}>
+                  <div className="absolute -left-4 top-1/4 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">6+</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Projects</div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                <RevealOnScroll direction="right" delay={600} duration={500}>
+                  <div className="absolute -right-4 top-1/3 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">15+</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">Skills</div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                <RevealOnScroll direction="up" delay={700} duration={500}>
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
+                      </div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Available Now</span>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                {/* Tech Icons Floating */}
+                <div className="absolute top-4 right-8 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "0s", animationDuration: "3s" }}>
+                  <span className="text-lg">⚛️</span>
+                </div>
+                <div className="absolute bottom-12 left-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "1s", animationDuration: "3s" }}>
+                  <span className="text-lg">🚀</span>
+                </div>
+                <div className="absolute top-1/2 -right-2 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "2s", animationDuration: "3s" }}>
+                  <span className="text-lg">💻</span>
+                </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
-      </RevealOnScroll>
+      </div>
 
       {/* Scroll Indicator */}
-      <div
-        className={`absolute ${getResponsiveValue([
-          "bottom-3", // xs
-          "bottom-4", // sm
-          "bottom-5", // md
-          "bottom-6", // lg
-          "bottom-8", // xl
-        ])} left-1/2 transform -translate-x-1/2`}
-      >
-        <div className="flex flex-col items-center space-y-1 xs:space-y-1.5 sm:space-y-2">
-          <span
-            className={`${getResponsiveValue([
-              "text-[10px]", // xs
-              "text-xs", // sm
-              "text-xs", // md
-              "text-xs", // lg
-              "text-sm", // xl
-            ])} text-gray-600 dark:text-gray-500 font-mono tracking-widest hidden xs:block`}
-          >
-            {getResponsiveValue([
-              "SCROLL", // xs
-              "SCROLL", // sm
-              "SCROLL TO EXPLORE", // md
-              "SCROLL TO EXPLORE", // lg
-              "SCROLL TO EXPLORE", // xl
-            ])}
-          </span>
-          <div
-            className={`${getResponsiveValue([
-              "w-4 h-6", // xs
-              "w-5 h-8", // sm
-              "w-5 h-8", // md
-              "w-6 h-10", // lg
-              "w-6 h-10", // xl
-            ])} border border-gray-400 dark:border-gray-600 rounded-full flex justify-center`}
-          >
-            <div
-              className={`w-1 ${getResponsiveValue([
-                "h-1.5", // xs
-                "h-2", // sm
-                "h-2", // md
-                "h-3", // lg
-                "h-3", // xl
-              ])} bg-blue-500 dark:bg-cyan-400 rounded-full mt-1 xs:mt-1.5 sm:mt-2 animate-scroll`}
-            ></div>
-          </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <span className="text-xs text-gray-500 dark:text-gray-400 font-mono tracking-widest">SCROLL</span>
+        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-2 bg-blue-500 rounded-full animate-scroll"></div>
         </div>
       </div>
     </section>

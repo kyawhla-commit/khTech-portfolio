@@ -1,182 +1,171 @@
-import { useEffect, useRef } from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { downloadCV } from '../utils/downloadCV';
+import { useEffect, useRef } from "react";
+import { useTheme } from "../context/ThemeContext";
+import { FiSun, FiMoon } from "react-icons/fi";
+import { IoClose, IoLogoGithub, IoMail } from "react-icons/io5";
+import { SiTelegram } from "react-icons/si";
+import { downloadCV } from "../utils/downloadCV";
 
-export const MobileMenu = ({ 
-  menuOpen, 
-  setMenuOpen,
-  onMenuItemClick 
-}) => {
+export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   const { theme, toggleTheme } = useTheme();
   const menuRef = useRef(null);
-  const closeButtonRef = useRef(null);
-  const firstMenuItemRef = useRef(null);
-  // refs for all menu items so we can focus the one matching the current section
-  const menuItemRefs = useRef([]);
 
-  // Close menu on Escape key press
   useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === 'Escape' && menuOpen) {
-        setMenuOpen(false);
-      }
+    const handleEscape = (e) => {
+      if (e.key === "Escape" && menuOpen) setMenuOpen(false);
     };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [menuOpen, setMenuOpen]);
 
-  // Trap focus within menu when open
   useEffect(() => {
-    if (menuOpen && menuRef.current) {
-      // When the menu opens, try to focus the link that corresponds to the
-      // currently visible/active section. We use the URL hash as the source of
-      // truth (e.g. #about). If there is no hash or no matching link, fall
-      // back to the first menu item.
-      const hash = (window.location.hash || '').replace('#', '');
-
-      let target = null;
-      if (hash) {
-        target = menuItemRefs.current.find((el) => {
-          if (!el) return false;
-          // Prefer data-section match, fallback to href match
-          const section = el.dataset.section;
-          if (section === hash) return true;
-          const href = el.getAttribute('href') || '';
-          return href.endsWith(`#${hash}`);
-        });
-      }
-
-      (target ?? firstMenuItemRef.current)?.focus();
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [menuOpen]);
-
-  const handleMenuItemClick = (sectionId) => {
-    setMenuOpen(false);
-    onMenuItemClick?.(sectionId);
-  };
-
-  const handleBackdropClick = (event) => {
-    if (event.target === menuRef.current) {
-      setMenuOpen(false);
-    }
-  };
 
   const menuItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'certificates', label: 'Certificates' },
-    { id: 'contact', label: 'Contact' }
+    { id: "home", label: "Home", icon: "01" },
+    { id: "about", label: "About", icon: "02" },
+    { id: "projects", label: "Projects", icon: "03" },
+    { id: "certificates", label: "Certificates", icon: "04" },
+    { id: "contact", label: "Contact", icon: "05" },
+  ];
+
+  const socialLinks = [
+    { icon: IoLogoGithub, href: "https://github.com/kyawhla-commit/", label: "GitHub" },
+    { icon: SiTelegram, href: "https://t.me/kyawhla20", label: "Telegram" },
+    { icon: IoMail, href: "mailto:bwarpay.bp8@gmail.com", label: "Email" },
   ];
 
   return (
     <div
       ref={menuRef}
-      onClick={handleBackdropClick}
-      className={`fixed inset-0 z-50 transition-all duration-300 ease-in-out ${
-        menuOpen
-          ? 'bg-black/80 backdrop-blur-sm opacity-100 pointer-events-auto'
-          : 'bg-transparent opacity-0 pointer-events-none'
+      className={`fixed inset-0 z-50 md:hidden transition-all duration-500 ${
+        menuOpen ? "visible" : "invisible"
       }`}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Mobile navigation menu"
-      aria-hidden={!menuOpen}
     >
-      {/* Close button */}
-      <button
-        ref={closeButtonRef}
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ${
+          menuOpen ? "opacity-100" : "opacity-0"
+        }`}
         onClick={() => setMenuOpen(false)}
-        className="absolute right-6 top-6 text-white text-3xl focus:outline-none cursor-pointer hover:text-gray-300 transition-colors duration-200 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded"
-        aria-label="Close menu"
-      >
-        &times;
-      </button>
+      />
 
-      {/* Menu content */}
-      <nav 
-        className="flex flex-col items-center justify-center h-full"
-        aria-label="Main navigation"
+      {/* Menu Panel */}
+      <div
+        className={`absolute right-0 top-0 h-full w-full max-w-sm bg-white dark:bg-gray-900 shadow-2xl transition-transform duration-500 ease-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        {menuItems.map((item, index) => (
-          <a
-            key={item.id}
-            // store each menu item ref so we can focus it later
-            ref={(el) => {
-              menuItemRefs.current[index] = el;
-              if (index === 0) firstMenuItemRef.current = el;
-            }}
-            data-section={item.id}
-            href={`#${item.id}`}
-            onClick={() => handleMenuItemClick(item.id)}
-            className={`text-2xl font-semibold text-white my-4 transform transition-all duration-300 hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-4 py-2 ${
-              menuOpen
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-5'
-            }`}
-            style={{
-              transitionDelay: menuOpen ? `${index * 100}ms` : '0ms'
-            }}
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">K</span>
+            </div>
+            <span className="font-bold text-lg text-gray-900 dark:text-white">Menu</span>
+          </div>
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
           >
-            {item.label}
-          </a>
-        ))}
+            <IoClose className="size-6 text-gray-700 dark:text-gray-300" />
+          </button>
+        </div>
 
-        {/* Download CV Button */}
-        <button
-          onClick={downloadCV}
-          className={`mt-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer ${
-            menuOpen
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-5'
-          }`}
-          style={{
-            transitionDelay: menuOpen ? `${menuItems.length * 100}ms` : '0ms'
-          }}
-        >
-          Download CV
-        </button>
+        {/* Navigation Links */}
+        <nav className="p-6">
+          <div className="space-y-2">
+            {menuItems.map((item, index) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group ${
+                  menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                }`}
+                style={{ transitionDelay: menuOpen ? `${index * 50 + 100}ms` : "0ms" }}
+              >
+                <span className="text-xs font-mono text-blue-500 dark:text-cyan-400 w-6">
+                  {item.icon}
+                </span>
+                <span className="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                  {item.label}
+                </span>
+                <svg
+                  className="w-5 h-5 text-gray-400 ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            ))}
+          </div>
+        </nav>
 
-        {/* Theme Toggle in Mobile Menu */}
-        <button
-          onClick={toggleTheme}
-          className={`mt-4 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 group ${
-            menuOpen
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-5'
-          }`}
-          style={{
-            transitionDelay: menuOpen ? `${(menuItems.length + 1) * 100}ms` : '0ms'
-          }}
-          aria-label="Toggle theme"
-        >
-          {theme === 'light' ? (
-            <FiMoon className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
-          ) : (
-            <FiSun className="w-6 h-6 text-yellow-400 group-hover:rotate-90 transition-transform duration-300" />
-          )}
-        </button>
-      </nav>
+        {/* Bottom Section */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
+          {/* Download CV */}
+          <button
+            onClick={() => {
+              downloadCV();
+              setMenuOpen(false);
+            }}
+            className={`w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl font-semibold mb-4 hover:shadow-lg hover:shadow-blue-500/25 transition-all ${
+              menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: menuOpen ? "400ms" : "0ms" }}
+          >
+            Download Resume
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </button>
+
+          {/* Theme & Social */}
+          <div
+            className={`flex items-center justify-between ${
+              menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: menuOpen ? "450ms" : "0ms" }}
+          >
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            >
+              {theme === "light" ? (
+                <>
+                  <FiMoon className="w-5 h-5 text-gray-700" />
+                  <span className="text-sm text-gray-700">Dark</span>
+                </>
+              ) : (
+                <>
+                  <FiSun className="w-5 h-5 text-amber-500" />
+                  <span className="text-sm text-gray-300">Light</span>
+                </>
+              )}
+            </button>
+
+            {/* Social Links */}
+            <div className="flex gap-2">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gray-200 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-500 dark:hover:bg-blue-500 transition-colors group"
+                >
+                  <Icon className="size-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
-
-// Optional: Add prop types for better development experience
-MobileMenu.defaultProps = {
-  onMenuItemClick: () => {}
 };
