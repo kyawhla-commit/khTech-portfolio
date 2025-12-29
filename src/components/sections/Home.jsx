@@ -9,7 +9,7 @@ export const Home = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = ["Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
+  const texts = ["Khun Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
 
   useEffect(() => {
     const currentText = texts[textIndex];
@@ -218,9 +218,7 @@ export const Home = () => {
                 </RevealOnScroll>
 
                 {/* Tech Icons Floating - Scaled for mobile */}
-                <div className="absolute top-2 sm:top-4 right-4 sm:right-8 w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "0s", animationDuration: "3s" }}>
-                  <span className="text-sm sm:text-base lg:text-lg">⚛️</span>
-                </div>
+                {/*  */}
                 <div className="absolute bottom-8 sm:bottom-12 left-2 sm:left-4 w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-lg flex items-center justify-center animate-bounce" style={{ animationDelay: "1s", animationDuration: "3s" }}>
                   <span className="text-sm sm:text-base lg:text-lg">🚀</span>
                 </div>
