@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-xs: 475px;
   --animate-loading-bar: loading 0.8s ease infinite;
   --animate-blink: blink 0.8s step-end infinite;
   --animate-bounce: bounce 1s infinite;
