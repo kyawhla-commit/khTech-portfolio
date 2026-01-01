@@ -22,6 +22,7 @@ body {
 html {
   background: #ffffff;
   color: #1f2937;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html.dark {
@@ -33,12 +34,27 @@ html.dark {
 *,
 *::before,
 *::after {
-  transition: background-color 0.3s ease,
-              border-color 0.3s ease,
-              color 0.3s ease,
-              fill 0.3s ease,
-              stroke 0.3s ease,
-              box-shadow 0.3s ease;
+  transition: background-color 0.2s ease-out,
+              border-color 0.2s ease-out,
+              color 0.2s ease-out,
+              fill 0.2s ease-out,
+              stroke 0.2s ease-out,
+              box-shadow 0.2s ease-out;
+}
+
+/* Exclude elements that shouldn't transition (performance optimization for mobile) */
+img,
+video,
+svg path,
+canvas,
+[class*="animate-"],
+.no-theme-transition {
+  transition: none !important;
+}
+
+/* Re-enable color transitions for SVG icons */
+svg {
+  transition: color 0.2s ease-out, fill 0.2s ease-out, stroke 0.2s ease-out;
 }
 
 /* Disable transition during initial load to prevent flash */
@@ -46,6 +62,12 @@ html.theme-transition-disabled *,
 html.theme-transition-disabled *::before,
 html.theme-transition-disabled *::after {
   transition: none !important;
+}
+
+/* Use GPU acceleration for smoother transitions on mobile */
+html.dark,
+html:not(.dark) {
+  will-change: background-color;
 }
 
 @layer utilities {
