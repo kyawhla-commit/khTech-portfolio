@@ -33,9 +33,7 @@ export const About = () => {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0">
-                Results-driven developer with expertise in modern web technologies. 
-                I specialize in building scalable applications using React, Node.js, and Laravel. 
-                Passionate about creating efficient, maintainable code that delivers exceptional user experiences.
+                Motivated junior developer with a strong foundation in modern web technologies. I enjoy building applications using React, Node.js, and Laravel. Passionate about writing clean, maintainable code and continuously improving my skills.
               </p>
 
               {/* Quick Stats */}
@@ -50,7 +48,7 @@ export const About = () => {
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
                     <span className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">15+</span>
                   </div>
-                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Technologies<br/>Mastered</span>
+                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Technologies<br/>Learned</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">

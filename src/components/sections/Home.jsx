@@ -9,7 +9,7 @@ export const Home = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = ["Khun Kyaw Hla", "Full Stack Developer", "Digital Craftsman"];
+  const texts = ["Khun Kyaw Hla", "Web Developer", "React Enthusiast"];
 
   useEffect(() => {
     const currentText = texts[textIndex];
@@ -83,8 +83,7 @@ export const Home = () => {
                   <span className="text-blue-500 animate-pulse">|</span>
                 </h1>
                 <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                  Crafting <span className="text-blue-600 dark:text-cyan-400 font-semibold">digital experiences</span> that 
-                  blend innovative design with robust engineering.
+                  Passionate about creating <span className="text-blue-600 dark:text-cyan-400 font-semibold">clean, functional code</span> and learning every day.
                 </p>
               </div>
             </RevealOnScroll>

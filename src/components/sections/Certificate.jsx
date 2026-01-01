@@ -42,7 +42,7 @@ export const Certificate = () => {
               Certifications
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Professional certifications demonstrating expertise in modern technologies
+             Certifications that reflect my commitment to learning modern technologies
             </p>
           </div>
         </RevealOnScroll>
