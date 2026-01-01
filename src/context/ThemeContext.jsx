@@ -59,7 +59,17 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
+    const root = document.documentElement;
+    
+    // Add transitioning class for smooth animation
+    root.classList.add('theme-transitioning');
+    
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    
+    // Remove transitioning class after animation completes
+    setTimeout(() => {
+      root.classList.remove('theme-transitioning');
+    }, 450);
   };
 
   return (
