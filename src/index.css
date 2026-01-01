@@ -30,51 +30,13 @@ html.dark {
   color: #f3f4f6;
 }
 
-/* Smooth theme transition - optimized for mobile */
-html {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Theme transition class - applied during toggle */
-.theme-transitioning *,
-.theme-transitioning *::before,
-.theme-transitioning *::after {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              fill 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              stroke 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Exclude heavy elements from transitions */
-.theme-transitioning img,
-.theme-transitioning video,
-.theme-transitioning canvas {
-  transition: none !important;
-}
-
-/* Disable transition during initial load to prevent flash */
-html.theme-transition-disabled *,
-html.theme-transition-disabled *::before,
-html.theme-transition-disabled *::after {
-  transition: none !important;
-}
-
-/* GPU acceleration for smoother transitions */
-section,
-nav,
-footer,
-main,
-header {
-  transform: translateZ(0);
-  backface-visibility: hidden;
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease;
 }
 
 @layer utilities {
