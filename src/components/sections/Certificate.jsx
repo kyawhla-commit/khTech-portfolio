@@ -32,7 +32,7 @@ export const Certificate = () => {
   };
 
   const SKILLS_PREVIEW_COUNT = 3;
-  const DESCRIPTION_PREVIEW_LENGTH = 120;
+  const DESCRIPTION_PREVIEW_LENGTH_MOBILE = 120; // Only for mobile/tablet
 
   return (
     <section
@@ -105,10 +105,11 @@ export const Certificate = () => {
                 const displayedSkills = isExpanded ? cert.skills : cert.skills.slice(0, SKILLS_PREVIEW_COUNT);
                 const hiddenCount = cert.skills.length - SKILLS_PREVIEW_COUNT;
                 
-                const needsReadMore = cert.description.length > DESCRIPTION_PREVIEW_LENGTH;
-                const displayedDescription = isDescExpanded 
+                // Read more only for mobile/tablet (< lg breakpoint)
+                const needsReadMoreMobile = cert.description.length > DESCRIPTION_PREVIEW_LENGTH_MOBILE;
+                const displayedDescriptionMobile = isDescExpanded 
                   ? cert.description 
-                  : cert.description.slice(0, DESCRIPTION_PREVIEW_LENGTH) + (needsReadMore ? '...' : '');
+                  : cert.description.slice(0, DESCRIPTION_PREVIEW_LENGTH_MOBILE) + (needsReadMoreMobile ? '...' : '');
 
                 return (
                   <div
@@ -164,15 +165,23 @@ export const Certificate = () => {
                             {cert.title}
                           </h3>
 
-                          {/* Description with Read More */}
+                          {/* Description with Read More (Mobile/Tablet only) */}
                           <div className="mb-4 sm:mb-6">
-                            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                              {displayedDescription}
+                            {/* Mobile/Tablet: Truncated with Read More */}
+                            <p className="lg:hidden text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {displayedDescriptionMobile}
                             </p>
-                            {needsReadMore && (
+                            
+                            {/* Desktop: Full description always shown */}
+                            <p className="hidden lg:block text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {cert.description}
+                            </p>
+                            
+                            {/* Read More button - Mobile/Tablet only */}
+                            {needsReadMoreMobile && (
                               <button
                                 onClick={() => toggleDescription(cert.id)}
-                                className="mt-2 text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium inline-flex items-center gap-1 transition-colors"
+                                className="lg:hidden mt-2 text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium inline-flex items-center gap-1 transition-colors"
                               >
                                 {isDescExpanded ? (
                                   <>
