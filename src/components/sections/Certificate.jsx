@@ -7,6 +7,7 @@ export const Certificate = () => {
   const [selectedCert, setSelectedCert] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedSkills, setExpandedSkills] = useState({});
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -23,7 +24,15 @@ export const Certificate = () => {
     }));
   };
 
+  const toggleDescription = (certId) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [certId]: !prev[certId]
+    }));
+  };
+
   const SKILLS_PREVIEW_COUNT = 3;
+  const DESCRIPTION_PREVIEW_LENGTH = 120;
 
   return (
     <section
@@ -91,9 +100,15 @@ export const Certificate = () => {
             >
               {Educations.map((cert, index) => {
                 const isExpanded = expandedSkills[cert.id];
+                const isDescExpanded = expandedDescriptions[cert.id];
                 const hasMoreSkills = cert.skills.length > SKILLS_PREVIEW_COUNT;
                 const displayedSkills = isExpanded ? cert.skills : cert.skills.slice(0, SKILLS_PREVIEW_COUNT);
                 const hiddenCount = cert.skills.length - SKILLS_PREVIEW_COUNT;
+                
+                const needsReadMore = cert.description.length > DESCRIPTION_PREVIEW_LENGTH;
+                const displayedDescription = isDescExpanded 
+                  ? cert.description 
+                  : cert.description.slice(0, DESCRIPTION_PREVIEW_LENGTH) + (needsReadMore ? '...' : '');
 
                 return (
                   <div
@@ -134,68 +149,99 @@ export const Certificate = () => {
 
                         {/* Content Side */}
                         <div className="p-4 sm:p-6 lg:p-8 xl:p-10 flex flex-col justify-center">
-                          <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-4">
-                            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></span>
-                            <span className="text-green-600 dark:text-green-400 text-xs sm:text-sm font-medium">Verified</span>
+                          {/* Verified Badge */}
+                          <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></span>
+                              <span className="text-green-600 dark:text-green-400 text-xs sm:text-sm font-semibold">Verified</span>
+                            </div>
+                            <span className="text-gray-300 dark:text-gray-600">•</span>
+                            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Professional Certificate</span>
                           </div>
 
-                          <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 leading-tight">
+                          {/* Title */}
+                          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">
                             {cert.title}
                           </h3>
 
-                          <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-                            {cert.description}
-                          </p>
-
-                          {/* Skills */}
+                          {/* Description with Read More */}
                           <div className="mb-4 sm:mb-6">
-                            <div className="flex items-center justify-between mb-2 sm:mb-3">
-                              <h4 className="text-[10px] sm:text-xs lg:text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                Skills Acquired
-                              </h4>
-                              <span className="text-[10px] sm:text-xs text-gray-400 dark:text-gray-500">
-                                {cert.skills.length} skills
-                              </span>
-                            </div>
-                            
-                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                              {displayedSkills.map((skill, i) => (
-                                <span
-                                  key={i}
-                                  className="px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 text-blue-700 dark:text-blue-300 rounded-lg sm:rounded-xl text-[10px] sm:text-xs lg:text-sm font-medium border border-blue-100 dark:border-blue-800"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Show More/Less Button */}
-                            {hasMoreSkills && (
+                            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {displayedDescription}
+                            </p>
+                            {needsReadMore && (
                               <button
-                                onClick={() => toggleSkills(cert.id)}
-                                className="mt-2 sm:mt-3 flex items-center gap-1 text-[10px] sm:text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+                                onClick={() => toggleDescription(cert.id)}
+                                className="mt-2 text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium inline-flex items-center gap-1 transition-colors"
                               >
-                                {isExpanded ? (
+                                {isDescExpanded ? (
                                   <>
-                                    <IoChevronUp className="w-3 h-3 sm:w-4 sm:h-4" />
+                                    <IoChevronUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                                     Show less
                                   </>
                                 ) : (
                                   <>
-                                    <IoChevronDown className="w-3 h-3 sm:w-4 sm:h-4" />
-                                    Show {hiddenCount} more skill{hiddenCount > 1 ? 's' : ''}
+                                    <IoChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    Read more
                                   </>
                                 )}
                               </button>
                             )}
                           </div>
 
+                          {/* Skills Section */}
+                          <div className="mb-5 sm:mb-6">
+                            <div className="flex items-center justify-between mb-3">
+                              <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                                </svg>
+                                Skills Acquired
+                              </h4>
+                              <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded-full">
+                                {cert.skills.length}
+                              </span>
+                            </div>
+                            
+                            <div className="flex flex-wrap gap-2">
+                              {displayedSkills.map((skill, i) => (
+                                <span
+                                  key={i}
+                                  className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-xs sm:text-sm font-medium border border-blue-100 dark:border-blue-800 hover:shadow-md transition-shadow"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Show More/Less Skills Button */}
+                            {hasMoreSkills && (
+                              <button
+                                onClick={() => toggleSkills(cert.id)}
+                                className="mt-3 flex items-center gap-1.5 text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
+                              >
+                                {isExpanded ? (
+                                  <>
+                                    <IoChevronUp className="w-4 h-4" />
+                                    Show less
+                                  </>
+                                ) : (
+                                  <>
+                                    <IoChevronDown className="w-4 h-4" />
+                                    +{hiddenCount} more skill{hiddenCount > 1 ? 's' : ''}
+                                  </>
+                                )}
+                              </button>
+                            )}
+                          </div>
+
+                          {/* View Certificate Button */}
                           <button
                             onClick={() => setSelectedCert(cert)}
-                            className="self-start px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg sm:rounded-xl font-medium text-xs sm:text-sm lg:text-base hover:scale-105 transition-transform flex items-center gap-1.5 sm:gap-2"
+                            className="self-start px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl font-semibold text-sm sm:text-base hover:scale-105 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
                           >
+                            <IoExpand className="w-4 h-4" />
                             View Certificate
-                            <IoExpand className="w-3 h-3 sm:w-4 sm:h-4" />
                           </button>
                         </div>
                       </div>
