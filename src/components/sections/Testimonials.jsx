@@ -4,6 +4,8 @@ import { useState } from "react";
 
 export const Testimonials = () => {
   const [expandedId, setExpandedId] = useState(null);
+  const [styleVariant, setStyleVariant] = useState("modern"); // modern, minimal, card, gradient
+
   const testimonials = [
     {
       id: 1,
@@ -57,135 +59,107 @@ export const Testimonials = () => {
             return (
               <RevealOnScroll 
                 key={testimonial.id} 
-                direction="scale" 
+                direction="up" 
                 delay={index * 100} 
                 duration={600}
               >
-                <div className="group relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all hover:shadow-2xl">
-                  {/* Quote Icon */}
-                  <RevealOnScroll direction="scale" delay={200} duration={500}>
-                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-blue-500/10 dark:text-blue-400/10">
-                      <svg className="w-16 h-16 sm:w-20 sm:h-20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
-                  </RevealOnScroll>
-
-                  {/* Author Info - Moved to top */}
-                  <RevealOnScroll direction="left" delay={100} duration={500}>
-                    <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                {/* Clean Professional Card */}
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
+                  
+                  {/* Header Section */}
+                  <div className="flex items-start gap-4 mb-6 pb-6 border-b border-gray-100 dark:border-gray-700">
                     {/* Avatar */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg ring-4 ring-blue-100 dark:ring-blue-900/30">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl sm:text-2xl shadow-md flex-shrink-0">
                       {testimonial.avatar}
                     </div>
 
-                    {/* Details */}
-                    <div className="flex-1">
-                      <h4 className="font-bold text-lg sm:text-xl text-gray-900 dark:text-white">
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-lg sm:text-xl text-gray-900 dark:text-white mb-1">
                         {testimonial.name}
                       </h4>
-                      <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        <IoSchool className="w-4 h-4" />
-                        <span>{testimonial.role}</span>
-                      </div>
-                      <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                        {testimonial.date}
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        {testimonial.role}
                       </p>
-                    </div>
-
-                    {/* Stars */}
-                    <div className="hidden sm:flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <IoStar key={i} className="w-5 h-5 text-yellow-400" />
-                      ))}
+                      
+                      {/* Rating */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <IoStar key={i} className="w-4 h-4 text-yellow-400" />
+                          ))}
+                        </div>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                          {testimonial.date}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  </RevealOnScroll>
 
-                  {/* Stars - Mobile */}
-                  <RevealOnScroll direction="fade" delay={150} duration={400}>
-                    <div className="flex gap-1 mb-4 sm:hidden">
-                      {[...Array(5)].map((_, i) => (
-                        <IoStar key={i} className="w-4 h-4 text-yellow-400" />
-                      ))}
-                    </div>
-                  </RevealOnScroll>
-
-                  {/* Key Highlights */}
-                  <RevealOnScroll direction="up" delay={200} duration={500}>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 sm:p-5 mb-5 sm:mb-6 border border-blue-100 dark:border-blue-800/50">
-                    <h5 className="text-sm font-semibold text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  {/* Key Points */}
+                  <div className="mb-6">
+                    <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       Key Highlights
                     </h5>
                     <ul className="space-y-2">
                       {testimonial.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
+                        <li key={i} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
                           <span>{highlight}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  </RevealOnScroll>
 
-                  {/* Message */}
-                  <RevealOnScroll direction="up" delay={300} duration={500}>
-                    <div className="relative">
-                    <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed relative z-10 whitespace-pre-line">
+                  {/* Testimonial Text */}
+                  <div className="mb-6">
+                    <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                       {isExpanded ? testimonial.fullMessage : testimonial.shortMessage}
                     </p>
                     
-                    {/* Read More/Less Button */}
+                    {/* Read More Button */}
                     <button
                       onClick={() => setExpandedId(isExpanded ? null : testimonial.id)}
-                      className="mt-3 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center gap-1 group/btn"
+                      className="mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1 transition-colors"
                     >
                       {isExpanded ? (
                         <>
                           Show less
-                          <svg className="w-4 h-4 group-hover/btn:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                           </svg>
                         </>
                       ) : (
                         <>
                           Read full recommendation
-                          <svg className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </>
                       )}
                     </button>
                   </div>
-                  </RevealOnScroll>
 
                   {/* Facebook Link */}
                   {testimonial.fbLink && (
-                    <RevealOnScroll direction="up" delay={400} duration={500}>
-                      <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="pt-6 border-t border-gray-100 dark:border-gray-700">
                       <a 
                         href={testimonial.fbLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-md hover:shadow-lg"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1877F2] hover:bg-[#0C63D4] text-white rounded-lg text-sm font-medium transition-colors"
                       >
                         <IoLogoFacebook className="w-5 h-5" />
-                        View original post on Facebook
+                        View on Facebook
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
-                    </RevealOnScroll>
                   )}
-
-                  {/* Decorative Element */}
-                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-500/5 to-transparent rounded-tl-full pointer-events-none"></div>
                 </div>
               </RevealOnScroll>
             );
