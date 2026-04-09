@@ -101,15 +101,17 @@ export const Project = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col xs:flex-row gap-2 sm:gap-3 lg:gap-4">
-                  <a
-                    href={featuredProject.git}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg sm:rounded-xl font-medium text-sm sm:text-base hover:scale-105 transition-transform"
-                  >
-                    <IoLogoGithub className="w-4 h-4 sm:w-5 sm:h-5" />
-                    View Code
-                  </a>
+                  {featuredProject.git && (
+                    <a
+                      href={featuredProject.git}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg sm:rounded-xl font-medium text-sm sm:text-base hover:scale-105 transition-transform"
+                    >
+                      <IoLogoGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+                      View Code
+                    </a>
+                  )}
                   {featuredProject.live && (
                     <a
                       href={featuredProject.live}
@@ -117,7 +119,7 @@ export const Project = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg sm:rounded-xl font-medium text-sm sm:text-base hover:scale-105 transition-transform"
                     >
-                      Live Demo
+                      {featuredProject.liveLabel || "Live Demo"}
                       <IoArrowForward className="w-3 h-3 sm:w-4 sm:h-4" />
                     </a>
                   )}

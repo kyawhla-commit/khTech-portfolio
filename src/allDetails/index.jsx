@@ -25,6 +25,122 @@ import { FaUbuntu } from "react-icons/fa";
 
 
 export const Projects = [
+  {
+    year: "2026",
+    name: "PaOh Typing Tutor",
+    description: "A multilingual typing tutor for English, Burmese, and PaOh practice with profile presets, split keyboard layouts, custom passages, and progress tracking in a focused training workspace.",
+    projectFeatures: [
+      {
+        section: "Practice Experience",
+        items: [
+          "Supports English, Burmese, and PaOh lesson tracks",
+          "Includes 6-7 and 5-6 split layout practice modes",
+          "Focus mode keeps the typing workspace distraction-light",
+          "Quick reset and error-fix commands streamline training",
+        ]
+      },
+      {
+        section: "Learning Tools",
+        items: [
+          "Profile presets for saving practice progress",
+          "Dashboard for tracking progress and best WPM",
+          "Custom passages and paragraph-set imports",
+          "Built with Next.js App Router and Tailwind CSS v4",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/paohtypingtutor.git",
+    live: "https://paohtypingtutor-kffa.vercel.app/#1.1",
+    technologies: ["Next.js", "Tailwind CSS", "Typing Tutor", "Multilingual UX"],
+  },
+
+  {
+    year: "2026",
+    name: "Spendly",
+    description: "A personal finance mobile app published on Google Play for tracking expenses, managing budgets, and building savings with local-first storage.",
+    projectFeatures: [
+      {
+        section: "Core Features",
+        items: [
+          "Track income and expenses with custom categories",
+          "Set budget limits and savings goals",
+          "Review financial summaries and insights",
+          "Export backup files locally when needed",
+        ]
+      },
+      {
+        section: "Product Highlights",
+        items: [
+          "Published on Google Play Store",
+          "Stores financial data locally on the device",
+          "Supports theme, currency, and language preferences",
+          "Built with Expo and AsyncStorage",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/expense-tracker-Mobile.git",
+    live: "https://play.google.com/store/apps/details?id=com.bp8.spendly",
+    liveLabel: "Play Store",
+    technologies: ["Expo", "AsyncStorage", "Android", "Local-First"],
+  },
+
+  {
+    year: "2026",
+    name: "Myanmar Calendar Hub",
+    description: "A Myanmar calendar workspace for month, week, and day planning with date conversion, Thingyan, Mahabote, and Julian or Unix utilities.",
+    projectFeatures: [
+      {
+        section: "Workspace Features",
+        items: [
+          "Month, week, and day calendar views",
+          "Myanmar and Western date support",
+          "Local planning workspace for schedules",
+          "Shareable calendar links",
+        ]
+      },
+      {
+        section: "Date Utilities",
+        items: [
+          "Built on canonical mmcal engines",
+          "Date conversion tools",
+          "Thingyan and Mahabote helpers",
+          "Julian day and Unix time utilities",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/calendar.git",
+    live: "https://calendar-eight-zeta.vercel.app/",
+    technologies: ["Next.js", "mmcal", "Calendar Workspace", "Date Utilities"],
+  },
+
+  {
+    year: "2026",
+    name: "KTP Calculator",
+    description: "A calculator workspace that groups practical tools for money, borrowing, dates, and conversions in a fast, mobile-friendly interface.",
+    projectFeatures: [
+      {
+        section: "Calculator Coverage",
+        items: [
+          "Money and borrowing calculators",
+          "Date difference and age calculators",
+          "Conversion-focused utilities",
+          "Recent work workspace for quick return",
+        ]
+      },
+      {
+        section: "Product Highlights",
+        items: [
+          "Client-first experience with instant updates",
+          "Responsive layout for desktop and mobile",
+          "Metadata coverage for production pages",
+          "Fast navigation across calculator groups",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit/calculator.git",
+    live: "https://calculator-sooty-eta.vercel.app/",
+    technologies: ["Next.js", "Calculator Suite", "Responsive UI", "Web App"],
+  },
 
   {
     year: "2025",
