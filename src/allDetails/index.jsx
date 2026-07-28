@@ -6,7 +6,7 @@ import Certificate3 from "../assets/Certificate3.jpg";
 
 import { RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
-import { FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows } from "react-icons/fa";
+import { FaAws, FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows } from "react-icons/fa";
 import { TbApi, TbBrandReactNative } from "react-icons/tb";
 import {
   SiMysql,
@@ -18,6 +18,7 @@ import {
   SiTypeorm,
   SiGoogleplay,
   SiCloudflare,
+  SiDigitalocean,
   SiVercel,
 } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
@@ -326,6 +327,18 @@ export const frontendSkills = [
       icon: FaWindows,
       color: "#0078D4",
       category: "Windows Services"
+    },
+    {
+      name: "AWS (EC2)",
+      icon: FaAws,
+      color: "#FF9900",
+      category: "Cloud Infrastructure"
+    },
+    {
+      name: "DigitalOcean Droplets",
+      icon: SiDigitalocean,
+      color: "#0080FF",
+      category: "Cloud Infrastructure"
     },
     {
       name: "Cloudflare Pages",
