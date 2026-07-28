@@ -284,7 +284,7 @@ def draw_first_page(c):
         ("Data", "PostgreSQL, MySQL, TypeORM, Database Design"),
         ("App Distribution", "Google Play Console"),
         ("Deployment", "NSSM, Windows Services, On-Premises Deployment"),
-        ("Cloud Hosting", "Cloudflare Pages, Vercel, GitHub Pages, Render"),
+        ("Cloud Hosting", "Cloudflare Pages, Vercel, GitHub Pages"),
         ("Tools", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
         ("Delivery", "RESTful APIs, CRUD, Validation, Filtering, Pagination, Dashboards, Reporting"),
     ]

@@ -19,7 +19,6 @@ import {
   SiGoogleplay,
   SiCloudflare,
   SiVercel,
-  SiRender,
 } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { MdPhp } from "react-icons/md";
@@ -344,12 +343,6 @@ export const frontendSkills = [
       name: "GitHub Pages",
       icon: FaGithub,
       color: "#4078C0",
-      category: "Cloud Hosting"
-    },
-    {
-      name: "Render",
-      icon: SiRender,
-      color: "#46E3B7",
       category: "Cloud Hosting"
     },
   ];

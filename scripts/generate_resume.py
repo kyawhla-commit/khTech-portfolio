@@ -216,7 +216,7 @@ skills = [
     ("ORM", "TypeORM"),
     ("App Distribution", "Google Play Console"),
     ("Deployment and Operations", "NSSM, Windows Services, On-Premises Deployment"),
-    ("Cloud and Hosting", "Cloudflare Pages, Vercel, GitHub Pages, Render"),
+    ("Cloud and Hosting", "Cloudflare Pages, Vercel, GitHub Pages"),
     ("Tools and Platforms", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
     (
         "Development Skills",
