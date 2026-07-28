@@ -197,7 +197,7 @@ def draw_first_page(c):
     side_y = sidebar_heading(c, "Core stack", side_x, side_y - 1 * mm)
     side_y = paragraph(
         c,
-        "React.js<br/>TypeScript<br/>React Native<br/>NestJS<br/>Node.js<br/>Laravel<br/>PostgreSQL",
+        "React.js<br/>TypeScript<br/>Kotlin<br/>React Native<br/>NestJS<br/>Node.js<br/>Laravel<br/>PostgreSQL",
         side_x,
         side_y,
         side_w,
@@ -237,8 +237,8 @@ def draw_first_page(c):
     y = paragraph(
         c,
         "Full-Stack Web and Mobile Developer with experience building and maintaining enterprise "
-        "applications using React.js, TypeScript, React Native, NestJS, Node.js, Laravel, and "
-        "PostgreSQL. Skilled in RESTful APIs, responsive interfaces, mobile applications, "
+        "applications using React.js, TypeScript, Kotlin, React Native, NestJS, Node.js, Laravel, "
+        "and PostgreSQL. Skilled in RESTful APIs, responsive interfaces, mobile applications, "
         "database-driven systems, dashboards, and reports. Experienced in debugging applications, "
         "improving performance, and collaborating with development teams using Git.",
         main_x,
@@ -279,7 +279,7 @@ def draw_first_page(c):
     y = section(c, "03 Technical Skills", main_x, y, main_w)
     skills = [
         ("Frontend", "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS"),
-        ("Mobile", "React Native"),
+        ("Mobile", "Kotlin, React Native"),
         ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
         ("Data", "PostgreSQL, MySQL, TypeORM, Database Design"),
         ("App Distribution", "Google Play Console"),
@@ -394,11 +394,11 @@ def draw_second_page(c):
     left_y = project_block(
         c,
         "YBS Way",
-        "React Native | TypeScript",
-        "Mobile application for YBS bus-route search and public transportation information in Yangon.",
+        "Kotlin | Android",
+        "Native Android application for YBS bus-route search and public transportation information in Yangon.",
         [
-            "Created reusable mobile UI components and screen navigation.",
-            "Applied responsive design across mobile screen sizes.",
+            "Created reusable native Android UI components and screen navigation.",
+            "Adapted the interface across Android screen sizes.",
         ],
         x,
         y,

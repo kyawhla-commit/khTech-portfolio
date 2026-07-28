@@ -17,6 +17,7 @@ import {
   SiPostgresql,
   SiTypeorm,
   SiGoogleplay,
+  SiKotlin,
   SiCloudflare,
   SiDigitalocean,
   SiVercel,
@@ -48,8 +49,8 @@ export const Projects = [
       {
         section: "Technology",
         items: [
-          "Built with React Native and TypeScript",
-          "Component-driven interface architecture",
+          "Built natively for Android with Kotlin",
+          "Native Android interface architecture",
           "Mobile-first interaction patterns",
           "Structured for maintainable feature growth",
         ]
@@ -58,7 +59,7 @@ export const Projects = [
     git: "https://github.com/kyawhla-commit",
     live: "https://ybs-way-web.pages.dev/",
     liveLabel: "Open App",
-    technologies: ["React Native", "TypeScript", "Mobile App", "YBS"],
+    technologies: ["Kotlin", "Android", "Mobile App", "YBS"],
   },
 
   {
@@ -225,6 +226,12 @@ export const frontendSkills = [
       icon: TbBrandReactNative, 
       color: "#3178C6",
       category: "Frontend"
+    },
+    {
+      name: "Kotlin",
+      icon: SiKotlin,
+      color: "#7F52FF",
+      category: "Mobile"
     },
   ];
 

@@ -198,8 +198,8 @@ story += section("Professional Summary")
 story.append(
     Paragraph(
         "Full-Stack Web and Mobile Developer with experience building and maintaining enterprise "
-        "applications using React.js, TypeScript, React Native, NestJS, Node.js, Laravel, and "
-        "PostgreSQL. Skilled in developing RESTful APIs, responsive user interfaces, mobile "
+        "applications using React.js, TypeScript, Kotlin, React Native, NestJS, Node.js, Laravel, "
+        "and PostgreSQL. Skilled in developing RESTful APIs, responsive user interfaces, mobile "
         "applications, database-driven systems, dashboards, and reports. Experienced in solving "
         "real-world business problems, debugging applications, improving performance, and "
         "collaborating with development teams using Git.",
@@ -210,7 +210,7 @@ story.append(
 story += section("Technical Skills")
 skills = [
     ("Frontend", "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS"),
-    ("Mobile", "React Native"),
+    ("Mobile", "Kotlin, React Native"),
     ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
     ("Databases", "PostgreSQL, MySQL"),
     ("ORM", "TypeORM"),
@@ -334,11 +334,11 @@ story += section("Personal Projects")
 personal_projects = [
     (
         "YBS Way - Public Transportation Mobile App",
-        "React Native | TypeScript",
+        "Kotlin | Android",
         [
-            "Developed a mobile application for YBS bus-route search and transportation information in Yangon.",
-            "Created reusable mobile UI components and managed navigation between application screens.",
-            "Organized route information clearly and applied responsive design across mobile screen sizes.",
+            "Developed a native Android application with Kotlin for YBS bus-route search and transportation information in Yangon.",
+            "Created reusable native Android UI components and managed navigation between application screens.",
+            "Organized route information clearly across different Android screen sizes.",
         ],
         "https://ybs-way-web.pages.dev/",
     ),

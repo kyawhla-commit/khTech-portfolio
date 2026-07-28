@@ -37,7 +37,7 @@ export const Home = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex, texts]);
 
-  const techStack = ["React.js", "TypeScript", "React Native", "NestJS", "Node.js", "Laravel", "PostgreSQL"];
+  const techStack = ["React.js", "TypeScript", "Kotlin", "React Native", "NestJS", "Node.js", "Laravel", "PostgreSQL"];
 
   return (
     <section

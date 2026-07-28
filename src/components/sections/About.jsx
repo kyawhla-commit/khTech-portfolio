@@ -33,7 +33,7 @@ export const About = () => {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0">
-                Experienced in building enterprise applications with React.js, TypeScript, NestJS, Node.js, Laravel, and PostgreSQL. I develop responsive interfaces, RESTful APIs, relational databases, dashboards, reporting systems, and React Native mobile applications.
+                Experienced in building enterprise applications with React.js, TypeScript, NestJS, Node.js, Laravel, and PostgreSQL. I develop responsive interfaces, RESTful APIs, relational databases, dashboards, reporting systems, and Kotlin and React Native mobile applications.
               </p>
 
               {/* Quick Stats */}
