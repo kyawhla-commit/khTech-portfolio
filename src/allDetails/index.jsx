@@ -4,27 +4,57 @@ import Certificate2 from "../assets/Certificate2.jpg";
 import Certificate3 from "../assets/Certificate3.jpg";
 
 
-import { RiReactjsLine, RiJavascriptLine, RiTailwindCssFill } from "react-icons/ri";
+import { RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
-import { FaBootstrap, FaDigitalOcean, FaFigma, FaGithub } from "react-icons/fa";
+import { FaBootstrap, FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { TbApi, TbBrandReactNative } from "react-icons/tb";
 import {
   SiMysql,
-  SiDocker,
   SiNodedotjs,
   SiExpress,
   SiTypescript,
-  SiMui,
+  SiNestjs,
+  SiPostgresql,
+  SiTypeorm,
 } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { MdPhp } from "react-icons/md";
 import { SiPostman } from "react-icons/si";
 import { FaUbuntu } from "react-icons/fa";
+import { VscCode } from "react-icons/vsc";
 
 
 
 
 export const Projects = [
+  {
+    year: "2026",
+    name: "YBS Way",
+    description: "A public transportation mobile application for accessing YBS bus routes and transportation information across Yangon.",
+    projectFeatures: [
+      {
+        section: "Mobile Experience",
+        items: [
+          "Access YBS bus routes and transportation information",
+          "Reusable UI components across application screens",
+          "Clear screen navigation for mobile users",
+          "Responsive layouts for different device sizes",
+        ]
+      },
+      {
+        section: "Technology",
+        items: [
+          "Built with React Native and TypeScript",
+          "Component-driven interface architecture",
+          "Mobile-first interaction patterns",
+          "Structured for maintainable feature growth",
+        ]
+      }
+    ],
+    git: "https://github.com/kyawhla-commit",
+    technologies: ["React Native", "TypeScript", "Mobile App", "YBS"],
+  },
+
   {
     year: "2026",
     name: "PaOh Typing Tutor",
@@ -57,7 +87,7 @@ export const Projects = [
   {
     year: "2026",
     name: "Spendly",
-    description: "A personal finance mobile app published on Google Play for tracking expenses, managing budgets, and building savings with local-first storage.",
+    description: "A React Native mobile application for tracking personal income and expenses with transaction management, categories, and spending summaries.",
     projectFeatures: [
       {
         section: "Core Features",
@@ -81,7 +111,7 @@ export const Projects = [
     git: "https://github.com/kyawhla-commit/expense-tracker-Mobile.git",
     live: "https://play.google.com/store/apps/details?id=com.bp8.spendly",
     liveLabel: "Play Store",
-    technologies: ["Expo", "AsyncStorage", "Android", "Local-First"],
+    technologies: ["React Native", "TypeScript", "Expo", "AsyncStorage"],
   },
 
   {
@@ -332,21 +362,21 @@ export const Educations = [
   {
     id: 1,
     image: Certificate1,
-    title: "Professional Web Developer Course | Fairway Technology",
+    title: "Professional Web Developer - Laravel and PHP | Fairway Technology",
     description: "This certification validates proficiency in backend web development, covering JavaScript fundamentals, responsive design with Bootstrap, database management with PHP/MySQL, and building full-stack applications using the Laravel framework.",
     skills: ["JavaScript", "Bootstrap", "PHP/MySQL", "Laravel Framework"],
   },
   {
     id: 2,
     image: Certificate2,
-    title: "Professional Web Developer Course | Fairway Technology",
+    title: "Professional Web Developer - React.js, Next.js and Express.js | Fairway Technology",
     description: "This certification demonstrates expertise in modern frontend and full-stack development, including React ecosystem, React Native for mobile apps, server-side rendering with Next.js, and backend development with Express.js.",
     skills: ["JavaScript", "React", "React Native", "Express", "Next.js"],
   },
   {
     id: 3,
     image: Certificate3,
-    title: "Professional UI/UX Design Course | Fairway Technology",
+    title: "Professional UI/UX Design | Fairway Technology",
     description: "This certification validates skills in user interface and user experience design, covering Figma, design thinking process, user research, customer journey mapping, visual hierarchy, typography, color theory, and mobile/web design patterns.",
     skills: ["Figma", "UI Design", "UX Design", "Design Thinking", "User Research", "Prototyping"],
   },
@@ -372,12 +402,18 @@ export const frontendSkills = [
       color: "#3178C6",
       category: "Frontend"
     },
-    // { 
-    //   name: "MUI", 
-    //   icon: SiMui, 
-    //   color: "#3178C6",
-    //   category: "Frontend"
-    // },
+    {
+      name: "HTML5",
+      icon: FaHtml5,
+      color: "#E34F26",
+      category: "Frontend"
+    },
+    {
+      name: "CSS3",
+      icon: FaCss3Alt,
+      color: "#1572B6",
+      category: "Frontend"
+    },
     { 
       name: "TailwindCss", 
       icon: RiTailwindCssFill, 
@@ -391,7 +427,7 @@ export const frontendSkills = [
       category: "Frontend"
     },
     { 
-      name: "ReactNative", 
+      name: "React Native",
       icon: TbBrandReactNative, 
       color: "#3178C6",
       category: "Frontend"
@@ -399,6 +435,12 @@ export const frontendSkills = [
   ];
 
   export const backendSkills = [
+    {
+      name: "NestJS",
+      icon: SiNestjs,
+      color: "#E0234E",
+      category: "Backend"
+    },
     { 
       name: "Laravel", 
       icon: IoLogoLaravel, 
@@ -416,6 +458,18 @@ export const frontendSkills = [
       icon: SiMysql, 
       color: "#4479A1",
       category: "Database"
+    },
+    {
+      name: "PostgreSQL",
+      icon: SiPostgresql,
+      color: "#4169E1",
+      category: "Database"
+    },
+    {
+      name: "TypeORM",
+      icon: SiTypeorm,
+      color: "#FE0803",
+      category: "ORM"
     },
     { 
       name: "RESTful API", 
@@ -462,17 +516,10 @@ export const frontendSkills = [
       color: "#E95420",
       category: "Infrastructure"
     },
-  
-    // { 
-    //   name: "Docker", 
-    //   icon: SiDocker, 
-    //   color: "#2496ED",
-    //   category: "Infrastructure"
-    // },
-    { 
-      name: "Figma", 
-      icon: FaFigma, 
-      color: "#F24E1E",
-      category: "Design"
+    {
+      name: "VS Code",
+      icon: VscCode,
+      color: "#007ACC",
+      category: "Development"
     },
   ];

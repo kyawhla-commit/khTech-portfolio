@@ -4,12 +4,14 @@ import photo from "../../assets/photo.jpg";
 import { downloadCV } from "../../utils/downloadCV";
 import { IoLogoGithub, IoMail } from "react-icons/io5";
 
+const rotatingTitles = ["Khun Kyaw Hla", "Full-Stack Developer", "Web & Mobile Developer"];
+
 export const Home = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = ["KhunKyawHla", "WebDeveloper", "ReactEnthusiast"];
+  const texts = rotatingTitles;
 
   useEffect(() => {
     const currentText = texts[textIndex];
@@ -35,7 +37,7 @@ export const Home = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex, texts]);
 
-  const techStack = ["React", "TypeScript", "Laravel", "Node.js", "React Native", "MySQL"];
+  const techStack = ["React.js", "TypeScript", "React Native", "NestJS", "Node.js", "Laravel", "PostgreSQL"];
 
   return (
     <section
@@ -69,7 +71,7 @@ export const Home = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span className="text-green-700 dark:text-green-300 text-xs sm:text-sm font-medium">Available for work</span>
+                <span className="text-green-700 dark:text-green-300 text-xs sm:text-sm font-medium">Full-Stack Developer at M-Tech</span>
               </div>
             </RevealOnScroll>
 
@@ -83,7 +85,7 @@ export const Home = () => {
                   <span className="text-blue-500 animate-pulse">|</span>
                 </h1>
                 <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                  Passionate about creating <span className="text-blue-600 dark:text-cyan-400 font-semibold">clean, functional code</span> and learning every day.
+                  I build <span className="text-blue-600 dark:text-cyan-400 font-semibold">enterprise web systems and mobile applications</span> with responsive interfaces, RESTful APIs, and reliable databases.
                 </p>
               </div>
             </RevealOnScroll>
@@ -175,7 +177,7 @@ export const Home = () => {
                 <div className="absolute inset-10 sm:inset-14 lg:inset-20 rounded-full overflow-hidden border-2 sm:border-4 border-white dark:border-gray-800 shadow-2xl">
                   <img
                     src={photo}
-                    alt="Kyaw Hla"
+                    alt="Khun Kyaw Hla"
                     className="w-full h-full object-cover"
                   />
                   {/* Subtle Overlay */}
@@ -189,8 +191,8 @@ export const Home = () => {
                 <RevealOnScroll direction="left" delay={500} duration={500}>
                   <div className="absolute -left-2 sm:-left-4 top-1/4 bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-xl border border-gray-200 dark:border-gray-700 hidden xs:block">
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600 dark:text-blue-400">6+</div>
-                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Projects</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600 dark:text-blue-400">3</div>
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Enterprise Apps</div>
                     </div>
                   </div>
                 </RevealOnScroll>
@@ -198,8 +200,8 @@ export const Home = () => {
                 <RevealOnScroll direction="right" delay={600} duration={500}>
                   <div className="absolute -right-2 sm:-right-4 top-1/3 bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-xl border border-gray-200 dark:border-gray-700 hidden xs:block">
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-cyan-600 dark:text-cyan-400">15+</div>
-                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Skills</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-cyan-600 dark:text-cyan-400">Web + Mobile</div>
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">Full Stack</div>
                     </div>
                   </div>
                 </RevealOnScroll>
@@ -211,7 +213,7 @@ export const Home = () => {
                         <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full"></div>
                         <div className="absolute inset-0 w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full animate-ping"></div>
                       </div>
-                      <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">Available Now</span>
+                      <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">Yangon, Myanmar</span>
                     </div>
                   </div>
                 </RevealOnScroll>

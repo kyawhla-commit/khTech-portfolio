@@ -40,8 +40,8 @@ export const Contact = () => {
 
   const contactInfo = [
     { icon: IoMail, label: "Email", value: "bwarpay.bp8@gmail.com", href: "mailto:bwarpay.bp8@gmail.com" },
-    { icon: IoCall, label: "Phone", value: "+95 967 706 6891", href: "tel:+959677066891" },
-    { icon: IoLocation, label: "Location", value: "Pinlon, Southern Shan State", href: null },
+    { icon: IoCall, label: "Phone", value: "+95 9 677 066 891", href: "tel:+959677066891" },
+    { icon: IoLocation, label: "Location", value: "Yangon, Myanmar", href: null },
   ];
 
   return (

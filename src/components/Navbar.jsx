@@ -23,6 +23,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
     { href: "#contact", label: "Contact" },
@@ -44,7 +45,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               <span className="text-white font-bold text-lg">K</span>
             </div>
             <span className="font-bold text-xl text-gray-900 dark:text-white hidden sm:block">
-              Kyaw<span className="text-blue-500">Hla</span>
+              Khun Kyaw<span className="text-blue-500"> Hla</span>
             </span>
           </a>
 

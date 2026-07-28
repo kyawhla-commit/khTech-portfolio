@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
+const loadingPhrases = ["Initializing...", "Loading assets...", "Almost ready..."];
+
 export const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [text, setText] = useState("");
   const [phase, setPhase] = useState(0);
   
-  const fullText = "KyawHla";
-  const phrases = ["Initializing...", "Loading assets...", "Almost ready..."];
+  const fullText = "Khun Kyaw Hla";
 
   // Typing effect for name
   useEffect(() => {
@@ -39,7 +40,7 @@ export const LoadingScreen = ({ onComplete }) => {
   // Phase text change
   useEffect(() => {
     const interval = setInterval(() => {
-      setPhase((prev) => (prev + 1) % phrases.length);
+      setPhase((prev) => (prev + 1) % loadingPhrases.length);
     }, 800);
     return () => clearInterval(interval);
   }, []);
@@ -87,7 +88,7 @@ export const LoadingScreen = ({ onComplete }) => {
             {text}
             <span className="text-blue-400 animate-pulse">|</span>
           </h1>
-          <p className="text-gray-500 text-sm font-mono">{phrases[phase]}</p>
+          <p className="text-gray-500 text-sm font-mono">{loadingPhrases[phase]}</p>
         </div>
 
         {/* Progress Section */}
@@ -127,7 +128,7 @@ export const LoadingScreen = ({ onComplete }) => {
       {/* Bottom Branding */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <p className="text-gray-600 text-xs font-mono tracking-wider">
-          PORTFOLIO • 2025
+          PORTFOLIO • 2026
         </p>
       </div>
 

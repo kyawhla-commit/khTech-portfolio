@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { useState } from "react";
 import { frontendSkills, backendSkills, toolSkills } from "../../allDetails";
 import { RevealOnScroll } from "../RevealOnScroll";
@@ -27,28 +27,28 @@ export const About = () => {
                 About Me
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
-                Full-Stack Developer
+                Full-Stack Web & Mobile
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">
-                  & Problem Solver
+                  Developer
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0">
-                Motivated junior developer with a strong foundation in modern web technologies. I enjoy building applications using React, Node.js, and Laravel. Passionate about writing clean, maintainable code and continuously improving my skills.
+                Experienced in building enterprise applications with React.js, TypeScript, NestJS, Node.js, Laravel, and PostgreSQL. I develop responsive interfaces, RESTful APIs, relational databases, dashboards, reporting systems, and React Native mobile applications.
               </p>
 
               {/* Quick Stats */}
               <div className="flex flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
-                    <span className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">6+</span>
+                    <span className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
                   </div>
-                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Projects<br/>Completed</span>
+                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Enterprise<br/>Systems</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
-                    <span className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">15+</span>
+                    <span className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">Web</span>
                   </div>
-                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Technologies<br/>Learned</span>
+                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Frontend &<br/>Backend</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
@@ -72,10 +72,10 @@ export const About = () => {
                   </div>
                   <div className="space-y-1.5 sm:space-y-2 text-gray-300 overflow-x-auto">
                     <p><span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {"{"}</p>
-                    <p className="pl-3 sm:pl-4"><span className="text-green-400">name</span>: <span className="text-amber-400">"Kyaw Hla"</span>,</p>
-                    <p className="pl-3 sm:pl-4"><span className="text-green-400">role</span>: <span className="text-amber-400">"Full-Stack Dev"</span>,</p>
-                    <p className="pl-3 sm:pl-4"><span className="text-green-400">passion</span>: <span className="text-amber-400">"Building Apps"</span>,</p>
-                    <p className="pl-3 sm:pl-4"><span className="text-green-400">available</span>: <span className="text-blue-400">true</span></p>
+                    <p className="pl-3 sm:pl-4"><span className="text-green-400">name</span>: <span className="text-amber-400">"Khun Kyaw Hla"</span>,</p>
+                    <p className="pl-3 sm:pl-4"><span className="text-green-400">role</span>: <span className="text-amber-400">"Full-Stack Web & Mobile"</span>,</p>
+                    <p className="pl-3 sm:pl-4"><span className="text-green-400">company</span>: <span className="text-amber-400">"M-Tech"</span>,</p>
+                    <p className="pl-3 sm:pl-4"><span className="text-green-400">location</span>: <span className="text-amber-400">"Yangon, Myanmar"</span></p>
                     <p>{"}"}</p>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export const About = () => {
           </RevealOnScroll>
 
           {/* Skills Grid */}
-          <motion.div
+          <Motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,7 +140,7 @@ export const About = () => {
                 </div>
               </RevealOnScroll>
             ))}
-          </motion.div>
+          </Motion.div>
         </div>
 
         {/* Experience & Education */}
@@ -161,19 +161,16 @@ export const About = () => {
               <div className="relative pl-6 sm:pl-8 border-l-2 border-green-200 dark:border-green-800">
                 <div className="absolute left-0 top-0 w-3 h-3 sm:w-4 sm:h-4 -translate-x-[7px] sm:-translate-x-[9px] bg-green-500 rounded-full"></div>
                 <div className="pb-5 sm:pb-6 lg:pb-8">
-                  <span className="text-xs sm:text-sm text-green-600 dark:text-green-400 font-medium">2019 - 2025</span>
-                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mt-1">Bachelor of Arts</h4>
+                  <span className="text-xs sm:text-sm text-green-600 dark:text-green-400 font-medium">Bachelor's Degree</span>
+                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mt-1">Bachelor of Arts in Geography</h4>
                   <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Pinlon University</p>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 mt-2">
-                    Major in Geography with focus on spatial analysis and regional studies
-                  </p>
                 </div>
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-900 rounded-lg sm:rounded-xl p-3 sm:p-4 mt-3 sm:mt-4">
-                <h5 className="font-medium text-sm sm:text-base text-gray-900 dark:text-white mb-2">Focus Areas</h5>
+                <h5 className="font-medium text-sm sm:text-base text-gray-900 dark:text-white mb-2">Languages</h5>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {['Physical Geography', 'Cartography', 'Regional Studies', 'Spatial Analysis'].map((area) => (
+                  {['Pa-O - Native', 'Burmese - Fluent', 'English - Intermediate'].map((area) => (
                     <span key={area} className="px-2 sm:px-3 py-0.5 sm:py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md sm:rounded-lg text-xs sm:text-sm">
                       {area}
                     </span>
@@ -199,14 +196,15 @@ export const About = () => {
               <div className="relative pl-6 sm:pl-8 border-l-2 border-purple-200 dark:border-purple-800">
                 <div className="absolute left-0 top-0 w-3 h-3 sm:w-4 sm:h-4 -translate-x-[7px] sm:-translate-x-[9px] bg-purple-500 rounded-full"></div>
                 <div className="pb-5 sm:pb-6 lg:pb-8">
-                  <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-medium">2020 - 2022</span>
-                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mt-1">Sales & Marketing Specialist</h4>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Mytel International Telecom</p>
+                  <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-medium">January 2026 - Present</span>
+                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mt-1">Full-Stack Web Developer</h4>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">M-Tech (Myo & Moe Technology Co., Ltd.)</p>
                   <ul className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2">
                     {[
-                      'Developed marketing strategies for fiber optic services',
-                      'Managed key customer accounts and relationships',
-                      'Contributed to business growth through data-driven campaigns'
+                      'Develop and maintain enterprise applications using React.js, TypeScript, and NestJS',
+                      'Build RESTful APIs with PostgreSQL and MySQL integrations',
+                      'Implement CRUD, dashboards, reports, filtering, pagination, and validation',
+                      'Diagnose bugs, improve performance, and collaborate using Git and GitHub'
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                         <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></span>
@@ -219,7 +217,7 @@ export const About = () => {
 
               <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg sm:rounded-xl p-3 sm:p-4 mt-3 sm:mt-4">
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  <span className="font-medium text-gray-900 dark:text-white">Currently:</span> Focused on full-stack development, building projects and expanding technical expertise.
+                  <span className="font-medium text-gray-900 dark:text-white">Current focus:</span> Building reliable enterprise systems across frontend, backend, and database layers.
                 </p>
               </div>
             </div>

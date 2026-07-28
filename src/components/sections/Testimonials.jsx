@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export const Testimonials = () => {
   const [expandedId, setExpandedId] = useState(null);
-  const [styleVariant, setStyleVariant] = useState("modern"); // modern, minimal, card, gradient
 
   const testimonials = [
     {

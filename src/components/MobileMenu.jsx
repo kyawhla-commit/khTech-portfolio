@@ -25,9 +25,10 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   const menuItems = [
     { id: "home", label: "Home", icon: "01" },
     { id: "about", label: "About", icon: "02" },
-    { id: "projects", label: "Projects", icon: "03" },
-    { id: "certificates", label: "Certificates", icon: "04" },
-    { id: "contact", label: "Contact", icon: "05" },
+    { id: "experience", label: "Experience", icon: "03" },
+    { id: "projects", label: "Projects", icon: "04" },
+    { id: "certificates", label: "Certificates", icon: "05" },
+    { id: "contact", label: "Contact", icon: "06" },
   ];
 
   const socialLinks = [

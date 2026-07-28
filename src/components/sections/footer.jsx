@@ -14,6 +14,7 @@ export const Footer = () => {
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
     { href: "#contact", label: "Contact" },
@@ -35,7 +36,7 @@ export const Footer = () => {
                 <span className="text-white font-bold text-base sm:text-lg">K</span>
               </div>
               <span className="font-bold text-lg sm:text-xl text-gray-900 dark:text-white">
-                Kyaw<span className="text-blue-500">Hla</span>
+                Khun Kyaw<span className="text-blue-500"> Hla</span>
               </span>
             </a>
             <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs mx-auto sm:mx-0">
@@ -89,7 +90,7 @@ export const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center gap-1">
-              © {currentYear} Kyaw Hla. Made with
+              © {currentYear} Khun Kyaw Hla. Made with
               <IoHeart className="text-red-500 w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </p>
 

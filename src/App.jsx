@@ -6,7 +6,7 @@ import { Navbar } from "./components/Navbar";
 import { MobileMenu } from "./components/MobileMenu";
 import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
-import { Testimonials } from "./components/sections/Testimonials";
+import { Experience } from "./components/sections/Experience";
 import { Project } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 import { Certificate } from "./components/sections/Certificate";
@@ -30,7 +30,7 @@ function App() {
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <Home/>
         <About/>
-        <Testimonials/>
+        <Experience/>
         <Project/>
         <Certificate/>
         <Contact/>
