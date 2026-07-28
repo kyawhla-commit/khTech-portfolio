@@ -53,6 +53,8 @@ export const Projects = [
       }
     ],
     git: "https://github.com/kyawhla-commit",
+    live: "https://ybs-way-web.pages.dev/",
+    liveLabel: "Open App",
     technologies: ["React Native", "TypeScript", "Mobile App", "YBS"],
   },
 

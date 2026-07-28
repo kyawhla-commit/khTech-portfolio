@@ -335,6 +335,7 @@ personal_projects = [
             "Created reusable mobile UI components and managed navigation between application screens.",
             "Organized route information clearly and applied responsive design across mobile screen sizes.",
         ],
+        "https://ybs-way-web.pages.dev/",
     ),
     (
         "Spendly - Expense Tracker Mobile App",
@@ -344,19 +345,25 @@ personal_projects = [
             "Implemented create, view, edit, and delete workflows with income and expense categories.",
             "Built spending summaries, a user-friendly interface, and efficient state management.",
         ],
+        None,
     ),
 ]
-for name, stack, contributions in personal_projects:
-    story.append(
-        KeepTogether(
-            [
-                Paragraph(name, project_title_style),
-                Paragraph(stack, meta_style),
-                *[bullet(item) for item in contributions],
-                Spacer(1, 3),
-            ]
+for name, stack, contributions, live_url in personal_projects:
+    project_content = [
+        Paragraph(name, project_title_style),
+        Paragraph(stack, meta_style),
+        *[bullet(item) for item in contributions],
+    ]
+    if live_url:
+        project_content.append(
+            Paragraph(
+                f'Live app: <link href="{live_url}" color="#2563EB">'
+                "ybs-way-web.pages.dev</link>",
+                small_style,
+            )
         )
-    )
+    project_content.append(Spacer(1, 3))
+    story.append(KeepTogether(project_content))
 story.append(
     Paragraph(
         'Repository: <link href="https://github.com/kyawhla-commit" color="#2563EB">'

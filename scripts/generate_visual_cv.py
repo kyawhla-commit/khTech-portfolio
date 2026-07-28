@@ -301,7 +301,7 @@ def draw_first_page(c):
     c.showPage()
 
 
-def project_block(c, name, stack, description, items, x, y, width):
+def project_block(c, name, stack, description, items, x, y, width, live_url=None, live_label=None):
     c.setFillColor(NAVY_DARK)
     title = Paragraph(name, project_title_style)
     _, title_h = title.wrap(width, PAGE_HEIGHT)
@@ -310,6 +310,17 @@ def project_block(c, name, stack, description, items, x, y, width):
     y = paragraph(c, stack, x, y, width, project_meta_style, 1.4 * mm)
     y = paragraph(c, description, x, y, width, muted_style, 1.5 * mm)
     y = bullets(c, items, x, y, width)
+    if live_url:
+        label = live_label or live_url
+        y = paragraph(
+            c,
+            f'<link href="{live_url}" color="#2563EB">Live app: {label}</link>',
+            x,
+            y,
+            width,
+            project_meta_style,
+            1.2 * mm,
+        )
     return y - 3 * mm
 
 
@@ -387,6 +398,8 @@ def draw_second_page(c):
         x,
         y,
         column_width,
+        live_url="https://ybs-way-web.pages.dev/",
+        live_label="ybs-way-web.pages.dev",
     )
     right_y = project_block(
         c,
