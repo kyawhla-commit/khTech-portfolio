@@ -133,6 +133,7 @@ h3 {
 .button:focus-visible,
 .brand-link:focus-visible,
 .contact-list a:focus-visible,
+.personal-project-link:focus-visible,
 .cv-footer a:focus-visible {
   outline: 3px solid var(--cyan-400);
   outline-offset: 3px;
@@ -645,6 +646,20 @@ h3 {
   color: #bfdbfe;
   font-size: 0.76rem;
   font-weight: 700;
+}
+
+.personal-project-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.85rem;
+  color: var(--cyan-400);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.personal-project-link:hover {
+  color: var(--white);
 }
 
 .final-grid {
