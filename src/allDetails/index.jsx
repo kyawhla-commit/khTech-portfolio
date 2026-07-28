@@ -16,6 +16,7 @@ import {
   SiNestjs,
   SiPostgresql,
   SiTypeorm,
+  SiGoogleplay,
 } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { MdPhp } from "react-icons/md";
@@ -521,5 +522,11 @@ export const frontendSkills = [
       icon: VscCode,
       color: "#007ACC",
       category: "Development"
+    },
+    {
+      name: "Google Play Console",
+      icon: SiGoogleplay,
+      color: "#34A853",
+      category: "App Distribution"
     },
   ];

@@ -57,8 +57,8 @@ name_style = ParagraphStyle(
     "Name",
     parent=styles["Title"],
     fontName=FONT_BOLD,
-    fontSize=24,
-    leading=27,
+    fontSize=25.5,
+    leading=29,
     textColor=NAVY,
     alignment=TA_CENTER,
     spaceAfter=3,
@@ -67,8 +67,8 @@ role_style = ParagraphStyle(
     "Role",
     parent=styles["Normal"],
     fontName=FONT_BOLD,
-    fontSize=11,
-    leading=14,
+    fontSize=10.5,
+    leading=13.5,
     textColor=BLUE,
     alignment=TA_CENTER,
     spaceAfter=5,
@@ -86,8 +86,8 @@ section_style = ParagraphStyle(
     "Section",
     parent=styles["Heading2"],
     fontName=FONT_BOLD,
-    fontSize=10.5,
-    leading=13,
+    fontSize=11,
+    leading=13.5,
     textColor=BLUE,
     spaceBefore=7,
     spaceAfter=4,
@@ -98,8 +98,8 @@ body_style = ParagraphStyle(
     "Body",
     parent=styles["BodyText"],
     fontName=FONT,
-    fontSize=8.6,
-    leading=11.8,
+    fontSize=9,
+    leading=12.2,
     textColor=NAVY,
     alignment=TA_LEFT,
     spaceAfter=3,
@@ -107,16 +107,16 @@ body_style = ParagraphStyle(
 small_style = ParagraphStyle(
     "Small",
     parent=body_style,
-    fontSize=8.2,
-    leading=11,
+    fontSize=8.4,
+    leading=11.3,
     textColor=SLATE,
 )
 job_title_style = ParagraphStyle(
     "JobTitle",
     parent=body_style,
     fontName=FONT_BOLD,
-    fontSize=9.4,
-    leading=12,
+    fontSize=9.7,
+    leading=12.4,
     textColor=NAVY,
     spaceAfter=1,
 )
@@ -141,8 +141,8 @@ project_title_style = ParagraphStyle(
     "ProjectTitle",
     parent=body_style,
     fontName=FONT_BOLD,
-    fontSize=9,
-    leading=11.5,
+    fontSize=9.3,
+    leading=11.8,
     textColor=NAVY,
     spaceAfter=1,
 )
@@ -179,7 +179,7 @@ def page_footer(canvas, doc):
 
 story = [
     Paragraph("KHUN KYAW HLA", name_style),
-    Paragraph("FULL-STACK WEB & MOBILE DEVELOPER", role_style),
+    Paragraph("Full-Stack Web & Mobile Developer", role_style),
     Paragraph(
         '<link href="mailto:bwarpay.bp8@gmail.com" color="#475569">bwarpay.bp8@gmail.com</link>'
         " | +95 9 677 066 891 | Yangon, Myanmar",
@@ -214,7 +214,8 @@ skills = [
     ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
     ("Databases", "PostgreSQL, MySQL"),
     ("ORM", "TypeORM"),
-    ("Tools and Platforms", "Git, GitHub, Postman, Ubuntu Linux, Visual Studio Code"),
+    ("App Distribution", "Google Play Console"),
+    ("Tools and Platforms", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
     (
         "Development Skills",
         "RESTful APIs, CRUD Operations, Responsive Web Design, Database Design, Form Validation, "

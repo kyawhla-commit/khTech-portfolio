@@ -54,8 +54,8 @@ FONT, FONT_BOLD = register_fonts()
 body_style = ParagraphStyle(
     "VisualBody",
     fontName=FONT,
-    fontSize=8.5,
-    leading=11.5,
+    fontSize=8.7,
+    leading=11.7,
     textColor=TEXT,
     alignment=TA_LEFT,
 )
@@ -122,8 +122,8 @@ def section(c, title, x, y, width):
     c.setFont(FONT_BOLD, 7)
     c.drawCentredString(x + 3.5 * mm, y - 3.2 * mm, title[:2])
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 11)
-    c.drawString(x + 10 * mm, y - 3.8 * mm, title[3:].upper())
+    c.setFont(FONT_BOLD, 11.2)
+    c.drawString(x + 10 * mm, y - 3.8 * mm, title[3:])
     c.setStrokeColor(LINE)
     c.setLineWidth(0.6)
     c.line(x, y - 7 * mm, x + width, y - 7 * mm)
@@ -221,8 +221,8 @@ def draw_first_page(c):
     y = PAGE_HEIGHT - 22 * mm
 
     c.setFillColor(BLUE)
-    c.setFont(FONT_BOLD, 8)
-    c.drawString(main_x, y, "FULL-STACK WEB & MOBILE DEVELOPER")
+    c.setFont(FONT_BOLD, 8.2)
+    c.drawString(main_x, y, "Full-Stack Web & Mobile Developer")
     y -= 13 * mm
     c.setFillColor(NAVY_DARK)
     c.setFont(FONT_BOLD, 28)
@@ -282,18 +282,19 @@ def draw_first_page(c):
         ("Mobile", "React Native"),
         ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
         ("Data", "PostgreSQL, MySQL, TypeORM, Database Design"),
-        ("Tools", "Git, GitHub, Postman, Ubuntu Linux, Visual Studio Code"),
+        ("App Distribution", "Google Play Console"),
+        ("Tools", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
         ("Delivery", "RESTful APIs, CRUD, Validation, Filtering, Pagination, Dashboards, Reporting"),
     ]
     for label, value in skills:
         c.setFillColor(ICE)
         c.roundRect(main_x, y - 7 * mm, main_w, 6.2 * mm, 1.5 * mm, fill=1, stroke=0)
         c.setFillColor(NAVY)
-        c.setFont(FONT_BOLD, 7.2)
+        c.setFont(FONT_BOLD, 6.8)
         c.drawString(main_x + 2.3 * mm, y - 4.8 * mm, label.upper())
         c.setFillColor(SLATE)
         c.setFont(FONT, 7.3)
-        c.drawString(main_x + 25 * mm, y - 4.8 * mm, value)
+        c.drawString(main_x + 28 * mm, y - 4.8 * mm, value)
         y -= 7.4 * mm
 
     footer(c, 1)
