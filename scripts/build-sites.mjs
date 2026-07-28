@@ -29,6 +29,10 @@ export default {
       pathname = "/index.html";
     }
 
+    if (pathname === "/cv" || pathname === "/cv/") {
+      pathname = "/cv/index.html";
+    }
+
     const assetResponse = await env.ASSETS.fetch(withPathname(request, pathname));
     if (assetResponse.status !== 404) {
       return assetResponse;

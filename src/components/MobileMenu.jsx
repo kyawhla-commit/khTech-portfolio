@@ -25,10 +25,11 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   const menuItems = [
     { id: "home", label: "Home", icon: "01" },
     { id: "about", label: "About", icon: "02" },
-    { id: "experience", label: "Experience", icon: "03" },
-    { id: "projects", label: "Projects", icon: "04" },
-    { id: "certificates", label: "Certificates", icon: "05" },
-    { id: "contact", label: "Contact", icon: "06" },
+    { id: "web-cv", label: "Web CV", icon: "03", href: `${import.meta.env.BASE_URL}cv/` },
+    { id: "experience", label: "Experience", icon: "04" },
+    { id: "projects", label: "Projects", icon: "05" },
+    { id: "certificates", label: "Certificates", icon: "06" },
+    { id: "contact", label: "Contact", icon: "07" },
   ];
 
   const socialLinks = [
@@ -80,7 +81,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             {menuItems.map((item, index) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href || `#${item.id}`}
                 onClick={() => setMenuOpen(false)}
                 className={`flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group ${
                   menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"

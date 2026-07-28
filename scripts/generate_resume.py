@@ -98,8 +98,8 @@ body_style = ParagraphStyle(
     "Body",
     parent=styles["BodyText"],
     fontName=FONT,
-    fontSize=8.8,
-    leading=12.2,
+    fontSize=8.6,
+    leading=11.8,
     textColor=NAVY,
     alignment=TA_LEFT,
     spaceAfter=3,
@@ -197,10 +197,12 @@ story = [
 story += section("Professional Summary")
 story.append(
     Paragraph(
-        "Full-Stack Web and Mobile Developer experienced in building enterprise applications "
-        "using React.js, TypeScript, NestJS, Node.js, Laravel, and PostgreSQL. Skilled in "
-        "RESTful API development, responsive user interfaces, relational databases, dashboards, "
-        "reporting systems, and React Native mobile applications.",
+        "Full-Stack Web and Mobile Developer with experience building and maintaining enterprise "
+        "applications using React.js, TypeScript, React Native, NestJS, Node.js, Laravel, and "
+        "PostgreSQL. Skilled in developing RESTful APIs, responsive user interfaces, mobile "
+        "applications, database-driven systems, dashboards, and reports. Experienced in solving "
+        "real-world business problems, debugging applications, improving performance, and "
+        "collaborating with development teams using Git.",
         body_style,
     )
 )
@@ -210,8 +212,14 @@ skills = [
     ("Frontend", "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS"),
     ("Mobile", "React Native"),
     ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
-    ("Database and ORM", "PostgreSQL, MySQL, TypeORM"),
-    ("Tools", "Git, GitHub, Postman, Ubuntu Linux, Visual Studio Code"),
+    ("Databases", "PostgreSQL, MySQL"),
+    ("ORM", "TypeORM"),
+    ("Tools and Platforms", "Git, GitHub, Postman, Ubuntu Linux, Visual Studio Code"),
+    (
+        "Development Skills",
+        "RESTful APIs, CRUD Operations, Responsive Web Design, Database Design, Form Validation, "
+        "Filtering, Pagination, Dashboards and Reporting",
+    ),
 ]
 skills_table = Table(
     [
@@ -242,11 +250,12 @@ story.extend(
     [
         Paragraph("Full-Stack Web Developer", job_title_style),
         Paragraph("M-Tech (Myo & Moe Technology Co., Ltd.) | January 2026 - Present", meta_style),
-        bullet("Develop and maintain enterprise applications using React.js, TypeScript, and NestJS."),
-        bullet("Build RESTful APIs and integrate PostgreSQL and MySQL databases."),
-        bullet("Implement CRUD operations, dashboards, reports, filtering, pagination, and validation."),
-        bullet("Diagnose bugs, improve system performance, and maintain existing features."),
-        bullet("Collaborate with development team members using Git and GitHub."),
+        bullet("Develop and maintain enterprise web applications using React.js, TypeScript, NestJS, and Node.js."),
+        bullet("Build and maintain RESTful APIs for frontend applications and system integrations."),
+        bullet("Integrate PostgreSQL and MySQL databases and maintain entities and relationships using TypeORM."),
+        bullet("Implement CRUD operations, dashboards, reports, search, filtering, pagination, and form validation."),
+        bullet("Identify and resolve frontend, backend, API, and database issues while improving performance."),
+        bullet("Test API endpoints with Postman and collaborate using Git and GitHub."),
     ]
 )
 
@@ -277,7 +286,9 @@ enterprise_projects = [
         "React.js | TypeScript | NestJS | PostgreSQL",
         [
             "Developed parking transactions, dashboards, reports, passes, and rate-management features.",
-            "Contributed to user, role, lane, device, filtering, and pagination functionality.",
+            "Built user, role, lane, and connected-device management functionality.",
+            "Created RESTful API integrations with CRUD operations, filtering, pagination, and validation.",
+            "Assisted with debugging and application performance improvement.",
         ],
     ),
     (
@@ -285,7 +296,9 @@ enterprise_projects = [
         "React.js | TypeScript | NestJS | PostgreSQL",
         [
             "Developed production planning, job and machine monitoring, and QR-code management features.",
-            "Contributed to warehouse, inventory, OEE dashboard, and production-reporting modules.",
+            "Built warehouse and inventory-management functionality.",
+            "Contributed to the OEE dashboard, production reports, and operational data views.",
+            "Integrated frontend components with RESTful APIs, validation, filtering, and pagination.",
         ],
     ),
     (
@@ -293,7 +306,9 @@ enterprise_projects = [
         "React.js | TypeScript | NestJS | PostgreSQL",
         [
             "Developed donor, blood inventory, blood request, and hospital-management features.",
-            "Implemented CRUD operations, validation, database integration, and RESTful APIs.",
+            "Implemented CRUD operations and form validation for operational records.",
+            "Created and integrated RESTful APIs with PostgreSQL.",
+            "Supported database integration, troubleshooting, and user-friendly interfaces.",
         ],
     ),
 ]
@@ -315,8 +330,9 @@ personal_projects = [
         "YBS Way - Public Transportation Mobile App",
         "React Native | TypeScript",
         [
-            "Developed a mobile application for accessing YBS bus routes and transportation information.",
-            "Created reusable UI components, screen navigation, and responsive mobile layouts.",
+            "Developed a mobile application for YBS bus-route search and transportation information in Yangon.",
+            "Created reusable mobile UI components and managed navigation between application screens.",
+            "Organized route information clearly and applied responsive design across mobile screen sizes.",
         ],
     ),
     (
@@ -324,7 +340,8 @@ personal_projects = [
         "React Native | TypeScript",
         [
             "Developed a mobile application for tracking personal income and expenses.",
-            "Implemented transaction management, categories, spending summaries, and a user-friendly interface.",
+            "Implemented create, view, edit, and delete workflows with income and expense categories.",
+            "Built spending summaries, a user-friendly interface, and efficient state management.",
         ],
     ),
 ]

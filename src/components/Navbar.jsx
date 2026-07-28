@@ -23,6 +23,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
+    { href: `${import.meta.env.BASE_URL}cv/`, label: "Web CV" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
