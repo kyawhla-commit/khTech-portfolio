@@ -1,4 +1,4 @@
-import cvFile from "../assets/cv.pdf";
+import cvFile from "../assets/cv-with-photo.pdf";
 
 export const downloadCV = () => {
   const link = document.createElement("a");
