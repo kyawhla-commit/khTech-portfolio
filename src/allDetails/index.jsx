@@ -6,7 +6,7 @@ import Certificate3 from "../assets/Certificate3.jpg";
 
 import { RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
-import { FaBootstrap, FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows } from "react-icons/fa";
 import { TbApi, TbBrandReactNative } from "react-icons/tb";
 import {
   SiMysql,
@@ -17,6 +17,9 @@ import {
   SiPostgresql,
   SiTypeorm,
   SiGoogleplay,
+  SiCloudflare,
+  SiVercel,
+  SiRender,
 } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { MdPhp } from "react-icons/md";
@@ -318,5 +321,35 @@ export const frontendSkills = [
       icon: SiGoogleplay,
       color: "#34A853",
       category: "App Distribution"
+    },
+    {
+      name: "NSSM",
+      icon: FaWindows,
+      color: "#0078D4",
+      category: "Windows Services"
+    },
+    {
+      name: "Cloudflare Pages",
+      icon: SiCloudflare,
+      color: "#F38020",
+      category: "Cloud Hosting"
+    },
+    {
+      name: "Vercel",
+      icon: SiVercel,
+      color: "#000000",
+      category: "Cloud Hosting"
+    },
+    {
+      name: "GitHub Pages",
+      icon: FaGithub,
+      color: "#4078C0",
+      category: "Cloud Hosting"
+    },
+    {
+      name: "Render",
+      icon: SiRender,
+      color: "#46E3B7",
+      category: "Cloud Hosting"
     },
   ];
