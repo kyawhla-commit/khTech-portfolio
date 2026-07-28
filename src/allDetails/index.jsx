@@ -328,34 +328,6 @@ export const Projects = [
     technologies: ["Node.js", "Express.js", "Prisma", "SQLite", "JWT"],
   },
 
-  {
-    year: "2025",
-    name: "Blog & Category Management",
-    description: "A full-stack web application featuring a Laravel 12 backend and a simple HTML/JS frontend for managing articles, categories, and user authentication",
-    projectFeatures: [
-      {
-        section: "Frontend (app/)",
-        items: [
-          "Minimal HTML/JavaScript UI for category management (list, add, delete)",
-          "Uses Bootstrap and FontAwesome for styling",
-          "Communicates with backend API for CRUD operations",
-          "Token-based authentication",
-        ]
-      },
-      {
-        section: "Backend (blog/)",
-        items: [
-          "Laravel 12 (PHP 8.2+) RESTful API for categories and articles",
-          "User authentication with Laravel Sanctum",
-          "Article management with Blade templates",
-          "Web interface for articles, categories, and authentication",
-          "Uses Vite, Tailwind, and Bootstrap for frontend assets",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/100300",
-    technologies: ["Laravel", "Bootstrap", "Blade", "API", "JavaScript"],
-  },
 ];
 
 
