@@ -181,6 +181,11 @@ def draw_first_page(c):
         ("EMAIL", "bwarpay.bp8@gmail.com"),
         ("PHONE", "+95 9 677 066 891"),
         ("LOCATION", "Yangon, Myanmar"),
+        (
+            "PORTFOLIO",
+            '<link href="https://kyawhla-commit.github.io/khTech-portfolio/" '
+            'color="#EAF3FF">kyawhla-commit.github.io/<br/>khTech-portfolio</link>',
+        ),
         ("GITHUB", "github.com/kyawhla-commit"),
     ]:
         c.setFillColor(colors.HexColor("#8FB7E3"))

@@ -187,7 +187,7 @@ story = [
     ),
     Paragraph(
         '<link href="https://kyawhla-commit.github.io/khTech-portfolio" color="#2563EB">'
-        "Portfolio</link> | "
+        "kyawhla-commit.github.io/khTech-portfolio</link> | "
         '<link href="https://github.com/kyawhla-commit" color="#2563EB">GitHub</link>',
         contact_style,
     ),
