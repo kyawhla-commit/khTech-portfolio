@@ -60,35 +60,6 @@ export const Projects = [
 
   {
     year: "2026",
-    name: "PaOh Typing Tutor",
-    description: "A multilingual typing tutor for English, Burmese, and PaOh practice with profile presets, split keyboard layouts, custom passages, and progress tracking in a focused training workspace.",
-    projectFeatures: [
-      {
-        section: "Practice Experience",
-        items: [
-          "Supports English, Burmese, and PaOh lesson tracks",
-          "Includes 6-7 and 5-6 split layout practice modes",
-          "Focus mode keeps the typing workspace distraction-light",
-          "Quick reset and error-fix commands streamline training",
-        ]
-      },
-      {
-        section: "Learning Tools",
-        items: [
-          "Profile presets for saving practice progress",
-          "Dashboard for tracking progress and best WPM",
-          "Custom passages and paragraph-set imports",
-          "Built with Next.js App Router and Tailwind CSS v4",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/paohtypingtutor.git",
-    live: "https://paohtypingtutor-kffa.vercel.app/#1.1",
-    technologies: ["Next.js", "Tailwind CSS", "Typing Tutor", "Multilingual UX"],
-  },
-
-  {
-    year: "2026",
     name: "Spendly",
     description: "A React Native mobile application for tracking personal income and expenses with transaction management, categories, and spending summaries.",
     projectFeatures: [
@@ -115,97 +86,6 @@ export const Projects = [
     live: "https://play.google.com/store/apps/details?id=com.bp8.spendly",
     liveLabel: "Play Store",
     technologies: ["React Native", "TypeScript", "Expo", "AsyncStorage"],
-  },
-
-  {
-    year: "2026",
-    name: "Myanmar Calendar Hub",
-    description: "A Myanmar calendar workspace for month, week, and day planning with date conversion, Thingyan, Mahabote, and Julian or Unix utilities.",
-    projectFeatures: [
-      {
-        section: "Workspace Features",
-        items: [
-          "Month, week, and day calendar views",
-          "Myanmar and Western date support",
-          "Local planning workspace for schedules",
-          "Shareable calendar links",
-        ]
-      },
-      {
-        section: "Date Utilities",
-        items: [
-          "Built on canonical mmcal engines",
-          "Date conversion tools",
-          "Thingyan and Mahabote helpers",
-          "Julian day and Unix time utilities",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/calendar.git",
-    live: "https://calendar-eight-zeta.vercel.app/",
-    technologies: ["Next.js", "mmcal", "Calendar Workspace", "Date Utilities"],
-  },
-
-  {
-    year: "2026",
-    name: "KTP Calculator",
-    description: "A calculator workspace that groups practical tools for money, borrowing, dates, and conversions in a fast, mobile-friendly interface.",
-    projectFeatures: [
-      {
-        section: "Calculator Coverage",
-        items: [
-          "Money and borrowing calculators",
-          "Date difference and age calculators",
-          "Conversion-focused utilities",
-          "Recent work workspace for quick return",
-        ]
-      },
-      {
-        section: "Product Highlights",
-        items: [
-          "Client-first experience with instant updates",
-          "Responsive layout for desktop and mobile",
-          "Metadata coverage for production pages",
-          "Fast navigation across calculator groups",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/calculator.git",
-    live: "https://calculator-sooty-eta.vercel.app/",
-    technologies: ["Next.js", "Calculator Suite", "Responsive UI", "Web App"],
-  },
-
-  {
-    year: "2025",
-    name: "Social Mobile App",
-    description: "A social media app built with React Native, Expo, and TypeScript.",
-    projectFeatures: [
-      {
-        section: "Features",
-        items: [
-          "User authentication (login & register)",
-          "Create, view, and delete posts",
-          "Like posts with animations",
-          "Comment on posts",
-          "User profile with post history",
-          "Pull-to-refresh",
-          "Cross-platform (iOS, Android, Web)",
-        ]
-      },
-      {
-        section: "Tech Stack",
-        items: [
-          "Expo SDK 54",
-          "TypeScript",
-          "Expo Router",
-          "TanStack Query",
-          "React Native Reanimated",
-          "AsyncStorage",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/social-mobile",
-    technologies: ["React Native", "Expo", "TypeScript", "TanStack Query"],
   },
 
   {
@@ -242,39 +122,6 @@ export const Projects = [
 
   {
     year: "2025",
-    name: "Social App",
-    description: "A React frontend for the Social API - a social media platform with posts, comments, and likes.",
-    projectFeatures: [
-      {
-        section: "Features",
-        items: [
-          "User authentication (login/register)",
-          "View and create posts",
-          "Comment on posts",
-          "Like/unlike posts",
-          "Dark/light theme toggle",
-          "Responsive Material UI design",
-        ]
-      },
-      {
-        section: "Tech Stack",
-        items: [
-          "Framework: React 18",
-          "Build Tool: Vite",
-          "UI Library: Material UI (MUI) 7",
-          "Routing: React Router 7",
-          "State Management: TanStack React Query",
-          "Forms: React Hook Form",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/social-app",
-    live: "https://kyawhla.netlify.app/",
-    technologies: ["React", "Vite", "MUI", "React Query"],
-  },
-
-  {
-    year: "2025",
     name: "Inventory Management System",
     description: "A comprehensive Laravel-based inventory management solution",
     projectFeatures: [
@@ -295,37 +142,6 @@ export const Projects = [
     ],
     git: "https://github.com/kyawhla-commit/inventoryProject",
     technologies: ["Laravel", "API", "Blade"],
-  },
-
-  {
-    year: "2025",
-    name: "Social API",
-    description: "A RESTful API for a social media platform built with Express.js, Prisma, and SQLite.",
-    projectFeatures: [
-      {
-        section: "Features",
-        items: [
-          "User registration and JWT authentication",
-          "Create, read, and delete posts",
-          "Comment on posts",
-          "Like/unlike posts",
-          "Password hashing with bcrypt",
-        ]
-      },
-      {
-        section: "Tech Stack",
-        items: [
-          "Runtime: Node.js",
-          "Framework: Express.js 5",
-          "ORM: Prisma",
-          "Database: SQLite",
-          "Authentication: JWT + bcrypt",
-        ]
-      }
-    ],
-    git: "https://github.com/kyawhla-commit/social-api",
-    live: "https://social-api-15e4.onrender.com/posts",
-    technologies: ["Node.js", "Express.js", "Prisma", "SQLite", "JWT"],
   },
 
 ];
