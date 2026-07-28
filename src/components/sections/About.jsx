@@ -44,11 +44,16 @@ export const About = () => {
                   </div>
                   <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Enterprise<br/>Systems</span>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
-                    <span className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">Web</span>
+                <div className="flex items-center gap-3 sm:gap-3.5">
+                  <div className="min-w-[3.75rem] h-11 sm:min-w-[4.25rem] sm:h-12 px-2.5 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                    <span className="text-lg sm:text-xl font-bold leading-none tracking-tight text-green-600 dark:text-green-400">
+                      Web
+                    </span>
                   </div>
-                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">Frontend &<br/>Backend</span>
+                  <span className="text-sm sm:text-base leading-[1.35] text-gray-600 dark:text-gray-400 text-left">
+                    <span className="block">Frontend &amp;</span>
+                    <span className="block mt-0.5">Backend</span>
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
