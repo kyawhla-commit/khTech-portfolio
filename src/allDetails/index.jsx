@@ -7,7 +7,7 @@ import Certificate3 from "../assets/Certificate3.jpg";
 import { RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
 import { FaAws, FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows } from "react-icons/fa";
-import { TbApi, TbBrandReactNative } from "react-icons/tb";
+import { TbApi, TbBrandReactNative, TbRobot } from "react-icons/tb";
 import {
   SiMysql,
   SiNodedotjs,
@@ -293,6 +293,12 @@ export const frontendSkills = [
   ];
 
   export const toolSkills = [
+    {
+      name: "AI-Powered Development",
+      icon: TbRobot,
+      color: "#8B5CF6",
+      category: "AI Tools & Automation"
+    },
     { 
       name: "Git", 
       icon: FaGitAlt, 

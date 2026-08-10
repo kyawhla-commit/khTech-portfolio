@@ -11,20 +11,21 @@ const enterpriseProjects = [
   {
     name: "Smart Car Parking Management System",
     icon: IoCarSport,
-    stack: ["React.js", "TypeScript", "NestJS", "PostgreSQL"],
+    stack: ["React.js", "TypeScript", "NestJS", "PostgreSQL", "AI Camera"],
     contributions: [
       "Developed parking transactions, dashboards, reports, passes, and rate-management features.",
-      "Contributed to user, role, lane, device, filtering, and pagination functionality.",
+      "Integrated an AI-powered camera system for automatic vehicle license-plate detection and recognition.",
     ],
     accent: "blue",
   },
   {
     name: "Smart Factory Management System",
     icon: IoBusiness,
-    stack: ["React.js", "TypeScript", "NestJS", "PostgreSQL"],
+    stack: ["React.js", "TypeScript", "NestJS", "PostgreSQL", "Kiosk Hardware"],
     contributions: [
       "Developed production planning, job and machine monitoring, and QR-code management features.",
       "Contributed to warehouse, inventory, OEE dashboard, and production-reporting modules.",
+      "Integrated kiosk hardware with backend APIs for on-site production workflows and real-time operational updates.",
     ],
     accent: "cyan",
   },

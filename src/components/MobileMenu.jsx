@@ -25,7 +25,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   const menuItems = [
     { id: "home", label: "Home", icon: "01" },
     { id: "about", label: "About", icon: "02" },
-    { id: "web-cv", label: "Web CV", icon: "03", href: `${import.meta.env.BASE_URL}cv/index.html` },
+    // { id: "web-cv", label: "Web CV", icon: "03", href: `${import.meta.env.BASE_URL}cv/index.html` },
     { id: "experience", label: "Experience", icon: "04" },
     { id: "projects", label: "Projects", icon: "05" },
     { id: "certificates", label: "Certificates", icon: "06" },

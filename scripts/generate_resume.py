@@ -223,8 +223,9 @@ skills = [
     ("Tools and Platforms", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
     (
         "Development Skills",
-        "RESTful APIs, CRUD Operations, Responsive Web Design, Database Design, Form Validation, "
-        "Filtering, Pagination, Dashboards and Reporting",
+        "AI-Powered Development: AI-assisted coding, research, debugging, workflow automation, "
+        "and technical problem-solving; RESTful APIs, CRUD Operations, Responsive Web Design, "
+        "Database Design, Form Validation, Filtering, Pagination, Dashboards and Reporting",
     ),
 ]
 skills_table = Table(
@@ -289,22 +290,21 @@ story += section("Selected Enterprise Projects")
 enterprise_projects = [
     (
         "Smart Car Parking Management System",
-        "React.js | TypeScript | NestJS | PostgreSQL",
+        "React.js | TypeScript | NestJS | PostgreSQL | AI Camera",
         [
             "Developed parking transactions, dashboards, reports, passes, and rate-management features.",
-            "Built user, role, lane, and connected-device management functionality.",
-            "Created RESTful API integrations with CRUD operations, filtering, pagination, and validation.",
-            "Assisted with debugging and application performance improvement.",
+            "Integrated an AI-powered camera system for automatic vehicle license-plate detection and recognition.",
         ],
     ),
     (
         "Smart Factory Management System",
-        "React.js | TypeScript | NestJS | PostgreSQL",
+        "React.js | TypeScript | NestJS | PostgreSQL | Kiosk Hardware",
         [
             "Developed production planning, job and machine monitoring, and QR-code management features.",
             "Built warehouse and inventory-management functionality.",
             "Contributed to the OEE dashboard, production reports, and operational data views.",
             "Integrated frontend components with RESTful APIs, validation, filtering, and pagination.",
+            "Integrated kiosk hardware with backend APIs for on-site production workflows and real-time operational updates.",
         ],
     ),
     (
