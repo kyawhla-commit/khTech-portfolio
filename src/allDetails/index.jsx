@@ -6,7 +6,7 @@ import Certificate3 from "../assets/Certificate3.jpg";
 
 import { RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoLaravel, IoLogoJavascript } from "react-icons/io5";
-import { FaAws, FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows } from "react-icons/fa";
+import { FaAws, FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWindows, FaGlobe } from "react-icons/fa";
 import { TbApi, TbBrandReactNative, TbRobot } from "react-icons/tb";
 import {
   SiMysql,
@@ -365,10 +365,16 @@ export const frontendSkills = [
       color: "#000000",
       category: "Cloud Hosting"
     },
-    {
+{
       name: "GitHub Pages",
       icon: FaGithub,
       color: "#4078C0",
       category: "Cloud Hosting"
+    },
+    {
+      name: "Domain Setup & Config",
+      icon: FaGlobe,
+      color: "#FF6B6B",
+      category: "Domain Management"
     },
   ];

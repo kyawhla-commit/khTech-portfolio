@@ -17,6 +17,7 @@ OUTPUT_DIR = ROOT / "output" / "pdf"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "Khun-Kyaw-Hla-CV-with-Photo.pdf"
 PHOTO_FILE = ROOT / "public" / "cv" / "profile.webp"
+FONT_DIR = ROOT / "assets" / "fonts" / "manrope"
 
 PAGE_WIDTH, PAGE_HEIGHT = A4
 NAVY = colors.HexColor("#0A1D38")
@@ -35,34 +36,64 @@ WHITE = colors.white
 
 
 def register_fonts():
-    candidates = [
+    bundled_fonts = {
+        "CVSans-Regular": FONT_DIR / "manrope-regular.ttf",
+        "CVSans-Medium": FONT_DIR / "manrope-medium.ttf",
+        "CVSans-Semibold": FONT_DIR / "manrope-semibold.ttf",
+        "CVSans-Bold": FONT_DIR / "manrope-bold.ttf",
+        "CVSans-ExtraBold": FONT_DIR / "manrope-extrabold.ttf",
+    }
+    if all(path.exists() for path in bundled_fonts.values()):
+        for name, path in bundled_fonts.items():
+            pdfmetrics.registerFont(TTFont(name, str(path)))
+        return tuple(bundled_fonts)
+
+    system_candidates = [
         (
             Path("C:/Windows/Fonts/segoeui.ttf"),
+            Path("C:/Windows/Fonts/seguisb.ttf"),
             Path("C:/Windows/Fonts/segoeuib.ttf"),
         ),
         (
             Path("C:/Windows/Fonts/arial.ttf"),
             Path("C:/Windows/Fonts/arialbd.ttf"),
+            Path("C:/Windows/Fonts/arialbd.ttf"),
         ),
         (
             Path("C:/Windows/Fonts/calibri.ttf"),
             Path("C:/Windows/Fonts/calibrib.ttf"),
+            Path("C:/Windows/Fonts/calibrib.ttf"),
         ),
     ]
-    for regular, bold in candidates:
-        if regular.exists() and bold.exists():
+    for regular, semibold, bold in system_candidates:
+        if regular.exists() and semibold.exists() and bold.exists():
             pdfmetrics.registerFont(TTFont("VisualSans", str(regular)))
+            pdfmetrics.registerFont(TTFont("VisualSans-Medium", str(regular)))
+            pdfmetrics.registerFont(TTFont("VisualSans-Semibold", str(semibold)))
             pdfmetrics.registerFont(TTFont("VisualSans-Bold", str(bold)))
-            return "VisualSans", "VisualSans-Bold"
-    return "Helvetica", "Helvetica-Bold"
+            pdfmetrics.registerFont(TTFont("VisualSans-ExtraBold", str(bold)))
+            return (
+                "VisualSans",
+                "VisualSans-Medium",
+                "VisualSans-Semibold",
+                "VisualSans-Bold",
+                "VisualSans-ExtraBold",
+            )
+    return (
+        "Helvetica",
+        "Helvetica",
+        "Helvetica-Bold",
+        "Helvetica-Bold",
+        "Helvetica-Bold",
+    )
 
 
-FONT, FONT_BOLD = register_fonts()
+FONT, FONT_MEDIUM, FONT_SEMIBOLD, FONT_BOLD, FONT_EXTRABOLD = register_fonts()
 
 body_style = ParagraphStyle(
     "VisualBody",
-    fontName=FONT,
-    fontSize=8.35,
+    fontName=FONT_MEDIUM,
+    fontSize=8.2,
     leading=11.2,
     textColor=TEXT,
     alignment=TA_LEFT,
@@ -75,7 +106,7 @@ muted_style = ParagraphStyle(
 bullet_style = ParagraphStyle(
     "VisualBullet",
     parent=muted_style,
-    fontSize=8.15,
+    fontSize=8.0,
     leading=10.7,
     leftIndent=7,
     firstLineIndent=-5.5,
@@ -83,45 +114,45 @@ bullet_style = ParagraphStyle(
 )
 sidebar_style = ParagraphStyle(
     "Sidebar",
-    fontName=FONT,
-    fontSize=7.45,
+    fontName=FONT_MEDIUM,
+    fontSize=7.25,
     leading=9.8,
     textColor=colors.HexColor("#E7F0FC"),
 )
 sidebar_bold_style = ParagraphStyle(
     "SidebarBold",
     parent=sidebar_style,
-    fontName=FONT_BOLD,
-    fontSize=7.8,
+    fontName=FONT_MEDIUM,
+    fontSize=7.55,
 )
 project_title_style = ParagraphStyle(
     "ProjectTitle",
     parent=body_style,
     fontName=FONT_BOLD,
-    fontSize=9.8,
+    fontSize=9.6,
     leading=12,
     textColor=NAVY_DARK,
 )
 project_meta_style = ParagraphStyle(
     "ProjectMeta",
     parent=body_style,
-    fontName=FONT_BOLD,
-    fontSize=7.25,
+    fontName=FONT_SEMIBOLD,
+    fontSize=7.05,
     leading=9,
     textColor=BLUE,
 )
 
 skill_label_style = ParagraphStyle(
     "SkillLabel",
-    fontName=FONT_BOLD,
-    fontSize=6.5,
+    fontName=FONT_SEMIBOLD,
+    fontSize=6.3,
     leading=7.8,
     textColor=NAVY,
 )
 skill_value_style = ParagraphStyle(
     "SkillValue",
-    fontName=FONT,
-    fontSize=6.55,
+    fontName=FONT_MEDIUM,
+    fontSize=6.3,
     leading=8.2,
     textColor=SLATE,
 )
@@ -149,10 +180,10 @@ def section(c, title, x, y, width):
     c.setFont(FONT_BOLD, 6.6)
     c.drawCentredString(x + 4 * mm, y - 3.55 * mm, number)
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 10.8)
+    c.setFont(FONT_BOLD, 10.6)
     title_x = x + 11 * mm
     c.drawString(title_x, y - 4 * mm, label)
-    label_width = pdfmetrics.stringWidth(label, FONT_BOLD, 10.8)
+    label_width = pdfmetrics.stringWidth(label, FONT_BOLD, 10.6)
     line_x = title_x + label_width + 4 * mm
     c.setStrokeColor(LINE)
     c.setLineWidth(0.7)
@@ -163,7 +194,7 @@ def section(c, title, x, y, width):
 
 def sidebar_heading(c, title, x, y):
     c.setFillColor(CYAN)
-    c.setFont(FONT_BOLD, 7.1)
+    c.setFont(FONT_BOLD, 6.9)
     c.drawString(x, y, title.upper())
     c.setStrokeColor(colors.HexColor("#31557D"))
     c.setLineWidth(0.7)
@@ -172,21 +203,22 @@ def sidebar_heading(c, title, x, y):
 
 
 def sidebar_pills(c, labels, x, y, width):
-    gap = 2 * mm
+    gap = 2.4 * mm
     pill_w = (width - gap) / 2
     pill_h = 5.5 * mm
+    row_gap = 2.3 * mm
     for index, label in enumerate(labels):
         row = index // 2
         column = index % 2
         pill_x = x + column * (pill_w + gap)
-        pill_y = y - row * (pill_h + 1.8 * mm)
+        pill_y = y - row * (pill_h + row_gap)
         c.setFillColor(colors.HexColor("#143459"))
         c.roundRect(pill_x, pill_y - pill_h, pill_w, pill_h, 2.75 * mm, fill=1, stroke=0)
         c.setFillColor(colors.HexColor("#DDEBFA"))
-        c.setFont(FONT_BOLD, 6.35)
+        c.setFont(FONT_MEDIUM, 6.05)
         c.drawCentredString(pill_x + pill_w / 2, pill_y - 3.7 * mm, label)
     rows = (len(labels) + 1) // 2
-    return y - rows * (pill_h + 1.8 * mm) + 1.8 * mm
+    return y - rows * (pill_h + row_gap) + row_gap
 
 
 def summary_card(c, text, x, y, width):
@@ -227,7 +259,7 @@ def footer(c, page_number, left_x=70 * mm):
     c.setLineWidth(0.55)
     c.line(left_x, 11 * mm, PAGE_WIDTH - 12 * mm, 11 * mm)
     c.setFillColor(SLATE)
-    c.setFont(FONT, 6.8)
+    c.setFont(FONT_MEDIUM, 6.55)
     c.drawString(left_x, 7.5 * mm, "Khun Kyaw Hla | Full-Stack Web & Mobile Developer")
     c.drawRightString(PAGE_WIDTH - 12 * mm, 7.5 * mm, f"Page {page_number}")
 
@@ -276,18 +308,17 @@ def draw_first_page(c):
         ("LOCATION", "Yangon, Myanmar"),
         (
             "PORTFOLIO",
-            '<link href="https://kyawhla-commit.github.io/khTech-portfolio/" '
-            'color="#EAF3FF">kyawhla-commit.github.io/<br/>khTech-portfolio</link>',
+            '<link href="https://khuntupi.tech/" color="#EAF3FF">khuntupi.tech</link>',
         ),
         ("GITHUB", "github.com/kyawhla-commit"),
     ]:
         c.setFillColor(SIDEBAR_MUTED)
-        c.setFont(FONT_BOLD, 6.2)
+        c.setFont(FONT_SEMIBOLD, 6.0)
         c.drawString(side_x, side_y, label)
         side_y -= 3.2 * mm
-        side_y = paragraph(c, value, side_x, side_y + 1.2 * mm, side_w, sidebar_bold_style, 2.5 * mm)
+        side_y = paragraph(c, value, side_x, side_y + 1.2 * mm, side_w, sidebar_bold_style, 3.2 * mm)
 
-    side_y = sidebar_heading(c, "Core stack", side_x, side_y - 1 * mm)
+    side_y = sidebar_heading(c, "Core stack", side_x, side_y - 3.5 * mm)
     side_y = sidebar_pills(
         c,
         ["React.js", "TypeScript", "Kotlin", "React Native", "NestJS", "Node.js", "Laravel", "PostgreSQL"],
@@ -296,7 +327,7 @@ def draw_first_page(c):
         side_w,
     )
 
-    side_y = sidebar_heading(c, "Languages", side_x, side_y - 2 * mm)
+    side_y = sidebar_heading(c, "Languages", side_x, side_y - 5 * mm)
     paragraph(
         c,
         "<b>Pa-O</b> - Native<br/><b>Burmese</b> - Fluent<br/><b>English</b> - Intermediate",
@@ -311,21 +342,35 @@ def draw_first_page(c):
     main_w = PAGE_WIDTH - main_x - 12 * mm
     y = PAGE_HEIGHT - 18 * mm
 
-    badge_w = 57 * mm
+    badge_label = "FULL-STACK WEB & MOBILE DEVELOPER"
+    badge_font = FONT_BOLD
+    badge_font_size = 6.65
+    badge_padding_x = 4 * mm
+    badge_char_space = 0.08
+    badge_h = 6.2 * mm
+    badge_w = (
+        pdfmetrics.stringWidth(badge_label, badge_font, badge_font_size)
+        + 2 * badge_padding_x
+        + (len(badge_label) - 1) * badge_char_space
+    )
     c.setFillColor(SOFT_BLUE)
-    c.roundRect(main_x, y - 6 * mm, badge_w, 6 * mm, 3 * mm, fill=1, stroke=0)
+    c.roundRect(main_x, y - badge_h, badge_w, badge_h, badge_h / 2, fill=1, stroke=0)
     c.setFillColor(BLUE)
-    c.setFont(FONT_BOLD, 7.3)
-    c.drawString(main_x + 3 * mm, y - 4.1 * mm, "FULL-STACK WEB & MOBILE DEVELOPER")
-    y -= 14 * mm
+    badge_text = c.beginText()
+    badge_text.setTextOrigin(main_x + badge_padding_x, y - 4.25 * mm)
+    badge_text.setFont(badge_font, badge_font_size)
+    badge_text.setCharSpace(badge_char_space)
+    badge_text.textLine(badge_label)
+    c.drawText(badge_text)
+    y -= 15 * mm
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 27)
+    c.setFont(FONT_EXTRABOLD, 27.2)
     c.drawString(main_x, y, "KHUN KYAW HLA")
-    y -= 7.5 * mm
+    y -= 8.8 * mm
     c.setFillColor(SLATE)
-    c.setFont(FONT, 7.35)
+    c.setFont(FONT_MEDIUM, 7.25)
     c.drawString(main_x, y, "React.js  |  TypeScript  |  React Native  |  NestJS  |  PostgreSQL")
-    y -= 8.5 * mm
+    y -= 9.5 * mm
 
     y = section(c, "01 Professional Summary", main_x, y, main_w)
     y = summary_card(
@@ -341,20 +386,25 @@ def draw_first_page(c):
     )
 
     y = section(c, "02 Professional Experience", main_x, y, main_w)
+    date_label = "JANUARY 2026 - PRESENT"
+    date_font_size = 6.85
+    date_padding_x = 3.2 * mm
+    date_w = pdfmetrics.stringWidth(date_label, FONT_SEMIBOLD, date_font_size) + 2 * date_padding_x
+    date_h = 6 * mm
     c.setFillColor(SOFT_BLUE)
-    c.roundRect(main_x, y - 5.5 * mm, 41 * mm, 5.5 * mm, 2.75 * mm, fill=1, stroke=0)
+    c.roundRect(main_x, y - date_h, date_w, date_h, date_h / 2, fill=1, stroke=0)
     c.setFillColor(BLUE)
-    c.setFont(FONT_BOLD, 6.9)
-    c.drawString(main_x + 2.8 * mm, y - 3.8 * mm, "JANUARY 2026 - PRESENT")
-    y -= 8.5 * mm
+    c.setFont(FONT_SEMIBOLD, date_font_size)
+    c.drawString(main_x + date_padding_x, y - 4.1 * mm, date_label)
+    y -= 11.5 * mm
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 11.2)
+    c.setFont(FONT_BOLD, 12.0)
     c.drawString(main_x, y, "Full-Stack Web Developer")
-    y -= 4.5 * mm
-    c.setFillColor(SLATE)
-    c.setFont(FONT_BOLD, 7.8)
+    y -= 6.2 * mm
+    c.setFillColor(colors.HexColor("#41526A"))
+    c.setFont(FONT_MEDIUM, 8.2)
     c.drawString(main_x, y, "M-Tech (Myo & Moe Technology Co., Ltd.)")
-    y -= 5.5 * mm
+    y -= 7.2 * mm
     y = bullets(
         c,
         [
@@ -464,13 +514,13 @@ def draw_second_page(c):
     c.setFillColor(colors.HexColor("#143459"))
     c.roundRect(13 * mm, PAGE_HEIGHT - 13.8 * mm, 29 * mm, 6 * mm, 3 * mm, fill=1, stroke=0)
     c.setFillColor(CYAN)
-    c.setFont(FONT_BOLD, 6.7)
+    c.setFont(FONT_BOLD, 6.5)
     c.drawString(16 * mm, PAGE_HEIGHT - 11.9 * mm, "SELECTED WORK")
     c.setFillColor(WHITE)
-    c.setFont(FONT_BOLD, 18.5)
+    c.setFont(FONT_EXTRABOLD, 18.2)
     c.drawString(13 * mm, PAGE_HEIGHT - 23.5 * mm, "Enterprise & Mobile Projects")
     c.setFillColor(SIDEBAR_MUTED)
-    c.setFont(FONT_BOLD, 7)
+    c.setFont(FONT_SEMIBOLD, 6.8)
     c.drawRightString(PAGE_WIDTH - 13 * mm, PAGE_HEIGHT - 19.5 * mm, "KHUN KYAW HLA")
 
     x = 13 * mm
