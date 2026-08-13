@@ -1,9 +1,11 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { IoSchool, IoStar, IoLogoFacebook } from "react-icons/io5";
 import { useState } from "react";
+import eimg from "../../assets/eimg.png";
 
 export const Testimonials = () => {
   const [expandedId, setExpandedId] = useState(null);
+  const [styleVariant, setStyleVariant] = useState("modern"); // modern, minimal, card, gradient
 
   const testimonials = [
     {
@@ -19,7 +21,7 @@ export const Testimonials = () => {
         "Attitude valued more than just skills",
         "Progressed from Beginner to Job-ready in 1 Year"
       ],
-      avatar: "EM",
+      avatar: eimg,
       color: "blue",
       date: "January 2025",
       fbLink: "https://www.facebook.com/share/p/1BUMVBrzGD/"
@@ -68,9 +70,11 @@ export const Testimonials = () => {
                   {/* Header Section */}
                   <div className="flex items-start gap-4 mb-6 pb-6 border-b border-gray-100 dark:border-gray-700">
                     {/* Avatar */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl sm:text-2xl shadow-md flex-shrink-0">
-                      {testimonial.avatar}
-                    </div>
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover shadow-md flex-shrink-0"
+                    />
 
                     {/* Info */}
                     <div className="flex-1 min-w-0">

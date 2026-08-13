@@ -10,6 +10,7 @@ import { Experience } from "./components/sections/Experience";
 import { Project } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 import { Certificate } from "./components/sections/Certificate";
+import { Testimonials } from "./components/sections/Testimonials";
 import { Footer } from "./components/sections/footer";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Experience/>
         <Project/>
         <Certificate/>
+        <Testimonials/>
         <Contact/>
         <Footer/>
       </div>
