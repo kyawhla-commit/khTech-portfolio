@@ -95,7 +95,7 @@ FONT, FONT_MEDIUM, FONT_SEMIBOLD, FONT_BOLD, FONT_EXTRABOLD = register_fonts()
 # every two steps equal phi (1.618), avoiding oversized jumps in dense CV copy.
 GOLDEN_RATIO = (1 + sqrt(5)) / 2
 TYPE_STEP = sqrt(GOLDEN_RATIO)
-TYPE_BODY = 8.2
+TYPE_BODY = 8.6
 TYPE_XS = TYPE_BODY / TYPE_STEP
 TYPE_HEADING = TYPE_BODY * TYPE_STEP
 TYPE_ROLE = TYPE_BODY * GOLDEN_RATIO
@@ -110,7 +110,7 @@ body_style = ParagraphStyle(
     "VisualBody",
     fontName=FONT_MEDIUM,
     fontSize=TYPE_BODY,
-    leading=11.2,
+    leading=11.7,
     textColor=TEXT,
     alignment=TA_LEFT,
 )
@@ -123,7 +123,7 @@ bullet_style = ParagraphStyle(
     "VisualBullet",
     parent=muted_style,
     fontSize=TYPE_BODY,
-    leading=10.7,
+    leading=11.2,
     leftIndent=7,
     firstLineIndent=-5.5,
     spaceAfter=0.8,
@@ -146,7 +146,7 @@ project_title_style = ParagraphStyle(
     parent=body_style,
     fontName=FONT_BOLD,
     fontSize=TYPE_HEADING,
-    leading=12,
+    leading=12.6,
     textColor=NAVY_DARK,
 )
 project_meta_style = ParagraphStyle(
@@ -154,7 +154,7 @@ project_meta_style = ParagraphStyle(
     parent=body_style,
     fontName=FONT_SEMIBOLD,
     fontSize=TYPE_SUPPORT,
-    leading=9,
+    leading=9.4,
     textColor=BLUE,
 )
 
@@ -168,8 +168,8 @@ skill_label_style = ParagraphStyle(
 skill_value_style = ParagraphStyle(
     "SkillValue",
     fontName=FONT_MEDIUM,
-    fontSize=TYPE_XS,
-    leading=8.2,
+    fontSize=TYPE_SUPPORT,
+    leading=9.1,
     textColor=SLATE,
 )
 
@@ -270,6 +270,22 @@ def skill_card(c, label, value, x, y, width, height):
     value_element.drawOn(c, x + 2.5 * mm, y - 7.2 * mm - value_h)
 
 
+def info_card(c, text, x, y, width, style=muted_style, accent=CYAN):
+    padding_x = 4 * mm
+    padding_y = 3 * mm
+    element = Paragraph(text, style)
+    _, height = element.wrap(width - 2 * padding_x, PAGE_HEIGHT)
+    card_h = height + 2 * padding_y
+    c.setFillColor(WHITE)
+    c.setStrokeColor(CARD_BORDER)
+    c.setLineWidth(0.45)
+    c.roundRect(x, y - card_h, width, card_h, 3 * mm, fill=1, stroke=1)
+    c.setFillColor(accent)
+    c.roundRect(x + 1.5 * mm, y - card_h + 3 * mm, 1.2 * mm, card_h - 6 * mm, 0.6 * mm, fill=1, stroke=0)
+    element.drawOn(c, x + padding_x, y - padding_y - height)
+    return y - card_h - 3 * mm
+
+
 def footer(c, page_number, left_x=70 * mm):
     c.setStrokeColor(LINE)
     c.setLineWidth(0.55)
@@ -319,14 +335,20 @@ def draw_first_page(c):
 
     side_y = sidebar_heading(c, "Contact", side_x, side_y)
     for label, value in [
-        ("EMAIL", "bwarpay.bp8@gmail.com"),
+        (
+            "EMAIL",
+            '<link href="mailto:bwarpay.bp8@gmail.com" color="#EAF3FF">bwarpay.bp8@gmail.com</link>',
+        ),
         ("PHONE", "+95 9 677 066 891"),
         ("LOCATION", "Yangon, Myanmar"),
         (
             "PORTFOLIO",
             '<link href="https://khuntupi.tech/" color="#EAF3FF">khuntupi.tech</link>',
         ),
-        ("GITHUB", "github.com/kyawhla-commit"),
+        (
+            "GITHUB",
+            '<link href="https://github.com/kyawhla-commit" color="#EAF3FF">github.com/kyawhla-commit</link>',
+        ),
     ]:
         c.setFillColor(SIDEBAR_MUTED)
         c.setFont(FONT_SEMIBOLD, TYPE_XS)
@@ -384,18 +406,23 @@ def draw_first_page(c):
     c.drawString(main_x, y, "KHUN KYAW HLA")
     y -= 8.8 * mm
     c.setFillColor(SLATE)
-    c.setFont(FONT_MEDIUM, TYPE_BODY)
-    c.drawString(main_x, y, "React.js  |  TypeScript  |  React Native  |  NestJS  |  PostgreSQL")
+    c.setFont(FONT_MEDIUM, TYPE_SUPPORT)
+    c.drawString(
+        main_x,
+        y,
+        "React.js | TypeScript | NestJS | Node.js | PostgreSQL | Kotlin | React Native",
+    )
     y -= 9.5 * mm
 
     y = section(c, "01 Professional Summary", main_x, y, main_w)
     y = summary_card(
         c,
-        "Full-Stack Web and Mobile Developer with experience building and maintaining enterprise "
-        "applications using React.js, TypeScript, Kotlin, React Native, NestJS, Node.js, Laravel, "
-        "and PostgreSQL. Skilled in RESTful APIs, responsive interfaces, mobile applications, "
-        "database-driven systems, dashboards, and reports. Experienced in debugging applications, "
-        "improving performance, and collaborating with development teams using Git.",
+        "Full-Stack Web and Mobile Developer building enterprise applications with React.js, "
+        "TypeScript, NestJS, Node.js, PostgreSQL, and MySQL. Experienced in developing frontend "
+        "modules, RESTful APIs, database-backed workflows, dashboards, reports, and system "
+        "integrations for smart parking, manufacturing, and healthcare platforms. Mobile "
+        "development experience includes native Android applications with Kotlin and React Native "
+        "applications, alongside AI-camera and kiosk-hardware integration.",
         main_x,
         y,
         main_w,
@@ -425,10 +452,11 @@ def draw_first_page(c):
         c,
         [
             "Develop and maintain enterprise web applications using React.js, TypeScript, NestJS, and Node.js.",
-            "Build RESTful APIs and integrate PostgreSQL and MySQL databases using TypeORM.",
-            "Implement CRUD operations, dashboards, reports, search, filtering, pagination, and validation.",
-            "Resolve frontend, backend, API, and database issues while improving performance.",
-            "Test endpoints with Postman and collaborate through Git and GitHub.",
+            "Deliver end-to-end functionality across user interfaces, RESTful API endpoints, backend services, and PostgreSQL or MySQL persistence using TypeORM.",
+            "Implement operational workflows, dashboards, reports, search, filtering, pagination, and data validation.",
+            "Integrate frontend modules with backend APIs and database services, testing request and response behavior with Postman.",
+            "Troubleshoot frontend, backend, API, and database issues while maintaining application reliability and improving performance.",
+            "Collaborate through Git and GitHub to manage source code and coordinate application changes.",
         ],
         main_x,
         y,
@@ -439,29 +467,27 @@ def draw_first_page(c):
     y = section(c, "03 Technical Skills", main_x, y, main_w)
     skills = [
         ("Frontend", "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS"),
-        ("Mobile", "Kotlin, React Native"),
         ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
-        ("Data", "PostgreSQL, MySQL, TypeORM, Database Design"),
-        ("App Distribution", "Google Play Console"),
-        ("Deployment", "NSSM, Windows Services, On-Premises Deployment"),
+        ("Mobile", "Kotlin, Android, React Native, Google Play Console"),
+        ("Databases & ORM", "PostgreSQL, MySQL, TypeORM, Database Design"),
         (
-            "Cloud Hosting",
-            "AWS (EC2), DigitalOcean Droplets, Cloudflare Pages, Vercel, GitHub Pages",
+            "APIs & Integration",
+            "RESTful APIs, API Integration, AI-Camera Integration, Kiosk and Hardware Integration",
         ),
-        ("Tools", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
         (
-            "AI-Powered",
-            "Development: AI-assisted coding, research, debugging, automation, and problem-solving",
+            "Cloud & Deployment",
+            "AWS EC2, DigitalOcean Droplets, Cloudflare Pages, Vercel, GitHub Pages, Ubuntu Linux, NSSM, Windows Services",
         ),
-        ("Delivery", "RESTful APIs, CRUD, Validation, Filtering, Pagination, Dashboards, Reporting"),
+        ("Development Tools", "Git, GitHub, Postman, Visual Studio Code"),
     ]
     card_gap = 3 * mm
     row_gap = 2.2 * mm
     card_w = (main_w - card_gap) / 2
-    card_h = 15.2 * mm
+    card_h = 18 * mm
     for index in range(0, len(skills), 2):
         left_label, left_value = skills[index]
-        skill_card(c, left_label, left_value, main_x, y, card_w, card_h)
+        left_width = main_w if index + 1 == len(skills) else card_w
+        skill_card(c, left_label, left_value, main_x, y, left_width, card_h)
         if index + 1 < len(skills):
             right_label, right_value = skills[index + 1]
             skill_card(c, right_label, right_value, main_x + card_w + card_gap, y, card_w, card_h)
@@ -473,27 +499,27 @@ def draw_first_page(c):
 
 def project_block(c, name, stack, description, items, x, y, width, live_url=None, live_label=None):
     padding_x = 4 * mm
-    padding_y = 3.5 * mm
+    padding_y = 3.1 * mm
     content_x = x + padding_x
     content_w = width - 2 * padding_x
     elements = []
 
     title = Paragraph(name, project_title_style)
     _, title_h = title.wrap(content_w, PAGE_HEIGHT)
-    elements.append((title, title_h, 0.8 * mm))
+    elements.append((title, title_h, 0.6 * mm))
 
     meta = Paragraph(stack, project_meta_style)
     _, meta_h = meta.wrap(content_w, PAGE_HEIGHT)
-    elements.append((meta, meta_h, 1.2 * mm))
+    elements.append((meta, meta_h, 0.9 * mm))
 
     description_element = Paragraph(description, muted_style)
     _, description_h = description_element.wrap(content_w, PAGE_HEIGHT)
-    elements.append((description_element, description_h, 1.1 * mm))
+    elements.append((description_element, description_h, 0.8 * mm))
 
     for item in items:
         bullet_element = Paragraph(f"- {item}", bullet_style)
         _, bullet_h = bullet_element.wrap(content_w, PAGE_HEIGHT)
-        elements.append((bullet_element, bullet_h, 0.65 * mm))
+        elements.append((bullet_element, bullet_h, 0.45 * mm))
 
     if live_url:
         label = live_label or live_url
@@ -517,7 +543,7 @@ def project_block(c, name, stack, description, items, x, y, width, live_url=None
     for element, height, space_after in elements:
         element.drawOn(c, content_x, cursor_y - height)
         cursor_y -= height + space_after
-    return y - card_h - 3 * mm
+    return y - card_h - 2.5 * mm
 
 
 def draw_second_page(c):
@@ -547,9 +573,10 @@ def draw_second_page(c):
         c,
         "Smart Car Parking Management System",
         "React.js | TypeScript | NestJS | PostgreSQL | AI Camera",
-        "Enterprise platform for parking transactions, access passes, rates, users, lanes, reports, and connected devices.",
+        "Enterprise platform supporting real-world parking operations, transactions, access passes, rates, users, lanes, reports, and connected devices.",
         [
-            "Built transaction, dashboard, reporting, pass, and rate-management features.",
+            "Developed application modules for transactions, dashboards, reporting, pass management, and rate management.",
+            "Contributed across the React frontend and NestJS/PostgreSQL application stack to implement operational parking workflows.",
             "Integrated an AI-powered camera system for automatic vehicle license-plate detection and recognition.",
         ],
         x,
@@ -561,10 +588,10 @@ def draw_second_page(c):
         c,
         "Smart Factory Management System",
         "React.js | TypeScript | NestJS | PostgreSQL | Kiosk Hardware",
-        "Manufacturing platform for production planning, machine monitoring, warehouses, inventory, and performance analysis.",
+        "Manufacturing platform supporting production planning, machine monitoring, warehouse operations, inventory, and performance analysis.",
         [
-            "Developed production planning, job and machine monitoring, and QR-code features.",
-            "Contributed to warehouse, inventory, OEE dashboards, production reporting, and API integration.",
+            "Developed manufacturing workflows for production planning, job and machine monitoring, warehouse operations, and inventory management.",
+            "Implemented OEE dashboards, production reporting, and QR-code functionality for operational monitoring.",
             "Integrated kiosk hardware with backend APIs for on-site workflows and real-time operational updates.",
         ],
         x,
@@ -576,10 +603,11 @@ def draw_second_page(c):
         c,
         "Blood Bank Management System",
         "React.js | TypeScript | NestJS | PostgreSQL",
-        "Healthcare platform for donors, blood inventory, hospitals, blood requests, and operational records.",
+        "Healthcare operational platform for blood donors, inventory, hospitals, blood requests, and operational records.",
         [
-            "Developed donor, inventory, blood-request, and hospital workflows.",
-            "Implemented RESTful APIs, CRUD operations, form validation, database integration, and troubleshooting.",
+            "Developed workflows for blood donors, inventory, hospitals, blood requests, and operational records.",
+            "Implemented RESTful APIs, database-backed CRUD functionality, and form validation across the application.",
+            "Troubleshot frontend, backend, API, and database issues affecting operational workflows.",
         ],
         x,
         y,
@@ -593,10 +621,10 @@ def draw_second_page(c):
         c,
         "YBS Way",
         "Kotlin | Android",
-        "Native Android application for YBS bus-route search and public transportation information in Yangon.",
+        "Native Android application developed in Kotlin for YBS route search and Yangon public-transport information.",
         [
             "Created reusable native Android UI components and screen navigation.",
-            "Adapted the interface across Android screen sizes.",
+            "Adapted layouts across Android screen sizes.",
         ],
         x,
         y,
@@ -608,10 +636,10 @@ def draw_second_page(c):
         c,
         "Spendly",
         "React Native | TypeScript",
-        "Personal finance application for organizing and monitoring income and expenses.",
+        "Mobile personal-finance application for recording and monitoring income and expenses.",
         [
-            "Implemented transaction CRUD, categories, and spending summaries.",
-            "Built a clean interface with efficient state management.",
+            "Implemented transaction management, categories, and spending summaries.",
+            "Managed application state and mobile UI workflows using React Native and TypeScript.",
         ],
         x + column_width + column_gap,
         y,
@@ -619,31 +647,33 @@ def draw_second_page(c):
     )
     y = min(left_y, right_y) - 0.5 * mm
 
-    y = section(c, "05 Credentials", x, y, width)
+    y = section(c, "05 Education", x, y, width)
     credentials_style = ParagraphStyle(
         "Credentials",
         parent=muted_style,
         fontSize=TYPE_BODY,
-        leading=10.2,
+        leading=11.4,
     )
-    credential_text = (
-        "<b>Certifications:</b> Professional Web Developer - Laravel and PHP; "
-        "Professional Web Developer - React.js, Next.js and Express.js; "
-        "Professional UI/UX Design - Fairway Technology.<br/>"
-        "<b>Education:</b> Bachelor of Arts in Geography - Pinlon University.<br/>"
-        "<b>Languages:</b> Pa-O - Native; Burmese - Fluent; English - Intermediate."
+    y = info_card(
+        c,
+        "<b>Bachelor of Arts in Geography</b><br/>Pinlon University",
+        x,
+        y,
+        width,
+        credentials_style,
     )
-    credential_element = Paragraph(credential_text, credentials_style)
-    credential_padding = 4 * mm
-    _, credential_h = credential_element.wrap(width - 2 * credential_padding, PAGE_HEIGHT)
-    credential_card_h = credential_h + 2 * credential_padding
-    c.setFillColor(WHITE)
-    c.setStrokeColor(CARD_BORDER)
-    c.setLineWidth(0.45)
-    c.roundRect(x, y - credential_card_h, width, credential_card_h, 3 * mm, fill=1, stroke=1)
-    c.setFillColor(CYAN)
-    c.roundRect(x + 1.5 * mm, y - credential_card_h + 3 * mm, 1.2 * mm, credential_card_h - 6 * mm, 0.6 * mm, fill=1, stroke=0)
-    credential_element.drawOn(c, x + credential_padding, y - credential_padding - credential_h)
+
+    y = section(c, "06 Certifications", x, y, width)
+    info_card(
+        c,
+        "- Professional Web Developer - Laravel and PHP<br/>"
+        "- Professional Web Developer - React.js, Next.js and Express.js<br/>"
+        "- Professional UI/UX Design - Fairway Technology",
+        x,
+        y,
+        width,
+        credentials_style,
+    )
 
     footer(c, 2, 13 * mm)
     c.showPage()

@@ -89,8 +89,8 @@ section_style = ParagraphStyle(
     fontSize=11,
     leading=13.5,
     textColor=BLUE,
-    spaceBefore=7,
-    spaceAfter=4,
+    spaceBefore=5,
+    spaceAfter=3,
     borderWidth=0,
     borderPadding=0,
 )
@@ -135,7 +135,7 @@ bullet_style = ParagraphStyle(
     leftIndent=9,
     firstLineIndent=-7,
     bulletIndent=0,
-    spaceAfter=1.5,
+    spaceAfter=1,
 )
 project_title_style = ParagraphStyle(
     "ProjectTitle",
@@ -157,7 +157,7 @@ def section(title):
             rowHeights=[0.7],
             style=TableStyle([("BACKGROUND", (0, 0), (-1, -1), LIGHT_LINE)]),
         ),
-        Spacer(1, 2.5),
+        Spacer(1, 1.5),
     ]
 
 
@@ -186,8 +186,8 @@ story = [
         contact_style,
     ),
     Paragraph(
-        '<link href="https://kyawhla-commit.github.io/khTech-portfolio" color="#2563EB">'
-        "kyawhla-commit.github.io/khTech-portfolio</link> | "
+        '<link href="https://khuntupi.tech" color="#2563EB">'
+        "khuntupi.tech</link> | "
         '<link href="https://github.com/kyawhla-commit" color="#2563EB">GitHub</link>',
         contact_style,
     ),
@@ -197,12 +197,12 @@ story = [
 story += section("Professional Summary")
 story.append(
     Paragraph(
-        "Full-Stack Web and Mobile Developer with experience building and maintaining enterprise "
-        "applications using React.js, TypeScript, Kotlin, React Native, NestJS, Node.js, Laravel, "
-        "and PostgreSQL. Skilled in developing RESTful APIs, responsive user interfaces, mobile "
-        "applications, database-driven systems, dashboards, and reports. Experienced in solving "
-        "real-world business problems, debugging applications, improving performance, and "
-        "collaborating with development teams using Git.",
+        "Full-Stack Web and Mobile Developer building enterprise applications with React.js, "
+        "TypeScript, NestJS, Node.js, PostgreSQL, and MySQL. Experienced in developing frontend "
+        "modules, RESTful APIs, database-backed workflows, dashboards, reports, and system "
+        "integrations for smart parking, manufacturing, and healthcare platforms. Mobile "
+        "development experience includes native Android applications with Kotlin and React Native "
+        "applications, alongside AI-camera and kiosk-hardware integration.",
         body_style,
     )
 )
@@ -210,47 +210,22 @@ story.append(
 story += section("Technical Skills")
 skills = [
     ("Frontend", "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS"),
-    ("Mobile", "Kotlin, React Native"),
     ("Backend", "NestJS, Node.js, Express.js, Laravel, PHP"),
-    ("Databases", "PostgreSQL, MySQL"),
-    ("ORM", "TypeORM"),
-    ("App Distribution", "Google Play Console"),
-    ("Deployment and Operations", "NSSM, Windows Services, On-Premises Deployment"),
+    ("Mobile", "Kotlin, Android, React Native, Google Play Console"),
+    ("Databases and ORM", "PostgreSQL, MySQL, TypeORM, Database Design"),
     (
-        "Cloud and Hosting",
-        "AWS (EC2), DigitalOcean Droplets, Cloudflare Pages, Vercel, GitHub Pages",
+        "APIs and Integration",
+        "RESTful APIs, API Integration, AI-Camera Integration, Kiosk and Hardware Integration",
     ),
-    ("Tools and Platforms", "Git, GitHub, Postman, Visual Studio Code, Ubuntu Linux"),
     (
-        "Development Skills",
-        "AI-Powered Development: AI-assisted coding, research, debugging, workflow automation, "
-        "and technical problem-solving; RESTful APIs, CRUD Operations, Responsive Web Design, "
-        "Database Design, Form Validation, Filtering, Pagination, Dashboards and Reporting",
+        "Cloud and Deployment",
+        "AWS EC2, DigitalOcean Droplets, Cloudflare Pages, Vercel, GitHub Pages, Ubuntu Linux, "
+        "NSSM, Windows Services, On-Premises Deployment",
     ),
+    ("Development Tools", "Git, GitHub, Postman, Visual Studio Code"),
 ]
-skills_table = Table(
-    [
-        [Paragraph(f"<b>{label}</b>", small_style), Paragraph(value, small_style)]
-        for label, value in skills
-    ],
-    colWidths=[32 * mm, 150 * mm],
-    hAlign="LEFT",
-)
-skills_table.setStyle(
-    TableStyle(
-        [
-            ("BACKGROUND", (0, 0), (0, -1), LIGHT_BLUE),
-            ("TEXTCOLOR", (0, 0), (-1, -1), NAVY),
-            ("VALIGN", (0, 0), (-1, -1), "TOP"),
-            ("LEFTPADDING", (0, 0), (-1, -1), 6),
-            ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-            ("TOPPADDING", (0, 0), (-1, -1), 4),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-            ("GRID", (0, 0), (-1, -1), 0.35, LIGHT_LINE),
-        ]
-    )
-)
-story.append(skills_table)
+for label, value in skills:
+    story.append(Paragraph(f"<b>{label}:</b> {value}", small_style))
 
 story += section("Professional Experience")
 story.extend(
@@ -258,30 +233,12 @@ story.extend(
         Paragraph("Full-Stack Web Developer", job_title_style),
         Paragraph("M-Tech (Myo & Moe Technology Co., Ltd.) | January 2026 - Present", meta_style),
         bullet("Develop and maintain enterprise web applications using React.js, TypeScript, NestJS, and Node.js."),
-        bullet("Build and maintain RESTful APIs for frontend applications and system integrations."),
-        bullet("Integrate PostgreSQL and MySQL databases and maintain entities and relationships using TypeORM."),
-        bullet("Implement CRUD operations, dashboards, reports, search, filtering, pagination, and form validation."),
-        bullet("Identify and resolve frontend, backend, API, and database issues while improving performance."),
-        bullet("Test API endpoints with Postman and collaborate using Git and GitHub."),
+        bullet("Deliver end-to-end functionality across user interfaces, RESTful API endpoints, backend services, and PostgreSQL or MySQL persistence using TypeORM."),
+        bullet("Implement operational workflows, dashboards, reports, search, filtering, pagination, and data validation."),
+        bullet("Integrate frontend modules with backend APIs and database services, testing request and response behavior with Postman."),
+        bullet("Troubleshoot frontend, backend, API, and database issues while maintaining application reliability and improving performance."),
+        bullet("Collaborate through Git and GitHub to manage source code and coordinate application changes."),
     ]
-)
-
-story += section("Education")
-story.extend(
-    [
-        Paragraph("Bachelor of Arts in Geography", project_title_style),
-        Paragraph("Pinlon University", small_style),
-    ]
-)
-
-story += section("Languages")
-story.append(
-    Paragraph(
-        "<b>Pa-O:</b> Native &nbsp;&nbsp; | &nbsp;&nbsp; "
-        "<b>Burmese:</b> Fluent &nbsp;&nbsp; | &nbsp;&nbsp; "
-        "<b>English:</b> Intermediate",
-        small_style,
-    )
 )
 
 story.append(PageBreak())
@@ -292,7 +249,8 @@ enterprise_projects = [
         "Smart Car Parking Management System",
         "React.js | TypeScript | NestJS | PostgreSQL | AI Camera",
         [
-            "Developed parking transactions, dashboards, reports, passes, and rate-management features.",
+            "Developed application modules supporting parking transactions, access passes, parking rates, users, lanes, dashboards, reports, and connected devices.",
+            "Contributed across the React frontend and NestJS/PostgreSQL application stack to implement operational parking-management workflows.",
             "Integrated an AI-powered camera system for automatic vehicle license-plate detection and recognition.",
         ],
     ),
@@ -300,21 +258,18 @@ enterprise_projects = [
         "Smart Factory Management System",
         "React.js | TypeScript | NestJS | PostgreSQL | Kiosk Hardware",
         [
-            "Developed production planning, job and machine monitoring, and QR-code management features.",
-            "Built warehouse and inventory-management functionality.",
-            "Contributed to the OEE dashboard, production reports, and operational data views.",
-            "Integrated frontend components with RESTful APIs, validation, filtering, and pagination.",
-            "Integrated kiosk hardware with backend APIs for on-site production workflows and real-time operational updates.",
+            "Developed manufacturing workflows for production planning, job and machine monitoring, warehouse operations, and inventory management.",
+            "Implemented OEE dashboards, production reporting, and QR-code functionality for operational monitoring.",
+            "Integrated kiosk hardware with backend APIs to support on-site workflows and real-time operational updates.",
         ],
     ),
     (
         "Blood Bank Management System",
         "React.js | TypeScript | NestJS | PostgreSQL",
         [
-            "Developed donor, blood inventory, blood request, and hospital-management features.",
-            "Implemented CRUD operations and form validation for operational records.",
-            "Created and integrated RESTful APIs with PostgreSQL.",
-            "Supported database integration, troubleshooting, and user-friendly interfaces.",
+            "Developed workflows for blood donors, inventory, hospitals, blood requests, and operational records.",
+            "Implemented RESTful APIs, database-backed CRUD functionality, and form validation across the application.",
+            "Troubleshot frontend, backend, API, and database issues affecting operational workflows.",
         ],
     ),
 ]
@@ -325,7 +280,7 @@ for name, stack, contributions in enterprise_projects:
                 Paragraph(name, project_title_style),
                 Paragraph(stack, meta_style),
                 *[bullet(item) for item in contributions],
-                Spacer(1, 3),
+                Spacer(1, 1.5),
             ]
         )
     )
@@ -336,9 +291,8 @@ personal_projects = [
         "YBS Way - Public Transportation Mobile App",
         "Kotlin | Android",
         [
-            "Developed a native Android application with Kotlin for YBS bus-route search and transportation information in Yangon.",
-            "Created reusable native Android UI components and managed navigation between application screens.",
-            "Organized route information clearly across different Android screen sizes.",
+            "Developed a native Android application in Kotlin for YBS bus-route search and Yangon public-transport information.",
+            "Created reusable native Android UI components, screen navigation, and adaptive layouts for different screen sizes.",
         ],
         "https://ybs-way-web.pages.dev/",
     ),
@@ -346,9 +300,8 @@ personal_projects = [
         "Spendly - Expense Tracker Mobile App",
         "React Native | TypeScript",
         [
-            "Developed a mobile application for tracking personal income and expenses.",
-            "Implemented create, view, edit, and delete workflows with income and expense categories.",
-            "Built spending summaries, a user-friendly interface, and efficient state management.",
+            "Developed a mobile personal-finance application for recording and monitoring income and expenses.",
+            "Implemented transaction management, categories, spending summaries, application-state handling, and mobile UI workflows.",
         ],
         None,
     ),
@@ -367,7 +320,7 @@ for name, stack, contributions, live_url in personal_projects:
                 small_style,
             )
         )
-    project_content.append(Spacer(1, 3))
+    project_content.append(Spacer(1, 1.5))
     story.append(KeepTogether(project_content))
 story.append(
     Paragraph(
@@ -379,11 +332,29 @@ story.append(
 
 story += section("Certifications")
 for item in [
-    "Professional Web Developer - Laravel and PHP, Fairway Technology",
-    "Professional Web Developer - React.js, Next.js and Express.js, Fairway Technology",
-    "Professional UI/UX Design, Fairway Technology",
+    "Professional Web Developer - Laravel and PHP",
+    "Professional Web Developer - React.js, Next.js and Express.js",
+    "Professional UI/UX Design - Fairway Technology",
 ]:
     story.append(bullet(item))
+
+story += section("Education")
+story.extend(
+    [
+        Paragraph("Bachelor of Arts in Geography", project_title_style),
+        Paragraph("Pinlon University", small_style),
+    ]
+)
+
+story += section("Languages")
+story.append(
+    Paragraph(
+        "<b>Pa-O:</b> Native &nbsp;&nbsp; | &nbsp;&nbsp; "
+        "<b>Burmese:</b> Fluent &nbsp;&nbsp; | &nbsp;&nbsp; "
+        "<b>English:</b> Intermediate",
+        small_style,
+    )
+)
 
 document = SimpleDocTemplate(
     str(OUTPUT_FILE),
