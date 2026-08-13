@@ -1,4 +1,5 @@
 from pathlib import Path
+from math import sqrt
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
@@ -90,10 +91,25 @@ def register_fonts():
 
 FONT, FONT_MEDIUM, FONT_SEMIBOLD, FONT_BOLD, FONT_EXTRABOLD = register_fonts()
 
+# Golden-ratio modular scale. Half-steps keep the hierarchy practical for A4:
+# every two steps equal phi (1.618), avoiding oversized jumps in dense CV copy.
+GOLDEN_RATIO = (1 + sqrt(5)) / 2
+TYPE_STEP = sqrt(GOLDEN_RATIO)
+TYPE_BODY = 8.2
+TYPE_XS = TYPE_BODY / TYPE_STEP
+TYPE_HEADING = TYPE_BODY * TYPE_STEP
+TYPE_ROLE = TYPE_BODY * GOLDEN_RATIO
+TYPE_DISPLAY_SMALL = TYPE_BODY * TYPE_STEP**3
+TYPE_DISPLAY = TYPE_BODY * TYPE_STEP**4
+TYPE_HERO = TYPE_BODY * TYPE_STEP**5
+
+# Optical interpolation for dense sidebar/supporting copy between XS and body.
+TYPE_SUPPORT = (TYPE_XS + TYPE_BODY) / 2
+
 body_style = ParagraphStyle(
     "VisualBody",
     fontName=FONT_MEDIUM,
-    fontSize=8.2,
+    fontSize=TYPE_BODY,
     leading=11.2,
     textColor=TEXT,
     alignment=TA_LEFT,
@@ -106,7 +122,7 @@ muted_style = ParagraphStyle(
 bullet_style = ParagraphStyle(
     "VisualBullet",
     parent=muted_style,
-    fontSize=8.0,
+    fontSize=TYPE_BODY,
     leading=10.7,
     leftIndent=7,
     firstLineIndent=-5.5,
@@ -115,7 +131,7 @@ bullet_style = ParagraphStyle(
 sidebar_style = ParagraphStyle(
     "Sidebar",
     fontName=FONT_MEDIUM,
-    fontSize=7.25,
+    fontSize=TYPE_SUPPORT,
     leading=9.8,
     textColor=colors.HexColor("#E7F0FC"),
 )
@@ -123,13 +139,13 @@ sidebar_bold_style = ParagraphStyle(
     "SidebarBold",
     parent=sidebar_style,
     fontName=FONT_MEDIUM,
-    fontSize=7.55,
+    fontSize=TYPE_SUPPORT,
 )
 project_title_style = ParagraphStyle(
     "ProjectTitle",
     parent=body_style,
     fontName=FONT_BOLD,
-    fontSize=9.6,
+    fontSize=TYPE_HEADING,
     leading=12,
     textColor=NAVY_DARK,
 )
@@ -137,7 +153,7 @@ project_meta_style = ParagraphStyle(
     "ProjectMeta",
     parent=body_style,
     fontName=FONT_SEMIBOLD,
-    fontSize=7.05,
+    fontSize=TYPE_SUPPORT,
     leading=9,
     textColor=BLUE,
 )
@@ -145,14 +161,14 @@ project_meta_style = ParagraphStyle(
 skill_label_style = ParagraphStyle(
     "SkillLabel",
     fontName=FONT_SEMIBOLD,
-    fontSize=6.3,
+    fontSize=TYPE_XS,
     leading=7.8,
     textColor=NAVY,
 )
 skill_value_style = ParagraphStyle(
     "SkillValue",
     fontName=FONT_MEDIUM,
-    fontSize=6.3,
+    fontSize=TYPE_XS,
     leading=8.2,
     textColor=SLATE,
 )
@@ -177,13 +193,13 @@ def section(c, title, x, y, width):
     c.setFillColor(BLUE)
     c.roundRect(x, y - 5 * mm, 8 * mm, 5 * mm, 2.5 * mm, fill=1, stroke=0)
     c.setFillColor(WHITE)
-    c.setFont(FONT_BOLD, 6.6)
+    c.setFont(FONT_BOLD, TYPE_XS)
     c.drawCentredString(x + 4 * mm, y - 3.55 * mm, number)
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 10.6)
+    c.setFont(FONT_BOLD, TYPE_HEADING)
     title_x = x + 11 * mm
     c.drawString(title_x, y - 4 * mm, label)
-    label_width = pdfmetrics.stringWidth(label, FONT_BOLD, 10.6)
+    label_width = pdfmetrics.stringWidth(label, FONT_BOLD, TYPE_HEADING)
     line_x = title_x + label_width + 4 * mm
     c.setStrokeColor(LINE)
     c.setLineWidth(0.7)
@@ -194,7 +210,7 @@ def section(c, title, x, y, width):
 
 def sidebar_heading(c, title, x, y):
     c.setFillColor(CYAN)
-    c.setFont(FONT_BOLD, 6.9)
+    c.setFont(FONT_BOLD, TYPE_XS)
     c.drawString(x, y, title.upper())
     c.setStrokeColor(colors.HexColor("#31557D"))
     c.setLineWidth(0.7)
@@ -215,7 +231,7 @@ def sidebar_pills(c, labels, x, y, width):
         c.setFillColor(colors.HexColor("#143459"))
         c.roundRect(pill_x, pill_y - pill_h, pill_w, pill_h, 2.75 * mm, fill=1, stroke=0)
         c.setFillColor(colors.HexColor("#DDEBFA"))
-        c.setFont(FONT_MEDIUM, 6.05)
+        c.setFont(FONT_MEDIUM, TYPE_XS)
         c.drawCentredString(pill_x + pill_w / 2, pill_y - 3.7 * mm, label)
     rows = (len(labels) + 1) // 2
     return y - rows * (pill_h + row_gap) + row_gap
@@ -259,7 +275,7 @@ def footer(c, page_number, left_x=70 * mm):
     c.setLineWidth(0.55)
     c.line(left_x, 11 * mm, PAGE_WIDTH - 12 * mm, 11 * mm)
     c.setFillColor(SLATE)
-    c.setFont(FONT_MEDIUM, 6.55)
+    c.setFont(FONT_MEDIUM, TYPE_XS)
     c.drawString(left_x, 7.5 * mm, "Khun Kyaw Hla | Full-Stack Web & Mobile Developer")
     c.drawRightString(PAGE_WIDTH - 12 * mm, 7.5 * mm, f"Page {page_number}")
 
@@ -313,7 +329,7 @@ def draw_first_page(c):
         ("GITHUB", "github.com/kyawhla-commit"),
     ]:
         c.setFillColor(SIDEBAR_MUTED)
-        c.setFont(FONT_SEMIBOLD, 6.0)
+        c.setFont(FONT_SEMIBOLD, TYPE_XS)
         c.drawString(side_x, side_y, label)
         side_y -= 3.2 * mm
         side_y = paragraph(c, value, side_x, side_y + 1.2 * mm, side_w, sidebar_bold_style, 3.2 * mm)
@@ -344,7 +360,7 @@ def draw_first_page(c):
 
     badge_label = "FULL-STACK WEB & MOBILE DEVELOPER"
     badge_font = FONT_BOLD
-    badge_font_size = 6.65
+    badge_font_size = TYPE_XS
     badge_padding_x = 4 * mm
     badge_char_space = 0.08
     badge_h = 6.2 * mm
@@ -364,11 +380,11 @@ def draw_first_page(c):
     c.drawText(badge_text)
     y -= 15 * mm
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_EXTRABOLD, 27.2)
+    c.setFont(FONT_EXTRABOLD, TYPE_HERO)
     c.drawString(main_x, y, "KHUN KYAW HLA")
     y -= 8.8 * mm
     c.setFillColor(SLATE)
-    c.setFont(FONT_MEDIUM, 7.25)
+    c.setFont(FONT_MEDIUM, TYPE_BODY)
     c.drawString(main_x, y, "React.js  |  TypeScript  |  React Native  |  NestJS  |  PostgreSQL")
     y -= 9.5 * mm
 
@@ -387,7 +403,7 @@ def draw_first_page(c):
 
     y = section(c, "02 Professional Experience", main_x, y, main_w)
     date_label = "JANUARY 2026 - PRESENT"
-    date_font_size = 6.85
+    date_font_size = TYPE_XS
     date_padding_x = 3.2 * mm
     date_w = pdfmetrics.stringWidth(date_label, FONT_SEMIBOLD, date_font_size) + 2 * date_padding_x
     date_h = 6 * mm
@@ -398,11 +414,11 @@ def draw_first_page(c):
     c.drawString(main_x + date_padding_x, y - 4.1 * mm, date_label)
     y -= 11.5 * mm
     c.setFillColor(NAVY_DARK)
-    c.setFont(FONT_BOLD, 12.0)
+    c.setFont(FONT_BOLD, TYPE_ROLE)
     c.drawString(main_x, y, "Full-Stack Web Developer")
     y -= 6.2 * mm
     c.setFillColor(colors.HexColor("#41526A"))
-    c.setFont(FONT_MEDIUM, 8.2)
+    c.setFont(FONT_MEDIUM, TYPE_BODY)
     c.drawString(main_x, y, "M-Tech (Myo & Moe Technology Co., Ltd.)")
     y -= 7.2 * mm
     y = bullets(
@@ -514,13 +530,13 @@ def draw_second_page(c):
     c.setFillColor(colors.HexColor("#143459"))
     c.roundRect(13 * mm, PAGE_HEIGHT - 13.8 * mm, 29 * mm, 6 * mm, 3 * mm, fill=1, stroke=0)
     c.setFillColor(CYAN)
-    c.setFont(FONT_BOLD, 6.5)
+    c.setFont(FONT_BOLD, TYPE_XS)
     c.drawString(16 * mm, PAGE_HEIGHT - 11.9 * mm, "SELECTED WORK")
     c.setFillColor(WHITE)
-    c.setFont(FONT_EXTRABOLD, 18.2)
+    c.setFont(FONT_EXTRABOLD, TYPE_DISPLAY)
     c.drawString(13 * mm, PAGE_HEIGHT - 23.5 * mm, "Enterprise & Mobile Projects")
     c.setFillColor(SIDEBAR_MUTED)
-    c.setFont(FONT_SEMIBOLD, 6.8)
+    c.setFont(FONT_SEMIBOLD, TYPE_XS)
     c.drawRightString(PAGE_WIDTH - 13 * mm, PAGE_HEIGHT - 19.5 * mm, "KHUN KYAW HLA")
 
     x = 13 * mm
@@ -607,7 +623,7 @@ def draw_second_page(c):
     credentials_style = ParagraphStyle(
         "Credentials",
         parent=muted_style,
-        fontSize=7.8,
+        fontSize=TYPE_BODY,
         leading=10.2,
     )
     credential_text = (
