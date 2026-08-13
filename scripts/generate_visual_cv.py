@@ -380,31 +380,14 @@ def draw_first_page(c):
     main_w = PAGE_WIDTH - main_x - 12 * mm
     y = PAGE_HEIGHT - 18 * mm
 
-    badge_label = "FULL-STACK WEB & MOBILE DEVELOPER"
-    badge_font = FONT_BOLD
-    badge_font_size = TYPE_XS
-    badge_padding_x = 4 * mm
-    badge_char_space = 0.08
-    badge_h = 6.2 * mm
-    badge_w = (
-        pdfmetrics.stringWidth(badge_label, badge_font, badge_font_size)
-        + 2 * badge_padding_x
-        + (len(badge_label) - 1) * badge_char_space
-    )
-    c.setFillColor(SOFT_BLUE)
-    c.roundRect(main_x, y - badge_h, badge_w, badge_h, badge_h / 2, fill=1, stroke=0)
-    c.setFillColor(BLUE)
-    badge_text = c.beginText()
-    badge_text.setTextOrigin(main_x + badge_padding_x, y - 4.25 * mm)
-    badge_text.setFont(badge_font, badge_font_size)
-    badge_text.setCharSpace(badge_char_space)
-    badge_text.textLine(badge_label)
-    c.drawText(badge_text)
-    y -= 15 * mm
     c.setFillColor(NAVY_DARK)
     c.setFont(FONT_EXTRABOLD, TYPE_HERO)
-    c.drawString(main_x, y, "KHUN KYAW HLA")
-    y -= 8.8 * mm
+    c.drawString(main_x, y - 6 * mm, "KHUN KYAW HLA")
+    y -= 14 * mm
+    c.setFillColor(BLUE)
+    c.setFont(FONT_SEMIBOLD, TYPE_ROLE)
+    c.drawString(main_x, y, "Full-Stack Web & Mobile Developer")
+    y -= 7.5 * mm
     c.setFillColor(SLATE)
     c.setFont(FONT_MEDIUM, TYPE_SUPPORT)
     c.drawString(
