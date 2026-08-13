@@ -627,6 +627,8 @@ def draw_second_page(c):
         x + column_width + column_gap,
         y,
         column_width,
+        live_url="https://shorturl.at/O10Eo",
+        live_label="Play Store",
     )
     y = min(left_y, right_y) - 0.5 * mm
 

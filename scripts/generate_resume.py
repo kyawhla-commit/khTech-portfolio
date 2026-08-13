@@ -303,7 +303,7 @@ personal_projects = [
             "Developed a mobile personal-finance application for recording and monitoring income and expenses.",
             "Implemented transaction management, categories, spending summaries, application-state handling, and mobile UI workflows.",
         ],
-        None,
+        "https://shorturl.at/O10Eo",
     ),
 ]
 for name, stack, contributions, live_url in personal_projects:
